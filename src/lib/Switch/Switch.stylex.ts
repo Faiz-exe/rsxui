@@ -1,0 +1,135 @@
+import * as stylex from '@stylexjs/stylex'
+import { colors, fonts, radii, space } from '../theme/tokens.stylex'
+
+export const styles = stylex.create({
+  field: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: space.sm,
+    cursor: 'pointer',
+    width: 'fit-content',
+    maxWidth: '100%',
+    boxSizing: 'border-box',
+    ':has(input:disabled)': {
+      cursor: 'not-allowed',
+    },
+  },
+  native: {
+    position: 'absolute',
+    width: '1px',
+    height: '1px',
+    padding: 0,
+    margin: '-1px',
+    overflow: 'hidden',
+    clip: 'rect(0, 0, 0, 0)',
+    whiteSpace: 'nowrap',
+    borderWidth: 0,
+    opacity: 0,
+    pointerEvents: 'none',
+  },
+  controlSlot: {
+    position: 'relative',
+    flexShrink: 0,
+    width: '2.75rem',
+    height: '1.5rem',
+    marginTop: '2px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    ':focus-within': {
+      boxShadow: `0 0 0 3px ${colors.focusRing}`,
+      borderRadius: radii.full,
+    },
+    ':has(input:disabled)': {
+      boxShadow: 'none',
+    },
+  },
+  track: {
+    position: 'absolute',
+    inset: 0,
+    boxSizing: 'border-box',
+    borderRadius: radii.full,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: colors.inputBorder,
+    backgroundColor: colors.bgSubtle,
+    transitionProperty: 'background-color, border-color',
+    transitionDuration: '0.15s',
+    transitionTimingFunction: 'ease',
+    pointerEvents: 'none',
+  },
+  trackChecked: {
+    backgroundColor: colors.accent,
+    borderColor: colors.accent,
+  },
+  trackInvalid: {
+    borderColor: colors.danger,
+  },
+  trackInvalidChecked: {
+    backgroundColor: colors.danger,
+    borderColor: colors.danger,
+  },
+  trackDisabled: {
+    borderColor: colors.border,
+    backgroundColor: colors.bgSubtle,
+    opacity: 0.85,
+  },
+  trackCheckedDisabled: {
+    borderColor: colors.borderStrong,
+    backgroundColor: colors.accentMuted,
+    opacity: 1,
+  },
+  trackInvalidCheckedDisabled: {
+    borderColor: colors.borderStrong,
+    backgroundColor: colors.dangerMuted,
+    opacity: 1,
+  },
+  thumb: {
+    position: 'absolute',
+    top: '2px',
+    left: '2px',
+    width: '1.25rem',
+    height: '1.25rem',
+    borderRadius: radii.full,
+    backgroundColor: colors.bg,
+    boxShadow: '0 1px 2px rgba(15, 15, 20, 0.12)',
+    transitionProperty: 'transform',
+    transitionDuration: '0.15s',
+    transitionTimingFunction: 'ease',
+    pointerEvents: 'none',
+  },
+  thumbChecked: {
+    transform: 'translateX(1.25rem)',
+  },
+  thumbDisabled: {
+    backgroundColor: colors.bgElevated,
+    boxShadow: 'none',
+  },
+  labelTextDisabled: {
+    color: colors.fgSubtle,
+  },
+  descriptionDisabled: {
+    color: colors.fgSubtle,
+    opacity: 0.9,
+  },
+  textCol: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '2px',
+    minWidth: 0,
+  },
+  labelText: {
+    fontFamily: fonts.sans,
+    fontSize: '0.9375rem',
+    fontWeight: 500,
+    lineHeight: 1.4,
+    color: colors.fg,
+  },
+  description: {
+    fontFamily: fonts.sans,
+    fontSize: '0.8125rem',
+    lineHeight: 1.45,
+    color: colors.fgMuted,
+  },
+})

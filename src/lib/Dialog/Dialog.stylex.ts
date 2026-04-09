@@ -1,0 +1,160 @@
+import * as stylex from '@stylexjs/stylex'
+import { colors, fonts, radii, space } from '../theme/tokens.stylex'
+
+const overlayEnter = stylex.keyframes({
+  from: { opacity: 0 },
+  to: { opacity: 1 },
+})
+
+const panelEnter = stylex.keyframes({
+  from: {
+    opacity: 0,
+    transform: 'scale(0.96) translateY(8px)',
+  },
+  to: {
+    opacity: 1,
+    transform: 'scale(1) translateY(0)',
+  },
+})
+
+const dialogShadow =
+  '0 4px 6px rgba(15, 15, 22, 0.06), 0 24px 48px rgba(15, 15, 22, 0.16), 0 0 0 1px rgba(15, 15, 22, 0.05)'
+
+export const styles = stylex.create({
+  overlay: {
+    position: 'fixed',
+    inset: 0,
+    zIndex: 1500,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: space.lg,
+    boxSizing: 'border-box',
+    fontFamily: fonts.sans,
+    animationName: overlayEnter,
+    animationDuration: '0.2s',
+    animationTimingFunction: 'ease-out',
+    animationFillMode: 'both',
+  },
+  backdrop: {
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(15, 15, 18, 0.5)',
+    cursor: 'default',
+  },
+  panel: {
+    position: 'relative',
+    zIndex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    maxHeight: 'min(90vh, 900px)',
+    width: '100%',
+    overflow: 'hidden',
+    borderRadius: radii.lg,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: colors.border,
+    backgroundColor: colors.bgElevated,
+    boxShadow: dialogShadow,
+    boxSizing: 'border-box',
+    color: colors.fg,
+    outlineStyle: 'none',
+    animationName: panelEnter,
+    animationDuration: '0.22s',
+    animationTimingFunction: 'cubic-bezier(0.2, 0.8, 0.2, 1)',
+    animationFillMode: 'both',
+  },
+  sizeSm: {
+    maxWidth: 400,
+  },
+  sizeMd: {
+    maxWidth: 560,
+  },
+  sizeLg: {
+    maxWidth: 720,
+  },
+  sizeFull: {
+    maxWidth: 'min(1200px, 100%)',
+    maxHeight: 'min(92vh, 1000px)',
+  },
+  header: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'space-between',
+    gap: space.md,
+    flexShrink: 0,
+    paddingTop: space.lg,
+    paddingLeft: space.lg,
+    paddingRight: space.sm,
+    paddingBottom: space.sm,
+    borderBottomWidth: 1,
+    borderBottomStyle: 'solid',
+    borderBottomColor: colors.border,
+  },
+  headerSpacer: {
+    flexGrow: 1,
+    flexShrink: 1,
+    minWidth: 0,
+  },
+  title: {
+    margin: 0,
+    flex: 1,
+    minWidth: 0,
+    fontSize: '1.125rem',
+    fontWeight: 600,
+    lineHeight: 1.35,
+    letterSpacing: '-0.02em',
+  },
+  close: {
+    flexShrink: 0,
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 36,
+    height: 36,
+    margin: 0,
+    padding: 0,
+    borderWidth: 0,
+    borderRadius: radii.sm,
+    backgroundColor: 'transparent',
+    color: colors.fgSubtle,
+    cursor: 'pointer',
+    transitionProperty: 'color, background-color',
+    transitionDuration: '0.15s',
+    ':hover': {
+      backgroundColor: colors.neutralMuted,
+      color: colors.fg,
+    },
+    ':focus-visible': {
+      outlineStyle: 'none',
+      boxShadow: `0 0 0 2px ${colors.focusRing}`,
+    },
+  },
+  body: {
+    flex: 1,
+    minHeight: 0,
+    overflow: 'auto',
+    overscrollBehavior: 'contain',
+    padding: space.lg,
+    fontSize: '0.9375rem',
+    lineHeight: 1.55,
+  },
+  footer: {
+    flexShrink: 0,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    flexWrap: 'wrap',
+    gap: space.sm,
+    padding: space.lg,
+    paddingTop: space.md,
+    borderTopWidth: 1,
+    borderTopStyle: 'solid',
+    borderTopColor: colors.border,
+  },
+})

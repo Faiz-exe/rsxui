@@ -1,0 +1,182 @@
+import * as stylex from '@stylexjs/stylex'
+import { colors, elevation, fonts, radii, space } from '../theme/tokens.stylex'
+
+const panelIn = stylex.keyframes({
+  from: {
+    opacity: 0,
+    transform: 'translateY(-6px) scale(0.98)',
+  },
+  to: {
+    opacity: 1,
+    transform: 'translateY(0) scale(1)',
+  },
+})
+
+const panelInReduced = stylex.keyframes({
+  from: { opacity: 0 },
+  to: { opacity: 1 },
+})
+
+export const styles = stylex.create({
+  field: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'stretch',
+    width: '100%',
+    boxSizing: 'border-box',
+  },
+  container: {
+    position: 'relative',
+    width: '100%',
+  },
+  control: {
+    position: 'relative',
+    width: '100%',
+  },
+  input: {
+    width: '100%',
+    boxSizing: 'border-box',
+    fontFamily: fonts.sans,
+    fontSize: '0.9375rem',
+    lineHeight: 1.4,
+    color: colors.fg,
+    backgroundColor: colors.inputBg,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: colors.inputBorder,
+    borderRadius: radii.md,
+    paddingBlock: space.sm,
+    paddingInline: space.md,
+    paddingInlineEnd: '2.25rem',
+    outlineStyle: 'none',
+    boxShadow: elevation.input,
+    transitionProperty: 'border-color, box-shadow',
+    transitionDuration: '0.15s',
+    transitionTimingFunction: 'ease',
+    minWidth: 0,
+    '::placeholder': {
+      color: colors.placeholder,
+    },
+    ':focus-visible': {
+      borderColor: colors.accent,
+      boxShadow: `0 0 0 3px ${colors.focusRing}`,
+    },
+    ':disabled': {
+      opacity: 0.55,
+      cursor: 'not-allowed',
+    },
+  },
+  inputOpen: {
+    borderColor: colors.accent,
+    boxShadow: `0 0 0 1px ${colors.accentMuted}, 0 0 0 3px ${colors.focusRing}`,
+  },
+  inputError: {
+    borderColor: colors.danger,
+    ':focus-visible': {
+      borderColor: colors.danger,
+      boxShadow: `0 0 0 3px ${colors.dangerMuted}`,
+    },
+  },
+  iconWrap: {
+    position: 'absolute',
+    right: space.sm,
+    top: '50%',
+    transform: 'translateY(-50%)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '1.25rem',
+    height: '1.25rem',
+    color: colors.fgSubtle,
+    pointerEvents: 'none',
+  },
+  dropdown: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: '100%',
+    marginTop: space.xs,
+    zIndex: 100,
+    borderRadius: radii.lg,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: colors.border,
+    backgroundColor: colors.bgElevated,
+    boxShadow: elevation.cardHover,
+    overflow: 'hidden',
+    transformOrigin: 'top center',
+    '@media (prefers-reduced-motion: no-preference)': {
+      animationName: panelIn,
+      animationDuration: '0.22s',
+      animationFillMode: 'both' as const,
+      animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
+    },
+    '@media (prefers-reduced-motion: reduce)': {
+      animationName: panelInReduced,
+      animationDuration: '0.12s',
+      animationFillMode: 'both' as const,
+    },
+  },
+  list: {
+    listStyle: 'none',
+    margin: 0,
+    padding: space.xs,
+    maxHeight: 'min(280px, 50vh)',
+    overflowY: 'auto' as const,
+    boxSizing: 'border-box',
+  },
+  option: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: space.sm,
+    width: '100%',
+    boxSizing: 'border-box',
+    fontFamily: fonts.sans,
+    fontSize: '0.875rem',
+    lineHeight: 1.35,
+    color: colors.fg,
+    textAlign: 'left' as const,
+    paddingBlock: space.sm,
+    paddingInline: space.md,
+    borderWidth: 0,
+    borderRadius: radii.sm,
+    backgroundColor: 'transparent',
+    cursor: 'pointer',
+    outlineStyle: 'none',
+    transitionProperty: 'background-color, color',
+    transitionDuration: '0.1s',
+    ':hover': {
+      backgroundColor: colors.bgSubtle,
+    },
+  },
+  optionHighlighted: {
+    backgroundColor: colors.accentMuted,
+    color: colors.fg,
+  },
+  optionSelected: {
+    fontWeight: 600,
+    color: colors.accent,
+  },
+  optionDisabled: {
+    opacity: 0.45,
+    cursor: 'not-allowed',
+    ':hover': {
+      backgroundColor: 'transparent',
+    },
+  },
+  optionLabel: {
+    flex: 1,
+    minWidth: 0,
+  },
+  empty: {
+    paddingBlock: space.md,
+    paddingInline: space.md,
+    fontFamily: fonts.sans,
+    fontSize: '0.8125rem',
+    color: colors.fgMuted,
+    textAlign: 'center' as const,
+  },
+  message: {
+    marginTop: space.xs,
+  },
+})

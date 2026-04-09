@@ -1,0 +1,83 @@
+import * as stylex from '@stylexjs/stylex'
+import { colors, elevation, fonts, radii, space } from '../lib/theme/tokens.stylex'
+
+export const indexStyles = stylex.create({
+  intro: {
+    marginBottom: space['2xl'],
+    paddingBlock: space.lg,
+    paddingInline: space.lg,
+    borderRadius: radii.md,
+    backgroundColor: colors.bgSubtle,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: colors.border,
+    boxShadow: `inset 3px 0 0 0 ${colors.accent}`,
+  },
+  introText: {
+    fontFamily: fonts.serif,
+    fontSize: '1.125rem',
+    lineHeight: 1.72,
+    color: colors.fgMuted,
+    margin: 0,
+    maxWidth: '42rem',
+  },
+  sectionLabel: {
+    fontFamily: fonts.sans,
+    fontSize: '0.8125rem',
+    fontWeight: 700,
+    letterSpacing: '0.06em',
+    textTransform: 'uppercase' as const,
+    color: colors.accent,
+    marginBottom: space.md,
+    marginTop: 0,
+  },
+  grid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
+    gap: space.lg,
+    marginBottom: space['2xl'],
+  },
+  cardLink: {
+    display: 'block',
+    textDecoration: 'none',
+    color: 'inherit',
+    borderRadius: radii.md,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: colors.border,
+    backgroundColor: colors.bgSubtle,
+    padding: space.lg,
+    boxSizing: 'border-box',
+    transitionProperty: 'border-color, box-shadow, transform, background-color',
+    transitionDuration: '0.18s',
+    transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
+    ':hover': {
+      borderColor: colors.accent,
+      backgroundColor: colors.bg,
+      boxShadow: elevation.cardHover,
+      transform: 'translateY(-2px)',
+    },
+    '@media (prefers-reduced-motion: reduce)': {
+      transitionDuration: '0.01ms',
+      ':hover': {
+        transform: 'none',
+      },
+    },
+  },
+  cardTitle: {
+    fontFamily: fonts.sans,
+    fontSize: '1rem',
+    fontWeight: 700,
+    letterSpacing: '-0.025em',
+    color: colors.fg,
+    marginTop: 0,
+    marginBottom: space.xs,
+  },
+  cardDesc: {
+    fontFamily: fonts.serif,
+    fontSize: '0.9375rem',
+    lineHeight: 1.6,
+    color: colors.fgMuted,
+    margin: 0,
+  },
+})

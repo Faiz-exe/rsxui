@@ -2,6 +2,17 @@ import * as stylex from '@stylexjs/stylex'
 import { colors, fonts, radii, space } from '../lib/theme/tokens.stylex'
 
 const HEADER_H = '60px'
+const SIDEBAR_W = '256px'
+
+const fadeIn = stylex.keyframes({
+  from: { opacity: 0 },
+  to: { opacity: 1 },
+})
+
+const slideIn = stylex.keyframes({
+  from: { transform: 'translateX(-100%)' },
+  to: { transform: 'translateX(0)' },
+})
 
 export const styles = stylex.create({
   shell: {
@@ -23,12 +34,42 @@ export const styles = stylex.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    gap: space.lg,
-    paddingInline: `clamp(${space.lg}, 4vw, 28px)`,
+    gap: space.md,
+    paddingInline: `clamp(${space.sm}, 3vw, 28px)`,
     backgroundColor: colors.bg,
     borderBottomWidth: 1,
     borderBottomStyle: 'solid',
     borderBottomColor: colors.border,
+  },
+
+  headerLeft: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: space.sm,
+    minWidth: 0,
+    overflow: 'hidden' as const,
+  },
+
+  menuBtn: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '36px',
+    height: '36px',
+    borderRadius: radii.sm,
+    borderWidth: 0,
+    backgroundColor: 'transparent',
+    color: colors.fgMuted,
+    cursor: 'pointer',
+    transitionProperty: 'color, background-color',
+    transitionDuration: '0.12s',
+    ':hover': {
+      color: colors.fg,
+      backgroundColor: colors.bgSubtle,
+    },
+    '@media (min-width: 900px)': {
+      display: 'none',
+    },
   },
 
   brandRow: {
@@ -63,6 +104,9 @@ export const styles = stylex.create({
     flexDirection: 'column' as const,
     gap: '1px',
     minWidth: 0,
+    '@media (max-width: 420px)': {
+      display: 'none',
+    },
   },
 
   brand: {
@@ -89,6 +133,9 @@ export const styles = stylex.create({
     alignItems: 'center',
     gap: '6px',
     flexShrink: 0,
+    '@media (max-width: 480px)': {
+      gap: '4px',
+    },
   },
 
   headerDivider: {
@@ -96,6 +143,9 @@ export const styles = stylex.create({
     height: '20px',
     backgroundColor: colors.border,
     marginInline: '4px',
+    '@media (max-width: 640px)': {
+      display: 'none',
+    },
   },
 
   headerLink: {
@@ -112,6 +162,9 @@ export const styles = stylex.create({
     ':hover': {
       color: colors.fg,
       backgroundColor: colors.bgSubtle,
+    },
+    '@media (max-width: 640px)': {
+      display: 'none',
     },
   },
 
@@ -135,6 +188,9 @@ export const styles = stylex.create({
       color: colors.fg,
       backgroundColor: colors.bgSubtle,
       borderColor: colors.borderStrong,
+    },
+    '@media (max-width: 480px)': {
+      display: 'none',
     },
   },
 
@@ -199,6 +255,22 @@ export const styles = stylex.create({
     },
   },
 
+  /* ── Drawer backdrop (mobile only) ── */
+  drawerBackdrop: {
+    display: 'none',
+    '@media (max-width: 899px)': {
+      display: 'block',
+      position: 'fixed' as const,
+      inset: 0,
+      top: HEADER_H,
+      zIndex: 39,
+      backgroundColor: colors.overlay,
+      animationName: fadeIn,
+      animationDuration: '0.2s',
+      animationFillMode: 'forwards',
+    },
+  },
+
   /* ── Body layout ── */
   body: {
     flex: 1,
@@ -206,7 +278,7 @@ export const styles = stylex.create({
     gridTemplateColumns: 'minmax(0, 1fr)',
     minHeight: 0,
     '@media (min-width: 900px)': {
-      gridTemplateColumns: '256px minmax(0, 1fr)',
+      gridTemplateColumns: `${SIDEBAR_W} minmax(0, 1fr)`,
     },
   },
 
@@ -215,13 +287,27 @@ export const styles = stylex.create({
     paddingTop: space.lg,
     paddingBottom: '40px',
     paddingInline: space.md,
-    borderBottomWidth: 1,
-    borderBottomStyle: 'solid',
-    borderBottomColor: colors.border,
     backgroundColor: colors.bg,
     boxSizing: 'border-box',
+    '@media (max-width: 899px)': {
+      position: 'fixed' as const,
+      top: HEADER_H,
+      left: 0,
+      bottom: 0,
+      width: SIDEBAR_W,
+      maxWidth: '85vw',
+      zIndex: 40,
+      overflowY: 'auto' as const,
+      transform: 'translateX(-100%)',
+      transitionProperty: 'transform',
+      transitionDuration: '0.25s',
+      transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
+      borderRightWidth: 1,
+      borderRightStyle: 'solid',
+      borderRightColor: colors.border,
+      boxShadow: '4px 0 16px rgba(0,0,0,0.08)',
+    },
     '@media (min-width: 900px)': {
-      borderBottomWidth: 0,
       borderRightWidth: 1,
       borderRightStyle: 'solid',
       borderRightColor: colors.border,
@@ -230,6 +316,12 @@ export const styles = stylex.create({
       alignSelf: 'start',
       height: `calc(100vh - ${HEADER_H})`,
       overflowY: 'auto' as const,
+    },
+  },
+
+  sidebarOpen: {
+    '@media (max-width: 899px)': {
+      transform: 'translateX(0)',
     },
   },
 

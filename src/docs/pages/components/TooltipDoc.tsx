@@ -9,6 +9,7 @@ import {
   DocP,
   InlineCode,
 } from '../../ui/Prose'
+import { useDocMeta } from '../../useDocMeta'
 
 const tooltipProps = [
   {
@@ -38,6 +39,7 @@ const tooltipProps = [
 ] as const
 
 export function TooltipDoc() {
+  useDocMeta('Tooltip', 'Hover and focus hints with four positions and configurable delay.')
   return (
     <DocArticle>
       <DocH1

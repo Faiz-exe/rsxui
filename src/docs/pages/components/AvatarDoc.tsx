@@ -9,6 +9,7 @@ import {
   DocP,
   InlineCode,
 } from '../../ui/Prose'
+import { useDocMeta } from '../../useDocMeta'
 
 const avatarProps = [
   {
@@ -84,6 +85,7 @@ const SAMPLE_IMAGE =
   'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=128&h=128&fit=crop'
 
 export function AvatarDoc() {
+  useDocMeta('Avatar', 'User images, initials, sizes, severities, and AvatarGroup.')
   return (
     <DocArticle>
       <DocH1

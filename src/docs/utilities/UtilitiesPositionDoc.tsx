@@ -12,8 +12,10 @@ import {
   DocP,
   InlineCode,
 } from '../ui/Prose'
+import { useDocMeta } from '../useDocMeta'
 
 export function UtilitiesPositionDoc() {
+  useDocMeta('Position Utilities', 'CSS position, z-index, and inset helpers.')
   return (
     <DocArticle>
       <DocH1>Position utilities</DocH1>

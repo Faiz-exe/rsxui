@@ -3,6 +3,7 @@ import { DocImport } from '../../ui/DocImport'
 import { DocPreview } from '../../ui/DocPreview'
 import { PropsTable } from '../../ui/PropsTable'
 import { DocArticle, DocH1, DocH2, DocP, InlineCode } from '../../ui/Prose'
+import { useDocMeta } from '../../useDocMeta'
 
 const componentProps = [
   {
@@ -35,6 +36,7 @@ const componentProps = [
 ] as const
 
 export function DividerDoc() {
+  useDocMeta('Divider', 'Horizontal or vertical separator with optional label.')
   return (
     <DocArticle>
       <DocH1 description="Visual separator with optional in-line label and horizontal or vertical orientation.">

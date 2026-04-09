@@ -11,6 +11,7 @@ import {
   DocP,
   InlineCode,
 } from '../../ui/Prose'
+import { useDocMeta } from '../../useDocMeta'
 
 const tabsProps = [
   {
@@ -88,6 +89,7 @@ const tabPanelProps = [
 ] as const
 
 export function TabsDoc() {
+  useDocMeta('Tabs', 'Tablist, tabs, and panels with keyboard navigation.')
   const [tab, setTab] = useState('one')
 
   return (

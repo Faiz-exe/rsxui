@@ -10,6 +10,7 @@ import {
   DocP,
   InlineCode,
 } from '../../ui/Prose'
+import { useDocMeta } from '../../useDocMeta'
 
 const spinnerProps = [
   {
@@ -48,6 +49,7 @@ const spinnerProps = [
 ] as const
 
 export function SpinnerDoc() {
+  useDocMeta('Spinner', 'Loading indicator with size and semantic tone variants.')
   return (
     <DocArticle>
       <DocH1>Spinner</DocH1>

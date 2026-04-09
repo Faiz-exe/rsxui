@@ -10,6 +10,7 @@ import {
   DocP,
   InlineCode,
 } from '../../ui/Prose'
+import { useDocMeta } from '../../useDocMeta'
 
 const labelProps = [
   {
@@ -42,6 +43,7 @@ const labelProps = [
 ] as const
 
 export function LabelDoc() {
+  useDocMeta('Label', 'Form labels with optional required marker.')
   return (
     <DocArticle>
       <DocH1>Label</DocH1>

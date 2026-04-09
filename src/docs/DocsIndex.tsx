@@ -1,6 +1,7 @@
 import * as stylex from '@stylexjs/stylex'
 import { Link } from 'react-router-dom'
 import { indexStyles as s } from './DocsIndex.stylex'
+import { useDocMeta } from './useDocMeta'
 
 const sections: {
   title: string
@@ -173,6 +174,7 @@ function ArrowRight() {
 }
 
 export function DocsIndex() {
+  useDocMeta('Overview', 'Component index, quick-start links, and library summary for RSX UI.')
   return (
     <article>
       {/* Hero */}

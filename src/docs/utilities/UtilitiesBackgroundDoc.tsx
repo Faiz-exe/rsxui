@@ -12,8 +12,10 @@ import {
   DocP,
   InlineCode,
 } from '../ui/Prose'
+import { useDocMeta } from '../useDocMeta'
 
 export function UtilitiesBackgroundDoc() {
+  useDocMeta('Background Utilities', 'Background color and gradient helpers.')
   return (
     <DocArticle>
       <DocH1>Background utilities</DocH1>

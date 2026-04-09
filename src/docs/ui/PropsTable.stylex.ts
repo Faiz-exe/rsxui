@@ -146,6 +146,16 @@ export const propsTableStyles = stylex.create({
     color: colors.fgSubtle,
   },
 
+  nameCell: {
+    whiteSpace: 'nowrap' as const,
+  },
+
+  code: {
+    fontFamily: fonts.mono,
+    fontSize: '0.8125rem',
+    color: colors.fg,
+  },
+
   footnote: {
     fontFamily: fonts.sans,
     fontSize: '0.8125rem',

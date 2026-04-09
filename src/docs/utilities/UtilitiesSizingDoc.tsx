@@ -11,8 +11,10 @@ import {
   DocP,
   InlineCode,
 } from '../ui/Prose'
+import { useDocMeta } from '../useDocMeta'
 
 export function UtilitiesSizingDoc() {
+  useDocMeta('Sizing Utilities', 'Width, height, and min/max sizing helpers.')
   return (
     <DocArticle>
       <DocH1>Sizing utilities</DocH1>

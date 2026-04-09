@@ -11,6 +11,7 @@ import {
   DocP,
   InlineCode,
 } from '../../ui/Prose'
+import { useDocMeta } from '../../useDocMeta'
 
 const groupProps = [
   {
@@ -114,6 +115,7 @@ const radioProps = [
 ] as const
 
 export function RadioDoc() {
+  useDocMeta('Radio', 'RadioGroup and Radio options with a shared accessible name.')
   const [plan, setPlan] = useState('monthly')
 
   return (

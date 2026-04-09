@@ -11,6 +11,7 @@ import {
   DocP,
   InlineCode,
 } from '../../ui/Prose'
+import { useDocMeta } from '../../useDocMeta'
 
 const groupProps = [
   {
@@ -110,6 +111,7 @@ const btnProps = [
 ] as const
 
 export function ToggleButtonDoc() {
+  useDocMeta('ToggleButton', 'Pressed-state buttons and single or multi-select groups.')
   const [align, setAlign] = useState<string | null>('left')
   const [filters, setFilters] = useState<string[]>(['bold'])
   const [solo, setSolo] = useState(false)

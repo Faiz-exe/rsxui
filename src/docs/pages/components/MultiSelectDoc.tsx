@@ -11,6 +11,7 @@ import {
   DocP,
   InlineCode,
 } from '../../ui/Prose'
+import { useDocMeta } from '../../useDocMeta'
 
 const opts: SelectOption[] = [
   { value: 'a', label: 'Alpha' },
@@ -95,6 +96,7 @@ const multiProps = [
 ] as const
 
 export function MultiSelectDoc() {
+  useDocMeta('MultiSelect', 'Multi-value listbox with chips, filter, and form-friendly hidden inputs.')
   const [values, setValues] = useState<string[]>(['a', 'c'])
 
   return (

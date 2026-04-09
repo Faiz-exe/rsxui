@@ -11,6 +11,7 @@ import {
   DocP,
   InlineCode,
 } from '../../ui/Prose'
+import { useDocMeta } from '../../useDocMeta'
 
 const cityOptions: SelectOption[] = [
   { value: 'nyc', label: 'New York', searchText: 'nyc new york' },
@@ -91,6 +92,7 @@ const acProps = [
 ] as const
 
 export function AutocompleteDoc() {
+  useDocMeta('Autocomplete', 'Combobox with type-ahead filtering and keyboard selection.')
   const [city, setCity] = useState('lon')
 
   return (

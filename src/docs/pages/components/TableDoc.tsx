@@ -11,6 +11,7 @@ import {
   DocP,
   InlineCode,
 } from '../../ui/Prose'
+import { useDocMeta } from '../../useDocMeta'
 
 type Product = {
   id: string
@@ -77,6 +78,7 @@ const tableProps = [
 ] as const
 
 export function TableDoc() {
+  useDocMeta('Table', 'Sortable columns, pagination, loading, and empty states.')
   const [sortField, setSortField] = useState<string>('name')
   const [sortOrder, setSortOrder] = useState<1 | -1 | 0>(1)
   const [selectedOne, setSelectedOne] = useState<Product | null>(null)

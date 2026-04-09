@@ -14,8 +14,10 @@ import {
   InlineCode,
 } from '../../ui/Prose'
 import { inputProps, previewWrap } from './inputDocShared'
+import { useDocMeta } from '../../useDocMeta'
 
 export function InputTextDoc() {
+  useDocMeta('InputText', 'Text field with label, helper text, disabled, and validation states.')
   const [email, setEmail] = useState('')
   const emailError =
     email.length > 0 && !email.includes('@') ? 'Enter a valid email address.' : ''

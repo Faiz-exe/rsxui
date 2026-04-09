@@ -11,6 +11,7 @@ import {
   DocP,
   InlineCode,
 } from '../../ui/Prose'
+import { useDocMeta } from '../../useDocMeta'
 
 const checkboxProps = [
   {
@@ -59,6 +60,7 @@ const checkboxProps = [
 ] as const
 
 export function CheckboxDoc() {
+  useDocMeta('Checkbox', 'Labeled checkbox with description, invalid, and indeterminate states.')
   const [terms, setTerms] = useState(false)
 
   return (

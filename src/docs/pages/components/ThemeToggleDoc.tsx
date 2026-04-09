@@ -10,8 +10,10 @@ import {
   DocP,
   InlineCode,
 } from '../../ui/Prose'
+import { useDocMeta } from '../../useDocMeta'
 
 export function ThemeToggleDoc() {
+  useDocMeta('ThemeToggle', 'Cycle between system, light, and dark color schemes.')
   return (
     <DocArticle>
       <DocH1>ThemeToggle</DocH1>

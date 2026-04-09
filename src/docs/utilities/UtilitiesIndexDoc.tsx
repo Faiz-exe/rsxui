@@ -17,8 +17,10 @@ import {
   InlineCode,
 } from '../ui/Prose'
 import { utilitySectionCards } from './utilitiesNav'
+import { useDocMeta } from '../useDocMeta'
 
 export function UtilitiesIndexDoc() {
+  useDocMeta('Utilities', 'StyleX utility styles for layout, spacing, typography, and more.')
   return (
     <DocArticle>
       <DocH1>Utilities</DocH1>

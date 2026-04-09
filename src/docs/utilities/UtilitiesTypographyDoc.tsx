@@ -12,8 +12,10 @@ import {
   DocP,
   InlineCode,
 } from '../ui/Prose'
+import { useDocMeta } from '../useDocMeta'
 
 export function UtilitiesTypographyDoc() {
+  useDocMeta('Typography Utilities', 'Font size, weight, alignment, and text decoration helpers.')
   return (
     <DocArticle>
       <DocH1>Typography utilities</DocH1>

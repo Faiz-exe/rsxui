@@ -11,6 +11,7 @@ import {
   DocP,
   InlineCode,
 } from '../../ui/Prose'
+import { useDocMeta } from '../../useDocMeta'
 
 const dialogProps = [
   {
@@ -79,6 +80,7 @@ const dialogProps = [
 ] as const
 
 export function DialogDoc() {
+  useDocMeta('Dialog', 'Modal dialog with backdrop, focus trap, sizes, and footer actions.')
   const [basicOpen, setBasicOpen] = useState(false)
   const [sizeOpen, setSizeOpen] = useState(false)
   const [size, setSize] = useState<'sm' | 'md' | 'lg' | 'full'>('md')

@@ -11,8 +11,10 @@ import {
   DocP,
   InlineCode,
 } from '../ui/Prose'
+import { useDocMeta } from '../useDocMeta'
 
 export function UtilitiesBorderShadowDoc() {
+  useDocMeta('Border & Shadow Utilities', 'Border width, radius, and box-shadow helpers.')
   return (
     <DocArticle>
       <DocH1>Border, radius &amp; shadow</DocH1>

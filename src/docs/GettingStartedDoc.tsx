@@ -5,11 +5,11 @@ import {
   DocArticle,
   DocH1,
   DocH2,
-  DocLead,
   DocLink,
   DocP,
   InlineCode,
 } from './ui/Prose'
+import { useDocMeta } from './useDocMeta'
 
 function ScrollToHash() {
   const { hash, pathname } = useLocation()
@@ -26,6 +26,7 @@ function ScrollToHash() {
 }
 
 export function GettingStartedDoc() {
+  useDocMeta('Getting Started', 'Install RSX UI, configure Vite with StyleX, and render your first component.')
   return (
     <DocArticle>
       <ScrollToHash />

@@ -11,6 +11,7 @@ import {
   DocP,
   InlineCode,
 } from '../../ui/Prose'
+import { useDocMeta } from '../../useDocMeta'
 
 const themeOptions: SelectOption[] = [
   { value: 'system', label: 'System' },
@@ -152,6 +153,7 @@ const selectProps = [
 ] as const
 
 export function SelectDoc() {
+  useDocMeta('Select', 'Custom listbox with keyboard support, animations, and form API.')
   const [theme, setTheme] = useState('system')
   const [clearValue, setClearValue] = useState('light')
   const [loadingValue, setLoadingValue] = useState('system')

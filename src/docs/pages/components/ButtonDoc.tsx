@@ -11,6 +11,7 @@ import {
   DocP,
   InlineCode,
 } from '../../ui/Prose'
+import { useDocMeta } from '../../useDocMeta'
 
 const checkIcon = (
   <svg
@@ -152,6 +153,7 @@ function LoadingExample() {
 }
 
 export function ButtonDoc() {
+  useDocMeta('Button', 'Severities, sizes, outlined, text, and loading variants.')
   return (
     <DocArticle>
       <DocH1>Button</DocH1>

@@ -12,8 +12,10 @@ import {
   DocP,
   InlineCode,
 } from '../ui/Prose'
+import { useDocMeta } from '../useDocMeta'
 
 export function UtilitiesFlexLayoutDoc() {
+  useDocMeta('Flex & Layout Utilities', 'Flex direction, wrap, align, justify, and gap helpers.')
   return (
     <DocArticle>
       <DocH1>Flex &amp; gap utilities</DocH1>

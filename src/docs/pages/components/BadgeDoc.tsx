@@ -3,6 +3,7 @@ import { DocImport } from '../../ui/DocImport'
 import { DocPreview } from '../../ui/DocPreview'
 import { PropsTable } from '../../ui/PropsTable'
 import { DocArticle, DocH1, DocH2, DocLead, DocP, InlineCode } from '../../ui/Prose'
+import { useDocMeta } from '../../useDocMeta'
 
 const badgeProps = [
   {
@@ -34,6 +35,7 @@ const badgeProps = [
 ] as const
 
 export function BadgeDoc() {
+  useDocMeta('Badge', 'Semantic pill badges in multiple sizes and colors.')
   return (
     <DocArticle>
       <DocH1>Badge</DocH1>

@@ -10,6 +10,7 @@ import {
   DocP,
   InlineCode,
 } from '../../ui/Prose'
+import { useDocMeta } from '../../useDocMeta'
 
 const cardProps = [
   {
@@ -44,6 +45,7 @@ const cardProps = [
 ] as const
 
 export function CardDoc() {
+  useDocMeta('Card', 'Elevated surfaces with padding and interactive variants.')
   return (
     <DocArticle>
       <DocH1>Card</DocH1>

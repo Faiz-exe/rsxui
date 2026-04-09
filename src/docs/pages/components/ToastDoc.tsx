@@ -17,6 +17,7 @@ import {
   DocP,
   InlineCode,
 } from '../../ui/Prose'
+import { useDocMeta } from '../../useDocMeta'
 
 const toastProps = [
   {
@@ -89,6 +90,7 @@ const messageFields = [
 ] as const
 
 export function ToastDoc() {
+  useDocMeta('Toast', 'Snackbar with anchor positions, severities, and ref API.')
   const toastRef = useRef<ToastHandle>(null)
   const [position, setPosition] = useState<ToastPosition>('bottom-center')
 

@@ -1,6 +1,6 @@
 import * as stylex from '@stylexjs/stylex'
 import { useCallback, useEffect, useState } from 'react'
-import { Link, NavLink, Outlet } from 'react-router-dom'
+import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import { ThemeToggle } from '../lib'
 import { styles } from './DocsLayout.stylex'
 import { SearchDialog } from './ui/SearchDialog'
@@ -9,21 +9,40 @@ function NavItem({
   to,
   end,
   children,
+  onClick,
 }: {
   to: string
   end?: boolean
   children: React.ReactNode
+  onClick?: () => void
 }) {
   return (
     <NavLink
       to={to}
       end={end}
+      onClick={onClick}
       className={({ isActive }) =>
         stylex.props(styles.navLink, isActive && styles.navLinkActive).className ?? ''
       }
     >
       {children}
     </NavLink>
+  )
+}
+
+function IconMenu() {
+  return (
+    <svg width={18} height={18} viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" strokeWidth={2} strokeLinecap="round" />
+    </svg>
+  )
+}
+
+function IconClose() {
+  return (
+    <svg width={18} height={18} viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth={2} strokeLinecap="round" />
+    </svg>
   )
 }
 
@@ -46,8 +65,21 @@ function IconSearch() {
 
 export function DocsLayout() {
   const [searchOpen, setSearchOpen] = useState(false)
+  const [drawerOpen, setDrawerOpen] = useState(false)
   const openSearch = useCallback(() => setSearchOpen(true), [])
   const closeSearch = useCallback(() => setSearchOpen(false), [])
+  const closeDrawer = useCallback(() => setDrawerOpen(false), [])
+  const toggleDrawer = useCallback(() => setDrawerOpen((v) => !v), [])
+
+  const location = useLocation()
+  useEffect(() => { setDrawerOpen(false) }, [location.pathname])
+
+  useEffect(() => {
+    if (drawerOpen) {
+      document.body.style.overflow = 'hidden'
+      return () => { document.body.style.overflow = '' }
+    }
+  }, [drawerOpen])
 
   useEffect(() => {
     function handleKey(e: KeyboardEvent) {
@@ -55,16 +87,27 @@ export function DocsLayout() {
         e.preventDefault()
         setSearchOpen((v) => !v)
       }
+      if (e.key === 'Escape' && drawerOpen) {
+        setDrawerOpen(false)
+      }
     }
     document.addEventListener('keydown', handleKey)
     return () => document.removeEventListener('keydown', handleKey)
-  }, [])
+  }, [drawerOpen])
 
   return (
     <div {...stylex.props(styles.shell)}>
       <SearchDialog open={searchOpen} onClose={closeSearch} />
       <header {...stylex.props(styles.header)}>
-        <div {...stylex.props(styles.brandRow)}>
+        <div {...stylex.props(styles.headerLeft)}>
+          <button
+            type="button"
+            aria-label={drawerOpen ? 'Close menu' : 'Open menu'}
+            onClick={toggleDrawer}
+            {...stylex.props(styles.menuBtn)}
+          >
+            {drawerOpen ? <IconClose /> : <IconMenu />}
+          </button>
           <Link to="/" aria-label="RSX UI home" {...stylex.props(styles.brandRow)}>
             <div {...stylex.props(styles.logoMark)} aria-hidden>
               R
@@ -113,8 +156,17 @@ export function DocsLayout() {
         </div>
       </header>
 
+      {/* Mobile drawer backdrop */}
+      {drawerOpen && (
+        <div
+          {...stylex.props(styles.drawerBackdrop)}
+          onClick={closeDrawer}
+          aria-hidden
+        />
+      )}
+
       <div {...stylex.props(styles.body)}>
-        <aside {...stylex.props(styles.sidebar)}>
+        <aside {...stylex.props(styles.sidebar, drawerOpen && styles.sidebarOpen)}>
           <div {...stylex.props(styles.sidebarVersion)}>
             <span>v1.0</span>
           </div>

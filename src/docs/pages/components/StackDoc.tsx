@@ -10,6 +10,7 @@ import {
   DocP,
   InlineCode,
 } from '../../ui/Prose'
+import { useDocMeta } from '../../useDocMeta'
 
 const stackProps = [
   {
@@ -44,6 +45,7 @@ const stackProps = [
 ] as const
 
 export function StackDoc() {
+  useDocMeta('Stack', 'Flex row or column with gap, align, and justify props.')
   return (
     <DocArticle>
       <DocH1>Stack</DocH1>

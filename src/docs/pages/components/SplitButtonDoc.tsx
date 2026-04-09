@@ -11,6 +11,7 @@ import {
   DocP,
   InlineCode,
 } from '../../ui/Prose'
+import { useDocMeta } from '../../useDocMeta'
 
 const splitProps = [
   {
@@ -131,6 +132,7 @@ const splitProps = [
 ] as const
 
 export function SplitButtonDoc() {
+  useDocMeta('SplitButton', 'Primary action plus dropdown menu with shared severity and size API.')
   const [log, setLog] = useState<string[]>([])
 
   const push = (msg: string) => {

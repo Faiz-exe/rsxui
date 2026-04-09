@@ -11,6 +11,7 @@ import {
   ThemeToggle,
 } from '../lib'
 import { styles, ctaStyles } from './IntroPage.stylex'
+import { useDocMeta } from '../docs/useDocMeta'
 
 // ─── Inline SVG icons (no extra dependency) ──────────────────────────────────
 function IconZap() {
@@ -161,8 +162,25 @@ function CopyableInstall() {
   )
 }
 
+function IconMenu() {
+  return (
+    <svg width={18} height={18} viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" strokeWidth={2} strokeLinecap="round" />
+    </svg>
+  )
+}
+function IconX() {
+  return (
+    <svg width={18} height={18} viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth={2} strokeLinecap="round" />
+    </svg>
+  )
+}
+
 export default function IntroPage() {
+  useDocMeta('RSX UI', '36+ accessible, typed React components with zero-runtime CSS powered by StyleX.')
   const [switchOn, setSwitchOn] = useState(true)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
     <div {...stylex.props(styles.page)}>
@@ -198,12 +216,39 @@ export default function IntroPage() {
             <IconGitHub />
           </a>
           <ThemeToggle />
-          <Link to="/docs/getting-started" {...stylex.props(styles.ctaLink)}>
-            <Button size="sm" severity="primary">
-              Get started
-            </Button>
-          </Link>
+          <div {...stylex.props(styles.ctaLinkDesktop)}>
+            <Link to="/docs/getting-started" {...stylex.props(styles.ctaLink)}>
+              <Button size="sm" severity="primary">
+                Get started
+              </Button>
+            </Link>
+          </div>
+          <button
+            type="button"
+            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+            onClick={() => setMobileMenuOpen((v) => !v)}
+            {...stylex.props(styles.mobileMenuBtn)}
+          >
+            {mobileMenuOpen ? <IconX /> : <IconMenu />}
+          </button>
         </div>
+
+        {mobileMenuOpen && (
+          <nav {...stylex.props(styles.mobileMenu)}>
+            <Link to="/docs/getting-started" onClick={() => setMobileMenuOpen(false)} {...stylex.props(styles.mobileMenuLink)}>
+              Docs
+            </Link>
+            <Link to="/docs/components/button" onClick={() => setMobileMenuOpen(false)} {...stylex.props(styles.mobileMenuLink)}>
+              Components
+            </Link>
+            <Link to="/docs/utilities" onClick={() => setMobileMenuOpen(false)} {...stylex.props(styles.mobileMenuLink)}>
+              Utilities
+            </Link>
+            <Link to="/docs/getting-started" onClick={() => setMobileMenuOpen(false)} {...stylex.props(styles.mobileMenuLink)}>
+              Get started
+            </Link>
+          </nav>
+        )}
       </header>
 
       {/* ── Hero ───────────────────────────────────────────────────────────── */}

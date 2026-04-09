@@ -12,8 +12,10 @@ import {
   DocP,
   InlineCode,
 } from '../ui/Prose'
+import { useDocMeta } from '../useDocMeta'
 
 export function UtilitiesOverflowDoc() {
+  useDocMeta('Overflow Utilities', 'Overflow and scroll behavior helpers.')
   return (
     <DocArticle>
       <DocH1>Overflow utilities</DocH1>

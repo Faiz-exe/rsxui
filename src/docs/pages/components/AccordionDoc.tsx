@@ -17,6 +17,7 @@ import {
   DocP,
   InlineCode,
 } from '../../ui/Prose'
+import { useDocMeta } from '../../useDocMeta'
 
 const accordionProps = [
   {
@@ -96,6 +97,7 @@ const triggerContentProps = [
 ] as const
 
 export function AccordionDoc() {
+  useDocMeta('Accordion', 'Expandable sections with single or multiple open support and ARIA.')
   return (
     <DocArticle>
       <DocH1>Accordion</DocH1>

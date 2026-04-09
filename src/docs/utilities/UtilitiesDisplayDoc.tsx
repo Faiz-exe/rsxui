@@ -13,6 +13,7 @@ import {
   DocExternalLink,
   InlineCode,
 } from '../ui/Prose'
+import { useDocMeta } from '../useDocMeta'
 
 /** Shared demo tile (PrimeFlex-style numbered blocks). */
 const tileSize = { width: '4rem', height: '4rem', flexShrink: 0 as const }
@@ -44,6 +45,7 @@ const displayClassRows = [
 ] as const
 
 export function UtilitiesDisplayDoc() {
+  useDocMeta('Display Utilities', 'Show, hide, and control element display modes with StyleX helpers.')
   return (
     <DocArticle>
       <DocH1>Display</DocH1>

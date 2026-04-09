@@ -4,6 +4,7 @@ import { DocImport } from '../../ui/DocImport'
 import { DocPreview } from '../../ui/DocPreview'
 import { PropsTable } from '../../ui/PropsTable'
 import { DocArticle, DocH1, DocH2, DocP, InlineCode } from '../../ui/Prose'
+import { useDocMeta } from '../../useDocMeta'
 
 const componentProps = [
   {
@@ -46,6 +47,7 @@ const componentProps = [
 ] as const
 
 export function AlertDoc() {
+  useDocMeta('Alert', 'Static banners for info, success, warning, and danger messages.')
   const [dismissOpen, setDismissOpen] = useState(true)
 
   return (

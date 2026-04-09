@@ -11,6 +11,7 @@ import {
   InlineCode,
 } from './ui/Prose'
 import { PropsTable } from './ui/PropsTable'
+import { useDocMeta } from './useDocMeta'
 
 const themeProviderProps = [
   {
@@ -99,6 +100,7 @@ const exportedTokens = [
 ] as const
 
 export function ThemeDoc() {
+  useDocMeta('Theme & Tokens', 'ThemeProvider setup, useTheme hook, createTheme overrides, and design token reference.')
   return (
     <DocArticle>
       <DocH1>Theme &amp; tokens</DocH1>

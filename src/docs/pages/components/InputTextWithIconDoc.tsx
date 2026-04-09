@@ -13,6 +13,7 @@ import {
   InlineCode,
 } from '../../ui/Prose'
 import { inputProps, previewWrap } from './inputDocShared'
+import { useDocMeta } from '../../useDocMeta'
 
 const iconSearch = (
   <svg width={16} height={16} viewBox="0 0 24 24" fill="none" aria-hidden>
@@ -86,6 +87,7 @@ const codeBothSlots = `<Input
 />`
 
 export function InputTextWithIconDoc() {
+  useDocMeta('Input with Icon', 'Prefix and suffix slots for icons, units, and action buttons.')
   return (
     <DocArticle>
       <DocH1>Input text with icon</DocH1>

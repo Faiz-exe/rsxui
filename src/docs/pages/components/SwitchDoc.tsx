@@ -14,6 +14,7 @@ import {
   DocUl,
   InlineCode,
 } from '../../ui/Prose'
+import { useDocMeta } from '../../useDocMeta'
 
 const previewWrap = { maxWidth: 420 } as const
 
@@ -64,6 +65,7 @@ const switchProps = [
 ] as const
 
 export function SwitchDoc() {
+  useDocMeta('Switch', 'Toggle with track and thumb, semantically a checkbox with role=switch.')
   const [basicOn, setBasicOn] = useState(false)
   const [invalidOn, setInvalidOn] = useState(false)
 

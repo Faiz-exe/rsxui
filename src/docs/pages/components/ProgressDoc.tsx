@@ -3,6 +3,7 @@ import { DocImport } from '../../ui/DocImport'
 import { DocPreview } from '../../ui/DocPreview'
 import { PropsTable } from '../../ui/PropsTable'
 import { DocArticle, DocH1, DocH2, DocP, InlineCode } from '../../ui/Prose'
+import { useDocMeta } from '../../useDocMeta'
 
 const componentProps = [
   {
@@ -47,6 +48,7 @@ const componentProps = [
 ] as const
 
 export function ProgressDoc() {
+  useDocMeta('Progress', 'Determinate and indeterminate progress bars with severity colors.')
   return (
     <DocArticle>
       <DocH1 description="Accessible progress bar with sizes, semantic colors, optional label, and indeterminate mode.">

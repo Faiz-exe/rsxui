@@ -14,8 +14,10 @@ import {
   InlineCode,
 } from '../../ui/Prose'
 import { inputProps, previewWrap } from './inputDocShared'
+import { useDocMeta } from '../../useDocMeta'
 
 export function InputNumberDoc() {
+  useDocMeta('InputNumber', 'Numeric field with min, max, and step controls.')
   const [qty, setQty] = useState('1')
   const n = Number.parseInt(qty, 10)
   const qtyInvalid = qty !== '' && (Number.isNaN(n) || n < 1 || n > 10)

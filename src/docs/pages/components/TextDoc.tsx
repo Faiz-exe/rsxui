@@ -10,6 +10,7 @@ import {
   DocP,
   InlineCode,
 } from '../../ui/Prose'
+import { useDocMeta } from '../../useDocMeta'
 
 const textProps = [
   {
@@ -61,6 +62,7 @@ const textProps = [
 ] as const
 
 export function TextDoc() {
+  useDocMeta('Text', 'Typography variants, tones, truncation, and line clamping.')
   return (
     <DocArticle>
       <DocH1>Text</DocH1>

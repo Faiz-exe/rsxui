@@ -12,8 +12,10 @@ import {
   DocP,
   InlineCode,
 } from '../ui/Prose'
+import { useDocMeta } from '../useDocMeta'
 
 export function UtilitiesSpacingDoc() {
+  useDocMeta('Spacing Utilities', 'Margin and padding spacing helpers.')
   return (
     <DocArticle>
       <DocH1>Spacing utilities</DocH1>

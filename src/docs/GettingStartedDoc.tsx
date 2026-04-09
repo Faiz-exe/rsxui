@@ -2,12 +2,7 @@ import { useLayoutEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { CodeBlock } from './CodeBlock'
 import {
-  peerDependencyRows,
-  viteStylexPluginRows,
-} from './gettingStartedContent'
-import {
   DocArticle,
-  DocExternalLink,
   DocH1,
   DocH2,
   DocLead,
@@ -15,7 +10,6 @@ import {
   DocP,
   InlineCode,
 } from './ui/Prose'
-import { PropsTable } from './ui/PropsTable'
 
 function ScrollToHash() {
   const { hash, pathname } = useLocation()
@@ -35,85 +29,66 @@ export function GettingStartedDoc() {
   return (
     <DocArticle>
       <ScrollToHash />
-      <DocH1>Getting started</DocH1>
-      <DocLead>
-        Set up dependencies, configure the StyleX compiler for Vite, wire a CSS
-        entry, and wrap your app with <InlineCode>ThemeProvider</InlineCode>. Then
-        browse components or dive into{' '}
-        <DocLink to="/docs/theme">tokens and custom themes</DocLink>.
-      </DocLead>
+      <DocH1 description="Get up and running with RSX UI in under 5 minutes.">
+        Getting started
+      </DocH1>
 
-      <DocH2 id="overview" first>
-        Overview
+      {/* ── 1. Install ─────────────────────────────────────────────────── */}
+      <DocH2 id="install" first>
+        1. Install
       </DocH2>
       <DocP>
-        RSX UI is built with{' '}
-        <DocExternalLink href="https://stylexjs.com/">StyleX</DocExternalLink>. Your
-        app must compile <InlineCode>*.stylex.ts</InlineCode> files (this library
-        ships StyleX styles). Use <InlineCode>@stylexjs/unplugin</InlineCode> with
-        Vite—or the equivalent for your bundler—following{' '}
-        <DocExternalLink href="https://stylexjs.com/docs/learn/installation/vite/vite-react">
-          StyleX + Vite + React
-        </DocExternalLink>
-        .
+        Install RSX UI alongside its peer dependencies.
       </DocP>
-
-      <DocH2 id="peer-dependencies">Dependencies</DocH2>
-      <DocP>
-        Install React, StyleX runtime, and the compiler plugin. Exact versions should
-        match your toolchain.
-      </DocP>
-      <PropsTable rows={[...peerDependencyRows]} />
-      <CodeBlock title="npm (example)" editable={false}>
-        {`npm install react react-dom @stylexjs/stylex
-npm install -D @stylexjs/unplugin @vitejs/plugin-react typescript`}
+      <CodeBlock title="Terminal" lang="bash" editable={false}>
+        {`npm install react-stylex-ui @stylexjs/stylex`}
       </CodeBlock>
-
-      <DocH2 id="configure-vite">Configure Vite</DocH2>
       <DocP>
-        Register <InlineCode>@stylexjs/unplugin</InlineCode>{' '}
-        <strong>before</strong> <InlineCode>@vitejs/plugin-react</InlineCode> so Fast
-        Refresh keeps working.
+        You also need the StyleX compiler plugin for your bundler. For Vite:
       </DocP>
-      <PropsTable rows={[...viteStylexPluginRows]} />
-      <CodeBlock title="vite.config.ts (excerpt)" editable={false}>
+      <CodeBlock title="Terminal" lang="bash" editable={false}>
+        {`npm install -D @stylexjs/unplugin`}
+      </CodeBlock>
+      {/* ── 2. Configure Vite ──────────────────────────────────────────── */}
+      <DocH2 id="configure-vite">
+        2. Configure Vite
+      </DocH2>
+      <DocP>
+        Add the StyleX plugin <strong>before</strong>{' '}
+        <InlineCode>@vitejs/plugin-react</InlineCode> to preserve Fast Refresh.
+      </DocP>
+      <CodeBlock title="vite.config.ts" lang="tsx" editable={false}>
         {`import { defineConfig } from 'vite'
-import stylex from '@stylexjs/unplugin'
 import react from '@vitejs/plugin-react'
+import stylex from '@stylexjs/unplugin'
 
 export default defineConfig({
   plugins: [
     stylex.vite({
       useCSSLayers: true,
-      dev: process.env.NODE_ENV !== 'production',
-      runtimeInjection: false,
     }),
     react(),
   ],
 })`}
       </CodeBlock>
-
-      <DocH2 id="css-entry">CSS entry</DocH2>
       <DocP>
-        Import a root stylesheet (for example <InlineCode>index.css</InlineCode>) from
-        your entry file so Vite emits a CSS asset. The StyleX plugin appends compiled
-        rules to that output in production when{' '}
-        <InlineCode>runtimeInjection: false</InlineCode>.
+        Import a CSS file (e.g. <InlineCode>index.css</InlineCode>) from your
+        entry so Vite emits a CSS asset. The StyleX plugin appends compiled
+        styles to it during production builds.
       </DocP>
-      <CodeBlock title="main.tsx" editable={false}>
-        {`import './index.css'`}
-      </CodeBlock>
 
-      <DocH2 id="theming">Theming</DocH2>
+      {/* ── 3. Setup ───────────────────────────────────────────────────── */}
+      <DocH2 id="setup">
+        3. Wrap with ThemeProvider
+      </DocH2>
       <DocP>
-        Wrap the root of your app with <InlineCode>ThemeProvider</InlineCode> so
-        semantic color and elevation tokens apply. The provider resolves light / dark
-        / system preference and can persist to <InlineCode>localStorage</InlineCode>.
+        Wrap the root of your app with <InlineCode>ThemeProvider</InlineCode> to
+        enable design tokens and automatic dark mode.
       </DocP>
-      <CodeBlock title="Root" editable={false}>
+      <CodeBlock title="main.tsx" lang="tsx" editable={false}>
         {`import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { ThemeProvider } from './lib' // or 'your-package'
+import { ThemeProvider } from 'react-stylex-ui'
 import './index.css'
 import App from './App'
 
@@ -125,21 +100,35 @@ createRoot(document.getElementById('root')!).render(
   </StrictMode>,
 )`}
       </CodeBlock>
-      <DocP>
-        Use <InlineCode>useTheme()</InlineCode> in any child to read or update the
-        color scheme. Export <InlineCode>colors</InlineCode>,{' '}
-        <InlineCode>elevation</InlineCode>, and other token groups from the library to
-        build <InlineCode>stylex.createTheme</InlineCode> layers—see{' '}
-        <DocLink to="/docs/theme">Theme &amp; tokens</DocLink> for the full API,
-        <InlineCode>themeLayers</InlineCode>, and brand overrides.
-      </DocP>
 
-      <DocH2 id="next-steps">Next steps</DocH2>
+      {/* ── 4. Use a component ─────────────────────────────────────────── */}
+      <DocH2 id="use">
+        4. Use a component
+      </DocH2>
+      <CodeBlock title="App.tsx" lang="tsx" editable={false}>
+        {`import { Button } from 'react-stylex-ui'
+
+export default function App() {
+  return (
+    <Button severity="primary" onClick={() => alert('It works!')}>
+      Hello RSX UI
+    </Button>
+  )
+}`}
+      </CodeBlock>
+
+      {/* ── Next steps ─────────────────────────────────────────────────── */}
+      <DocH2 id="next-steps">
+        Next steps
+      </DocH2>
       <DocP>
-        Explore the <DocLink to="/docs">component index</DocLink>, try the{' '}
-        <DocLink to="/demo">playground</DocLink>, or open a specific primitive (for
-        example <DocLink to="/docs/components/button">Button</DocLink>,{' '}
-        <DocLink to="/docs/components/input-text">InputText</DocLink>).
+        Explore the <DocLink to="/docs">component index</DocLink>, customize
+        your design with{' '}
+        <DocLink to="/docs/theme">theme tokens</DocLink>, or jump into a
+        specific component like{' '}
+        <DocLink to="/docs/components/button">Button</DocLink>,{' '}
+        <DocLink to="/docs/components/select">Select</DocLink>, or{' '}
+        <DocLink to="/docs/components/dialog">Dialog</DocLink>.
       </DocP>
     </DocArticle>
   )

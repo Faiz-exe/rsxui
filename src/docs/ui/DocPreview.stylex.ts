@@ -6,11 +6,10 @@ export const docPreviewStyles = stylex.create({
     marginTop: space.xl,
     marginBottom: space['2xl'],
     borderRadius: radii.lg,
-    overflow: 'hidden',
+    overflow: 'visible',
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.border,
-    backgroundColor: colors.bg,
     boxShadow: elevation.card,
   },
 
@@ -25,6 +24,8 @@ export const docPreviewStyles = stylex.create({
     backgroundColor: colors.bgSubtle,
     paddingInline: space.md,
     paddingTop: '6px',
+    borderTopLeftRadius: radii.lg,
+    borderTopRightRadius: radii.lg,
   },
 
   tab: {
@@ -121,12 +122,16 @@ export const docPreviewStyles = stylex.create({
     backgroundImage:
       'radial-gradient(circle, rgba(0,0,0,0.06) 1px, transparent 1px)',
     backgroundSize: '20px 20px',
+    borderBottomLeftRadius: radii.lg,
+    borderBottomRightRadius: radii.lg,
   },
 
   /* ── Code panel ── */
   codeBody: {
     backgroundColor: colors.bgSubtle,
-    borderTopWidth: 0,
+    borderBottomLeftRadius: radii.lg,
+    borderBottomRightRadius: radii.lg,
+    overflow: 'hidden',
   },
 
   pre: {

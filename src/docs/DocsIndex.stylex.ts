@@ -98,6 +98,31 @@ export const indexStyles = stylex.create({
     },
   },
 
+  installSnippet: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: space.sm,
+    fontFamily: fonts.mono,
+    fontSize: '0.8125rem',
+    color: colors.fgMuted,
+    backgroundColor: colors.bgSubtle,
+    paddingBlock: '8px',
+    paddingInline: space.md,
+    borderRadius: radii.md,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: colors.border,
+    marginTop: space.lg,
+    maxWidth: 'max-content',
+    userSelect: 'all' as const,
+    letterSpacing: '-0.01em',
+  },
+
+  installPrompt: {
+    color: colors.fgSubtle,
+    userSelect: 'none' as const,
+  },
+
   /* ── Stats strip ── */
   stats: {
     display: 'flex',

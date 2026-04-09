@@ -193,11 +193,6 @@ export default function IntroPage() {
               Get started
             </Button>
           </Link>
-          <Link to="/demo" {...stylex.props(styles.ctaLink)}>
-            <Button severity="secondary" size="lg" outlined>
-              View playground
-            </Button>
-          </Link>
         </div>
       </section>
 
@@ -263,7 +258,7 @@ export default function IntroPage() {
 
       {/* ── Features ───────────────────────────────────────────────────────── */}
       <section {...stylex.props(styles.featuresSection)} aria-label="Key features">
-        <span {...stylex.props(styles.sectionLabel)}>Why RSXUI</span>
+        <span {...stylex.props(styles.sectionLabel)}>Why RSX UI</span>
         <h2 {...stylex.props(styles.sectionTitle)}>Everything you need to build fast</h2>
         <div {...stylex.props(styles.featuresGrid)}>
           {FEATURES.map(({ icon, title, body }, i) => (
@@ -308,10 +303,17 @@ export default function IntroPage() {
 
       {/* ── Footer ─────────────────────────────────────────────────────────── */}
       <footer {...stylex.props(styles.footer)}>
-        <span>© 2026 RSXUI. Built with StyleX + React.</span>
+        <span>© 2026 RSX UI. Built with StyleX + React.</span>
         <div {...stylex.props(styles.footerLinks)}>
           <Link to="/docs/getting-started" {...stylex.props(styles.footerLink)}>Docs</Link>
-          <Link to="/demo" {...stylex.props(styles.footerLink)}>Playground</Link>
+          <a
+            href="https://www.npmjs.com/package/react-stylex-ui"
+            target="_blank"
+            rel="noopener noreferrer"
+            {...stylex.props(styles.footerLink)}
+          >
+            npm
+          </a>
           <a
             href="https://github.com/Faiz-exe/rsxui"
             target="_blank"

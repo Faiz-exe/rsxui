@@ -113,7 +113,7 @@ export function ThemeDoc() {
         Import
       </DocH2>
       <CodeBlock title="Import" editable={false}>
-        {`import { ThemeProvider, useTheme, colors, elevation } from './lib'
+        {`import { ThemeProvider, useTheme, colors, elevation } from 'react-stylex-ui'
 import * as stylex from '@stylexjs/stylex'`}
       </CodeBlock>
 
@@ -123,7 +123,7 @@ import * as stylex from '@stylexjs/stylex'`}
         the scheme with <InlineCode>useTheme()</InlineCode> in descendants.
       </DocP>
       <CodeBlock title="Basic">
-        {`import { ThemeProvider } from './lib'
+        {`import { ThemeProvider } from 'react-stylex-ui'
 
 <ThemeProvider>
   <App />
@@ -188,7 +188,7 @@ import * as stylex from '@stylexjs/stylex'`}
 
       <CodeBlock title="Brand overrides">
         {`import * as stylex from '@stylexjs/stylex'
-import { ThemeProvider, colors, elevation } from './lib'
+import { ThemeProvider, colors, elevation } from 'react-stylex-ui'
 
 const brandDark = stylex.createTheme(colors, {
   accent: '#2dd4bf',

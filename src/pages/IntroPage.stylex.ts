@@ -444,7 +444,7 @@ export const styles = stylex.create({
     maxWidth: '900px',
     marginInline: 'auto',
     paddingInline: space.lg,
-    paddingBottom: 'clamp(4rem, 8vw, 6rem)',
+    paddingBottom: space.xl,
     boxSizing: 'border-box',
   },
   ctaBannerInner: {
@@ -489,6 +489,7 @@ export const styles = stylex.create({
   footer: {
     position: 'relative',
     zIndex: 1,
+    marginTop: 'auto',
     paddingBlock: space.lg,
     paddingInline: space.xl,
     borderTopWidth: 1,
@@ -496,7 +497,7 @@ export const styles = stylex.create({
     borderTopColor: colors.border,
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     flexWrap: 'wrap' as const,
     gap: space.md,
     fontFamily: fonts.sans,

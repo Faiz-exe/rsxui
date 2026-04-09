@@ -10,7 +10,7 @@ type DocImportProps = {
 /**
  * Standard “Import” block — single place to show the public entry path.
  */
-export function DocImport({ names, from = './lib' }: DocImportProps) {
+export function DocImport({ names, from = 'react-stylex-ui' }: DocImportProps) {
   return (
     <CodeBlock title="Import" editable={false}>
       {`import { ${names} } from '${from}'`}

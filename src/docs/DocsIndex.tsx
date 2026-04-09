@@ -124,6 +124,21 @@ const sections: {
         title: 'Spinner',
         desc: 'Loading indicator with size and semantic tone variants.',
       },
+      {
+        to: '/docs/components/alert',
+        title: 'Alert',
+        desc: 'Static banners for info, success, warning, and danger messages.',
+      },
+      {
+        to: '/docs/components/progress',
+        title: 'Progress',
+        desc: 'Determinate and indeterminate progress bars with severity colors.',
+      },
+      {
+        to: '/docs/components/tooltip',
+        title: 'Tooltip',
+        desc: 'Hover and focus hints with four positions and configurable delay.',
+      },
     ],
   },
   {
@@ -132,6 +147,9 @@ const sections: {
       { to: '/docs/components/label', title: 'Label', desc: 'Form labels with optional required marker.' },
       { to: '/docs/components/card', title: 'Card', desc: 'Elevated surfaces with padding and interactive variants.' },
       { to: '/docs/components/badge', title: 'Badge', desc: 'Semantic pill badges in multiple sizes and colors.' },
+      { to: '/docs/components/avatar', title: 'Avatar', desc: 'User images, initials, sizes, severities, and AvatarGroup.' },
+      { to: '/docs/components/divider', title: 'Divider', desc: 'Horizontal or vertical separator with optional label.' },
+      { to: '/docs/components/skeleton', title: 'Skeleton', desc: 'Shimmer placeholders for text, circles, and rectangles.' },
       { to: '/docs/components/stack', title: 'Stack', desc: 'Flex row or column with gap, align, and justify props.' },
       { to: '/docs/components/text', title: 'Text', desc: 'Typography variants, tones, truncation, and line clamping.' },
       { to: '/docs/components/theme-toggle', title: 'ThemeToggle', desc: 'Cycle between system, light, and dark themes.' },
@@ -140,7 +158,7 @@ const sections: {
 ]
 
 const STATS = [
-  { value: '30+', label: 'Components' },
+  { value: '36+', label: 'Components' },
   { value: '100%', label: 'TypeScript' },
   { value: 'StyleX', label: 'Zero-runtime CSS' },
   { value: 'A11y', label: 'ARIA compliant' },
@@ -178,6 +196,10 @@ export function DocsIndex() {
           <Link to="/demo" {...stylex.props(s.ctaSecondary)}>
             View playground
           </Link>
+        </div>
+        <div {...stylex.props(s.installSnippet)}>
+          <span {...stylex.props(s.installPrompt)}>$</span>
+          npm install react-stylex-ui
         </div>
       </div>
 

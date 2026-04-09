@@ -70,7 +70,7 @@ export function UtilitiesIndexDoc() {
       <DocPreview
         title="Flex row + gap"
         code={`import * as stylex from '@stylexjs/stylex'
-import { u, Text } from './lib'
+import { u, Text } from 'react-stylex-ui'
 
 <div {...stylex.props(u.flex, u.gapMd, u.itemsCenter)}>
   <Text variant="body">A</Text>

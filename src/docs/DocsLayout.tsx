@@ -1,7 +1,9 @@
 import * as stylex from '@stylexjs/stylex'
+import { useCallback, useEffect, useState } from 'react'
 import { Link, NavLink, Outlet } from 'react-router-dom'
 import { ThemeToggle } from '../lib'
 import { styles } from './DocsLayout.stylex'
+import { SearchDialog } from './ui/SearchDialog'
 
 function NavItem({
   to,
@@ -43,8 +45,24 @@ function IconSearch() {
 }
 
 export function DocsLayout() {
+  const [searchOpen, setSearchOpen] = useState(false)
+  const openSearch = useCallback(() => setSearchOpen(true), [])
+  const closeSearch = useCallback(() => setSearchOpen(false), [])
+
+  useEffect(() => {
+    function handleKey(e: KeyboardEvent) {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault()
+        setSearchOpen((v) => !v)
+      }
+    }
+    document.addEventListener('keydown', handleKey)
+    return () => document.removeEventListener('keydown', handleKey)
+  }, [])
+
   return (
     <div {...stylex.props(styles.shell)}>
+      <SearchDialog open={searchOpen} onClose={closeSearch} />
       <header {...stylex.props(styles.header)}>
         <div {...stylex.props(styles.brandRow)}>
           <Link to="/" aria-label="RSX UI home" {...stylex.props(styles.brandRow)}>
@@ -62,10 +80,16 @@ export function DocsLayout() {
           <Link to="/" {...stylex.props(styles.headerLink)}>
             Home
           </Link>
-          <Link to="/demo" {...stylex.props(styles.headerLink)}>
-            Playground
-          </Link>
           <div {...stylex.props(styles.headerDivider)} aria-hidden />
+          <a
+            href="https://www.npmjs.com/package/react-stylex-ui"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="npm"
+            {...stylex.props(styles.headerLink)}
+          >
+            npm
+          </a>
           <a
             href="https://github.com/Faiz-exe/rsxui"
             target="_blank"
@@ -78,9 +102,12 @@ export function DocsLayout() {
           <button
             type="button"
             aria-label="Search docs"
-            {...stylex.props(styles.iconBtn)}
+            onClick={openSearch}
+            {...stylex.props(styles.searchBtn)}
           >
             <IconSearch />
+            <span {...stylex.props(styles.searchBtnLabel)}>Search…</span>
+            <kbd {...stylex.props(styles.searchKbd)}>⌘K</kbd>
           </button>
           <ThemeToggle />
         </div>
@@ -125,11 +152,17 @@ export function DocsLayout() {
           <NavItem to="/docs/components/accordion">Accordion</NavItem>
           <NavItem to="/docs/components/tabs">Tabs</NavItem>
           <NavItem to="/docs/components/spinner">Spinner</NavItem>
+          <NavItem to="/docs/components/alert">Alert</NavItem>
+          <NavItem to="/docs/components/progress">Progress</NavItem>
+          <NavItem to="/docs/components/tooltip">Tooltip</NavItem>
 
           <div {...stylex.props(styles.navLabel)}>Display</div>
           <NavItem to="/docs/components/label">Label</NavItem>
           <NavItem to="/docs/components/badge">Badge</NavItem>
+          <NavItem to="/docs/components/avatar">Avatar</NavItem>
           <NavItem to="/docs/components/card">Card</NavItem>
+          <NavItem to="/docs/components/divider">Divider</NavItem>
+          <NavItem to="/docs/components/skeleton">Skeleton</NavItem>
           <NavItem to="/docs/components/stack">Stack</NavItem>
           <NavItem to="/docs/components/text">Text</NavItem>
           <NavItem to="/docs/components/theme-toggle">ThemeToggle</NavItem>

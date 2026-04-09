@@ -2,9 +2,12 @@
 
 A modern React component library built with [StyleX](https://stylexjs.com). Zero-runtime CSS, fully typed, accessible by default, and themeable with design tokens.
 
+[![npm](https://img.shields.io/npm/v/react-stylex-ui)](https://www.npmjs.com/package/react-stylex-ui)
+[![license](https://img.shields.io/npm/l/react-stylex-ui)](./LICENSE)
+
 ## Features
 
-- **30+ components** — Buttons, Inputs, Select, Dialog, Table, Toast, Tabs, Accordion, and more
+- **36+ components** — Buttons, Inputs, Select, Dialog, Table, Toast, Tabs, Accordion, and more
 - **StyleX powered** — Zero-runtime CSS with compile-time extraction
 - **TypeScript first** — Full type safety with exported prop types
 - **Accessible** — ARIA patterns, keyboard navigation, and focus management built in
@@ -14,22 +17,57 @@ A modern React component library built with [StyleX](https://stylexjs.com). Zero
 ## Installation
 
 ```bash
-npm install rsx-ui @stylexjs/stylex react react-dom
+npm install react-stylex-ui @stylexjs/stylex
+npm install -D @stylexjs/unplugin
 ```
 
-> **Note:** Your project needs a StyleX compiler plugin configured (e.g. `@stylexjs/unplugin` for Vite/Webpack, or `@stylexjs/babel-plugin` for Babel).
+## Vite Setup
+
+Add the StyleX plugin **before** `@vitejs/plugin-react`:
+
+```ts
+// vite.config.ts
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import stylex from '@stylexjs/unplugin'
+
+export default defineConfig({
+  plugins: [
+    stylex.vite({
+      useCSSLayers: true,
+    }),
+    react(),
+  ],
+})
+```
 
 ## Quick Start
 
 ```tsx
-import { ThemeProvider, Button } from 'rsx-ui'
-import 'rsx-ui/styles.css'
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import { ThemeProvider } from 'react-stylex-ui'
+import './index.css'
+import App from './App'
 
-function App() {
-  return (
-    <ThemeProvider>
-      <Button label="Get started" />
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <ThemeProvider defaultColorScheme="system">
+      <App />
     </ThemeProvider>
+  </StrictMode>,
+)
+```
+
+```tsx
+// App.tsx
+import { Button } from 'react-stylex-ui'
+
+export default function App() {
+  return (
+    <Button severity="primary" onClick={() => alert('It works!')}>
+      Hello RSX UI
+    </Button>
   )
 }
 ```
@@ -46,42 +84,29 @@ function App() {
 `Table` (sortable, paginated, selectable)
 
 ### Feedback
-`Toast` · `Dialog` · `Spinner`
+`Toast` · `Dialog` · `Spinner` · `Alert` · `Progress`
 
 ### Layout
-`Stack` · `Card` · `Accordion` · `Tabs` / `TabList` / `Tab` / `TabPanel`
+`Stack` · `Card` · `Accordion` · `Tabs` / `TabList` / `Tab` / `TabPanel` · `Divider`
 
 ### Display
-`Text` · `Label` · `Badge`
+`Text` · `Label` · `Badge` · `Avatar` / `AvatarGroup` · `Tooltip` · `Skeleton`
 
 ### Theme
 `ThemeProvider` · `ThemeToggle` · `useTheme`
 
 ## Theming
 
-Wrap your app with `ThemeProvider` to enable theming and dark mode:
-
-```tsx
-import { ThemeProvider } from 'rsx-ui'
-
-<ThemeProvider defaultColorScheme="system">
-  {/* your app */}
-</ThemeProvider>
-```
-
-### Design tokens
-
-Override any token using `stylex.createTheme()`:
+Override design tokens with `stylex.createTheme()`:
 
 ```tsx
 import * as stylex from '@stylexjs/stylex'
-import { colors, space, radii, fonts, elevation } from 'rsx-ui'
-```
+import { colors, space, radii, fonts, elevation } from 'react-stylex-ui'
 
-Built-in dark mode themes are also exported:
-
-```tsx
-import { darkColorTheme, darkElevationTheme } from 'rsx-ui'
+const brandColors = stylex.createTheme(colors, {
+  accent: '#2dd4bf',
+  accentFg: '#042f2e',
+})
 ```
 
 ## Utilities
@@ -90,7 +115,7 @@ Token-aligned StyleX utility styles for layout, spacing, and typography:
 
 ```tsx
 import * as stylex from '@stylexjs/stylex'
-import { u } from 'rsx-ui'
+import { u } from 'react-stylex-ui'
 
 <div {...stylex.props(u.flex, u.gapMd, u.pLg, u.roundedMd)} />
 ```
@@ -101,24 +126,16 @@ import { u } from 'rsx-ui'
 |---|---|
 | React | >= 18.0.0 |
 | React DOM | >= 18.0.0 |
-| StyleX | >= 0.10.0 |
-
-Your bundler must have a [StyleX compiler plugin](https://stylexjs.com/docs/learn/installation/) configured.
+| @stylexjs/stylex | >= 0.10.0 |
+| @stylexjs/unplugin | >= 0.10.0 (dev) |
 
 ## Development
 
 ```bash
-# Install dependencies
 npm install
-
-# Start the docs site dev server
-npm run dev
-
-# Build the library for npm
-npm run build:lib
-
-# Build the docs site
-npm run build
+npm run dev          # docs site dev server
+npm run build:lib    # build library for npm
+npm run build        # build docs site
 ```
 
 ## License

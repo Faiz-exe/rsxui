@@ -1,5 +1,5 @@
 {
-  "name": "rsx-ui",
+  "name": "react-stylex-ui",
   "version": "1.0.0",
   "description": "RSX UI — A modern React component library built with StyleX. Zero-runtime CSS, fully typed, accessible by default, and themeable with design tokens.",
   "type": "module",

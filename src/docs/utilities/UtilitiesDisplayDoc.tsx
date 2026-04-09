@@ -72,7 +72,7 @@ export function UtilitiesDisplayDoc() {
       <DocPreview
         title="Hidden"
         code={`import * as stylex from '@stylexjs/stylex'
-import { u } from './lib'
+import { u } from 'react-stylex-ui'
 
 <div {...stylex.props(u.flex, u.gapMd, u.itemsCenter)}>
   <div {...stylex.props(u.hidden)} style={{ width: '4rem', height: '4rem' }}>1</div>

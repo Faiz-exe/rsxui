@@ -138,6 +138,59 @@ export const styles = stylex.create({
     },
   },
 
+  searchBtn: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '6px',
+    height: '32px',
+    paddingInline: space.sm,
+    borderRadius: radii.sm,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: colors.border,
+    backgroundColor: 'transparent',
+    color: colors.fgMuted,
+    cursor: 'pointer',
+    fontFamily: fonts.sans,
+    fontSize: '0.8125rem',
+    fontWeight: 400,
+    transitionProperty: 'color, background-color, border-color',
+    transitionDuration: '0.12s',
+    ':hover': {
+      color: colors.fg,
+      backgroundColor: colors.bgSubtle,
+      borderColor: colors.borderStrong,
+    },
+  },
+
+  searchBtnLabel: {
+    fontFamily: fonts.sans,
+    fontSize: '0.8125rem',
+    fontWeight: 400,
+    color: colors.fgSubtle,
+    '@media (max-width: 640px)': {
+      display: 'none',
+    },
+  },
+
+  searchKbd: {
+    fontFamily: fonts.mono,
+    fontSize: '0.625rem',
+    fontWeight: 500,
+    color: colors.fgSubtle,
+    backgroundColor: colors.bgSubtle,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: colors.border,
+    borderRadius: '4px',
+    paddingBlock: '1px',
+    paddingInline: '4px',
+    lineHeight: 1.3,
+    '@media (max-width: 640px)': {
+      display: 'none',
+    },
+  },
+
   /* ── Body layout ── */
   body: {
     flex: 1,

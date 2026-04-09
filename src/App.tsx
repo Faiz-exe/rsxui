@@ -32,7 +32,13 @@ import { TableDoc } from './docs/pages/components/TableDoc'
 import { ToastDoc } from './docs/pages/components/ToastDoc'
 import { DialogDoc } from './docs/pages/components/DialogDoc'
 import { AccordionDoc } from './docs/pages/components/AccordionDoc'
+import { AlertDoc } from './docs/pages/components/AlertDoc'
+import { AvatarDoc } from './docs/pages/components/AvatarDoc'
+import { DividerDoc } from './docs/pages/components/DividerDoc'
+import { ProgressDoc } from './docs/pages/components/ProgressDoc'
+import { SkeletonDoc } from './docs/pages/components/SkeletonDoc'
 import { TabsDoc } from './docs/pages/components/TabsDoc'
+import { TooltipDoc } from './docs/pages/components/TooltipDoc'
 import { SwitchDoc } from './docs/pages/components/SwitchDoc'
 import { LabelDoc } from './docs/pages/components/LabelDoc'
 import { StackDoc } from './docs/pages/components/StackDoc'
@@ -92,10 +98,16 @@ export default function App() {
           <Route path="/docs/components/label" element={<LabelDoc />} />
           <Route path="/docs/components/card" element={<CardDoc />} />
           <Route path="/docs/components/badge" element={<BadgeDoc />} />
+          <Route path="/docs/components/avatar" element={<AvatarDoc />} />
+          <Route path="/docs/components/tooltip" element={<TooltipDoc />} />
           <Route path="/docs/components/stack" element={<StackDoc />} />
           <Route path="/docs/components/text" element={<TextDoc />} />
           <Route path="/docs/components/theme-toggle" element={<ThemeToggleDoc />} />
           <Route path="/docs/components/spinner" element={<SpinnerDoc />} />
+          <Route path="/docs/components/alert" element={<AlertDoc />} />
+          <Route path="/docs/components/divider" element={<DividerDoc />} />
+          <Route path="/docs/components/progress" element={<ProgressDoc />} />
+          <Route path="/docs/components/skeleton" element={<SkeletonDoc />} />
         </Route>
         <Route path="/installation" element={<Navigate to="/docs/installation" replace />} />
         <Route path="/theme" element={<Navigate to="/docs/theme" replace />} />

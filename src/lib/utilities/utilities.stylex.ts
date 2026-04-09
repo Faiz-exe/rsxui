@@ -7,7 +7,7 @@ import { colors, elevation, fonts, radii, space } from '../theme/tokens.stylex'
  *
  * ```tsx
  * import * as stylex from '@stylexjs/stylex'
- * import { utilities as u } from './lib'
+ * import { utilities as u } from 'react-stylex-ui'
  *
  * <div {...stylex.props(u.flex, u.flexCol, u.gapMd, u.pLg)} />
  * ```

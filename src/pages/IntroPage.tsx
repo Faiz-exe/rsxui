@@ -1,5 +1,5 @@
 import * as stylex from '@stylexjs/stylex'
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
   Badge,
@@ -10,7 +10,7 @@ import {
   Text,
   ThemeToggle,
 } from '../lib'
-import { styles } from './IntroPage.stylex'
+import { styles, ctaStyles } from './IntroPage.stylex'
 
 // ─── Inline SVG icons (no extra dependency) ──────────────────────────────────
 function IconZap() {
@@ -124,6 +124,43 @@ const featureDelays = [
 ] as const
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
+const INSTALL_CMD = 'npm install react-stylex-ui'
+
+function CopyableInstall() {
+  const [copied, setCopied] = useState(false)
+  const copy = useCallback(async () => {
+    try {
+      await navigator.clipboard.writeText(INSTALL_CMD)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch { /* noop */ }
+  }, [])
+
+  return (
+    <button
+      type="button"
+      onClick={copy}
+      aria-label={copied ? 'Copied!' : 'Copy install command'}
+      {...stylex.props(ctaStyles.installBlock)}
+    >
+      <span {...stylex.props(ctaStyles.installPrompt)}>$</span>
+      <span {...stylex.props(ctaStyles.installCmd)}>{INSTALL_CMD}</span>
+      <span {...stylex.props(ctaStyles.installCopyIcon, copied && ctaStyles.installCopied)}>
+        {copied ? (
+          <svg width={12} height={12} viewBox="0 0 24 24" fill="none" aria-hidden>
+            <path d="M20 6L9 17l-5-5" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        ) : (
+          <svg width={12} height={12} viewBox="0 0 24 24" fill="none" aria-hidden>
+            <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" strokeWidth={2} />
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" stroke="currentColor" strokeWidth={2} />
+          </svg>
+        )}
+      </span>
+    </button>
+  )
+}
+
 export default function IntroPage() {
   const [switchOn, setSwitchOn] = useState(true)
 
@@ -186,6 +223,8 @@ export default function IntroPage() {
           Typed React components with atomic CSS-in-JS, semantic design tokens,
           and adaptive light/dark themes — without a runtime CSS engine.
         </p>
+
+        <CopyableInstall />
 
         <div {...stylex.props(styles.ctaRow)}>
           <Link to="/docs/getting-started" {...stylex.props(styles.ctaLink)}>
@@ -273,44 +312,35 @@ export default function IntroPage() {
         </div>
       </section>
 
-      {/* ── CTA Banner ─────────────────────────────────────────────────────── */}
-      <section {...stylex.props(styles.ctaBanner)} aria-label="Get started">
-        <div {...stylex.props(styles.ctaBannerInner)}>
-          <h2 {...stylex.props(styles.ctaBannerTitle)}>Ready to build?</h2>
-          <p {...stylex.props(styles.ctaBannerSub)}>
-            Clone the repo, run <Text variant="small" mono as="span">npm install</Text>, and start
-            composing. Every component is typed, documented, and ready for production.
-          </p>
-          <div {...stylex.props(styles.ctaBannerRow)}>
-            <Link to="/docs/getting-started" {...stylex.props(styles.ctaLink)}>
-              <Button severity="primary" size="lg" icon={<IconZap />}>
-                Read the docs
-              </Button>
-            </Link>
-            <a
-              href="https://github.com/Faiz-exe/rsxui"
-              target="_blank"
-              rel="noopener noreferrer"
-              {...stylex.props(styles.ctaLink)}
-            >
-              <Button severity="secondary" size="lg" outlined icon={<IconGitHub />}>
-                View on GitHub
-              </Button>
-            </a>
-          </div>
-        </div>
+      {/* ── Bottom CTA ──────────────────────────────────────────────────────── */}
+      <section {...stylex.props(ctaStyles.bottomCta)} aria-label="Get started">
+        <Link to="/docs/getting-started" {...stylex.props(styles.ctaLink)}>
+          <Button severity="primary" size="lg" icon={<IconZap />}>
+            Read the docs
+          </Button>
+        </Link>
+        <a
+          href="https://github.com/Faiz-exe/rsxui"
+          target="_blank"
+          rel="noopener noreferrer"
+          {...stylex.props(styles.ctaLink)}
+        >
+          <Button severity="secondary" size="lg" outlined icon={<IconGitHub />}>
+            GitHub
+          </Button>
+        </a>
       </section>
 
       {/* ── Footer ─────────────────────────────────────────────────────────── */}
-      <footer {...stylex.props(styles.footer)}>
+      <footer {...stylex.props(ctaStyles.footer)}>
         <span>© 2026 RSX UI. Built with StyleX + React.</span>
-        <div {...stylex.props(styles.footerLinks)}>
-          <Link to="/docs/getting-started" {...stylex.props(styles.footerLink)}>Docs</Link>
+        <div {...stylex.props(ctaStyles.footerLinks)}>
+          <Link to="/docs/getting-started" {...stylex.props(ctaStyles.footerLink)}>Docs</Link>
           <a
             href="https://www.npmjs.com/package/react-stylex-ui"
             target="_blank"
             rel="noopener noreferrer"
-            {...stylex.props(styles.footerLink)}
+            {...stylex.props(ctaStyles.footerLink)}
           >
             npm
           </a>
@@ -318,7 +348,7 @@ export default function IntroPage() {
             href="https://github.com/Faiz-exe/rsxui"
             target="_blank"
             rel="noopener noreferrer"
-            {...stylex.props(styles.footerLink)}
+            {...stylex.props(ctaStyles.footerLink)}
           >
             GitHub
           </a>

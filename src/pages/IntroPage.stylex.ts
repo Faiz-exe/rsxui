@@ -173,7 +173,7 @@ export const styles = stylex.create({
     },
   },
   titleAccent: {
-    backgroundImage: `linear-gradient(135deg, ${colors.accent} 0%, ${colors.info} 100%)`,
+    backgroundImage: `linear-gradient(135deg, ${colors.accent} 0%, ${colors.help} 100%)`,
     backgroundClip: 'text',
     WebkitBackgroundClip: 'text',
     color: 'transparent',
@@ -436,56 +436,73 @@ export const styles = stylex.create({
     margin: 0,
   },
 
-  // ─── CTA Banner ──────────────────────────────────────────────────────────────
-  ctaBanner: {
+})
+
+export const ctaStyles = stylex.create({
+  bottomCta: {
     position: 'relative',
     zIndex: 1,
     width: '100%',
     maxWidth: '900px',
     marginInline: 'auto',
     paddingInline: space.lg,
-    paddingBottom: space.xl,
+    paddingBottom: space['2xl'],
     boxSizing: 'border-box',
+    display: 'flex',
+    flexWrap: 'wrap' as const,
+    justifyContent: 'center',
+    gap: space.sm,
   },
-  ctaBannerInner: {
-    padding: 'clamp(2rem, 4vw, 3rem)',
-    borderRadius: radii.xl,
+  installBlock: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: space.sm,
+    fontFamily: fonts.mono,
+    fontSize: '0.8125rem',
+    color: colors.fgMuted,
+    backgroundColor: colors.bg,
+    paddingBlock: '10px',
+    paddingLeft: space.md,
+    paddingRight: space.sm,
+    borderRadius: radii.full,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.border,
-    backgroundImage: `radial-gradient(ellipse 70% 80% at 50% 120%, ${colors.accentMuted}, transparent 60%)`,
-    backgroundColor: colors.bgElevated,
-    boxShadow: elevation.card,
-    textAlign: 'center' as const,
-    boxSizing: 'border-box',
+    marginBottom: space.lg,
+    cursor: 'pointer',
+    letterSpacing: '-0.01em',
+    transitionProperty: 'border-color, box-shadow',
+    transitionDuration: '0.15s',
+    ':hover': {
+      borderColor: colors.borderStrong,
+      boxShadow: `0 0 0 3px ${colors.accentMuted}`,
+    },
   },
-  ctaBannerTitle: {
-    fontFamily: fonts.sans,
-    fontSize: 'clamp(1.375rem, 3vw, 1.875rem)',
+  installPrompt: {
+    color: colors.accent,
     fontWeight: 700,
-    letterSpacing: '-0.035em',
+    userSelect: 'none' as const,
+  },
+  installCmd: {
     color: colors.fg,
-    marginTop: 0,
-    marginBottom: space.md,
+    userSelect: 'all' as const,
   },
-  ctaBannerSub: {
-    fontFamily: fonts.sans,
-    fontSize: '1rem',
-    lineHeight: 1.6,
-    color: colors.fgMuted,
-    marginTop: 0,
-    marginBottom: space.xl,
-    maxWidth: '44ch',
-    marginInline: 'auto',
-  },
-  ctaBannerRow: {
-    display: 'flex',
-    flexWrap: 'wrap' as const,
-    gap: space.md,
+  installCopyIcon: {
+    display: 'inline-flex',
+    alignItems: 'center',
     justifyContent: 'center',
+    width: '24px',
+    height: '24px',
+    borderRadius: radii.sm,
+    backgroundColor: colors.bgSubtle,
+    color: colors.fgSubtle,
+    flexShrink: 0,
+    transitionProperty: 'color, background-color',
+    transitionDuration: '0.12s',
   },
-
-  // ─── Footer ──────────────────────────────────────────────────────────────────
+  installCopied: {
+    color: colors.success,
+  },
   footer: {
     position: 'relative',
     zIndex: 1,

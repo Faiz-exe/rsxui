@@ -2,7 +2,7 @@ import * as stylex from '@stylexjs/stylex'
 import { colors, elevation } from './tokens.stylex'
 
 /** Dark palette — applied via `stylex.props(..., darkColorTheme)` on a subtree root. */
-export const  darkColorTheme = stylex.createTheme(colors, {
+export const darkColorTheme = stylex.createTheme(colors, {
   fg: '#f4f4f6',
   fgMuted: '#a1a1aa',
   fgSubtle: '#71717a',
@@ -34,6 +34,7 @@ export const  darkColorTheme = stylex.createTheme(colors, {
   inputBg: '#18181b',
   inputBorder: '#3f3f46',
   placeholder: '#71717a',
+  overlay: 'rgba(0, 0, 0, 0.65)',
 })
 
 export const darkElevationTheme = stylex.createTheme(elevation, {

@@ -13,6 +13,7 @@ import {
   type Ref,
 } from 'react'
 import { Label } from '../Label/Label'
+import { panelStyles } from '../panel/panel.stylex'
 import type { SelectOption } from '../Select/Select'
 import { styles as selectStyles } from '../Select/Select.stylex'
 import { Text } from '../Text/Text'
@@ -332,7 +333,6 @@ function MultiSelectInner(
             <span {...stylex.props(multiStyles.chipLabel)}>{labelPlain(o)}</span>
             <button
               type="button"
-              tabIndex={-1}
               aria-label={`Remove ${labelPlain(o)}`}
               disabled={disabled}
               {...stylex.props(multiStyles.chipRemove)}
@@ -404,7 +404,14 @@ function MultiSelectInner(
           </button>
 
           {open ? (
-            <div {...stylex.props(selectStyles.dropdown)}>
+            <div
+              {...stylex.props(
+                panelStyles.base,
+                panelStyles.dropdown,
+                panelStyles.dropdownMotion,
+                selectStyles.dropdown,
+              )}
+            >
               <div {...stylex.props(selectStyles.filterWrap)}>
                 <input
                   ref={filterInputRef}

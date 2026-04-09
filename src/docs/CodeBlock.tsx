@@ -5,6 +5,8 @@ import { styles } from './CodeBlock.stylex'
 type CodeBlockProps = {
   children: string
   title?: string
+  /** Language label shown as a badge (e.g. "tsx", "bash", "json") */
+  lang?: string
   /** When true, allows switching between read-only display and a plain textarea. */
   editable?: boolean
   /** Controlled snippet — textarea is always shown; pair with `onChange`. */
@@ -12,9 +14,31 @@ type CodeBlockProps = {
   onChange?: (next: string) => void
 }
 
+function IconCopy() {
+  return (
+    <svg width={12} height={12} viewBox="0 0 24 24" fill="none" aria-hidden>
+      <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" strokeWidth={2} />
+      <path
+        d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"
+        stroke="currentColor"
+        strokeWidth={2}
+      />
+    </svg>
+  )
+}
+
+function IconCheck() {
+  return (
+    <svg width={12} height={12} viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path d="M20 6L9 17l-5-5" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
 function CodeBlockImpl({
   children,
   title,
+  lang,
   editable = false,
   value: valueProp,
   onChange,
@@ -53,16 +77,21 @@ function CodeBlockImpl({
     <div {...stylex.props(styles.wrap)}>
       <div {...stylex.props(styles.toolbar)}>
         <div {...stylex.props(styles.toolbarLeft)}>
-          <span {...stylex.props(styles.title)}>
-            {title != null && title !== '' ? title : 'Snippet'}
-          </span>
+          {lang != null && lang !== '' ? (
+            <span {...stylex.props(styles.langBadge)}>{lang}</span>
+          ) : null}
+          {title != null && title !== '' ? (
+            <span {...stylex.props(styles.title)}>{title}</span>
+          ) : null}
         </div>
         <div {...stylex.props(styles.toolbarActions)}>
           <button
             type="button"
+            aria-label={copied ? 'Copied!' : 'Copy snippet'}
             {...stylex.props(styles.toolBtn, copied && styles.toolBtnCopied)}
             onClick={copy}
           >
+            {copied ? <IconCheck /> : <IconCopy />}
             {copied ? 'Copied' : 'Copy'}
           </button>
           {!controlled && editable ? (
@@ -71,7 +100,7 @@ function CodeBlockImpl({
               {...stylex.props(styles.toolBtn, editing && styles.toolBtnOn)}
               onClick={() => setEditing((v) => !v)}
             >
-              {editing ? 'Done' : 'Change'}
+              {editing ? 'Done' : 'Edit'}
             </button>
           ) : null}
         </div>

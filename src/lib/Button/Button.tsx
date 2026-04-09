@@ -38,6 +38,8 @@ export type ButtonProps = Omit<ComponentPropsWithoutRef<'button'>, 'type'> & {
   label?: string
   /** Underlined, link-like presentation (still a `<button>` unless you change element elsewhere). */
   link?: boolean
+  /** Stretch the button to fill its container's full width. */
+  fullWidth?: boolean
   type?: 'button' | 'submit' | 'reset'
 }
 
@@ -102,6 +104,7 @@ function ButtonInner(
     iconPos = 'left',
     label,
     link = false,
+    fullWidth = false,
     className,
     style,
     disabled,
@@ -148,6 +151,7 @@ function ButtonInner(
     iconOnly && styles.iconOnly,
     iconOnly && iconOnlySize,
     link && styles.linkUnderline,
+    fullWidth && styles.fullWidth,
   )
 
   const isDisabled = Boolean(disabled || loading)

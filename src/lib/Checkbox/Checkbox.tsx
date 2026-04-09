@@ -1,9 +1,11 @@
 import * as stylex from '@stylexjs/stylex'
-import {
+import React, {
   forwardRef,
   memo,
   useCallback,
+  useEffect,
   useId,
+  useRef,
   useState,
   type ChangeEvent,
   type ComponentPropsWithoutRef,
@@ -34,6 +36,26 @@ function CheckGlyph(svgProps: ComponentPropsWithoutRef<'svg'>) {
   )
 }
 
+function DashGlyph(svgProps: ComponentPropsWithoutRef<'svg'>) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden
+      width={10}
+      height={10}
+      {...svgProps}
+    >
+      <path
+        d="M5 12h14"
+        stroke="currentColor"
+        strokeWidth={2.5}
+        strokeLinecap="round"
+      />
+    </svg>
+  )
+}
+
 export type CheckboxProps = Omit<
   ComponentPropsWithoutRef<'input'>,
   'type' | 'size' | 'className' | 'style'
@@ -41,6 +63,11 @@ export type CheckboxProps = Omit<
   label?: ReactNode
   description?: string
   invalid?: boolean
+  /**
+   * Mixed/partial-selection state — renders a dash glyph and sets the native
+   * `indeterminate` property on the underlying `<input>`. Overrides `checked`.
+   */
+  indeterminate?: boolean
   className?: string
   style?: ComponentPropsWithoutRef<'label'>['style']
 }
@@ -50,6 +77,7 @@ function CheckboxInner(
     label,
     description,
     invalid = false,
+    indeterminate = false,
     id: idProp,
     checked,
     defaultChecked,
@@ -68,7 +96,23 @@ function CheckboxInner(
 
   const controlled = checked !== undefined
   const [internal, setInternal] = useState(Boolean(defaultChecked))
-  const resolvedChecked = controlled ? Boolean(checked) : internal
+  const resolvedChecked = indeterminate ? false : (controlled ? Boolean(checked) : internal)
+
+  // Sync native indeterminate property — not an HTML attribute, must be set via JS
+  const internalRef = useRef<HTMLInputElement | null>(null)
+  const setRef = useCallback(
+    (node: HTMLInputElement | null) => {
+      internalRef.current = node
+      if (typeof ref === 'function') ref(node)
+      else if (ref) (ref as React.MutableRefObject<HTMLInputElement | null>).current = node
+    },
+    [ref],
+  )
+  useEffect(() => {
+    if (internalRef.current) {
+      internalRef.current.indeterminate = indeterminate
+    }
+  }, [indeterminate])
 
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
@@ -98,12 +142,15 @@ function CheckboxInner(
           ? styles.checkSvgDanger
           : null
 
+  const showIndeterminate = indeterminate
+  const showCheck = !indeterminate && resolvedChecked
+
   return (
     <label {...mergeSx(stylex.props(styles.field), className, style)} htmlFor={id}>
       <span {...stylex.props(styles.controlSlot)}>
         <input
           {...inputRest}
-          ref={ref}
+          ref={setRef}
           id={id}
           type="checkbox"
           disabled={disabled}
@@ -112,6 +159,7 @@ function CheckboxInner(
           defaultChecked={!controlled ? defaultChecked : undefined}
           onChange={handleChange}
           aria-invalid={invalid ? true : undefined}
+          aria-checked={indeterminate ? 'mixed' : undefined}
           aria-describedby={descId}
           {...mergeSx(stylex.props(styles.native))}
         />
@@ -119,6 +167,12 @@ function CheckboxInner(
           {...stylex.props(
             styles.control,
             disabled && styles.controlDisabled,
+            showIndeterminate &&
+              !disabled &&
+              styles.controlIndeterminate,
+            showIndeterminate &&
+              disabled &&
+              styles.controlIndeterminateDisabled,
             resolvedChecked &&
               !disabled &&
               (invalid ? styles.controlInvalidChecked : styles.controlChecked),
@@ -127,11 +181,15 @@ function CheckboxInner(
               (invalid
                 ? styles.controlInvalidCheckedDisabled
                 : styles.controlCheckedDisabled),
-            !resolvedChecked && invalid && !disabled && styles.controlInvalid,
+            !resolvedChecked && !indeterminate && invalid && !disabled && styles.controlInvalid,
           )}
           aria-hidden
         />
-        {resolvedChecked ? (
+        {showIndeterminate ? (
+          <DashGlyph
+            {...mergeSx(stylex.props(styles.dashSvg, disabled && styles.dashSvgDisabled))}
+          />
+        ) : showCheck ? (
           <CheckGlyph
             {...mergeSx(stylex.props(styles.checkSvg, checkSvgTone))}
           />

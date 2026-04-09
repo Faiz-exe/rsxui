@@ -35,6 +35,8 @@ export const colors = stylex.defineVars({
   inputBg: '#ffffff',
   inputBorder: '#d1d5db',
   placeholder: '#9ca3af',
+  /** Dialog / drawer backdrop — semi-transparent dark wash */
+  overlay: 'rgba(15, 15, 18, 0.5)',
 })
 
 export const fonts = stylex.defineVars({

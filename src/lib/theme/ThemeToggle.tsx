@@ -26,7 +26,8 @@ export const ThemeToggle = memo(function ThemeToggle() {
       </Text>
       <Button
         type="button"
-        variant="secondary"
+        severity="secondary"
+        outlined
         size="sm"
         onClick={() => setColorScheme(nextScheme(colorScheme))}
         aria-label={`Switch color scheme. Current: ${colorScheme}. ${labelFor(colorScheme)}.`}

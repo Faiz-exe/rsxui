@@ -107,6 +107,9 @@ export const styles = stylex.create({
     animationTimingFunction: 'linear',
     flexShrink: 0,
   },
+  fullWidth: {
+    width: '100%',
+  },
   linkUnderline: {
     textDecoration: 'underline',
     textUnderlineOffset: '2px',

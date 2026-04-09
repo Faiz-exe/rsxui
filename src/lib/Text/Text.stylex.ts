@@ -57,4 +57,27 @@ export const styles = stylex.create({
   mono: {
     fontFamily: fonts.mono,
   },
+  truncate: {
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+  },
+  clamp2: {
+    overflow: 'hidden',
+    display: '-webkit-box',
+    WebkitLineClamp: 2,
+    WebkitBoxOrient: 'vertical',
+  },
+  clamp3: {
+    overflow: 'hidden',
+    display: '-webkit-box',
+    WebkitLineClamp: 3,
+    WebkitBoxOrient: 'vertical',
+  },
+  clamp4: {
+    overflow: 'hidden',
+    display: '-webkit-box',
+    WebkitLineClamp: 4,
+    WebkitBoxOrient: 'vertical',
+  },
 })

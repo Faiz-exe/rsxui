@@ -1,0 +1,32 @@
+# Source & dev files
+src/
+public/
+*.tsbuildinfo
+
+# Config files
+tsconfig*.json
+vite.config.ts
+vite.lib.config.ts
+eslint.config.js
+.eslintrc*
+
+# Dev tooling
+.vscode/
+.idea/
+.cursor/
+.git/
+.gitignore
+
+# Docs site output
+dist-ssr/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Node
+node_modules/

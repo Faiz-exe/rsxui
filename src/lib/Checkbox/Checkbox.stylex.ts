@@ -80,6 +80,26 @@ export const styles = stylex.create({
   checkSvgDanger: {
     color: colors.dangerFg,
   },
+  controlIndeterminate: {
+    borderColor: colors.accent,
+    backgroundColor: colors.accent,
+  },
+  controlIndeterminateDisabled: {
+    borderColor: colors.borderStrong,
+    backgroundColor: colors.accentMuted,
+    opacity: 1,
+  },
+  dashSvg: {
+    position: 'absolute',
+    width: '10px',
+    height: '10px',
+    color: colors.accentFg,
+    pointerEvents: 'none',
+  },
+  dashSvgDisabled: {
+    color: colors.accent,
+    opacity: 0.85,
+  },
   controlDisabled: {
     borderColor: colors.border,
     backgroundColor: colors.bgSubtle,

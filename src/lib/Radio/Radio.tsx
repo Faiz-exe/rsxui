@@ -10,6 +10,7 @@ import {
   useState,
   type ChangeEvent,
   type ComponentPropsWithoutRef,
+  type HTMLAttributes,
   type ReactNode,
   type Ref,
 } from 'react'
@@ -37,19 +38,23 @@ export type RadioGroupProps = {
   label?: string
   className?: string
   style?: ComponentPropsWithoutRef<'div'>['style']
-}
+} & Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'className' | 'style'>
 
-function RadioGroupInner({
-  children,
-  name: nameProp,
-  value: valueProp,
-  defaultValue = '',
-  onValueChange,
-  disabled = false,
-  label,
-  className,
-  style,
-}: RadioGroupProps) {
+function RadioGroupInner(
+  {
+    children,
+    name: nameProp,
+    value: valueProp,
+    defaultValue = '',
+    onValueChange,
+    disabled = false,
+    label,
+    className,
+    style,
+    ...rest
+  }: RadioGroupProps,
+  ref: Ref<HTMLDivElement>,
+) {
   const uid = useId()
   const groupName = nameProp ?? `rsx-radio-${uid}`
   const labelId = label != null && label !== '' ? `${groupName}-label` : undefined
@@ -80,6 +85,8 @@ function RadioGroupInner({
   return (
     <RadioGroupContext.Provider value={ctx}>
       <div
+        ref={ref}
+        {...rest}
         {...mergeSx(
           stylex.props(styles.groupRoot, disabled && styles.groupDisabled),
           className,
@@ -110,7 +117,7 @@ function RadioGroupInner({
   )
 }
 
-export const RadioGroup = memo(RadioGroupInner)
+export const RadioGroup = memo(forwardRef(RadioGroupInner))
 
 export type RadioProps = Omit<
   ComponentPropsWithoutRef<'input'>,

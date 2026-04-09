@@ -77,7 +77,7 @@ const positionClass = {
 
 const severitySurface = {
   success: styles.filledSuccess,
-  info: styles.neutralDark,
+  info: styles.filledInfo,
   warning: styles.filledWarning,
   danger: styles.filledDanger,
   secondary: styles.paper,
@@ -88,7 +88,7 @@ const severitySurface = {
 
 const severityDetail = {
   success: styles.filledMuted,
-  info: styles.detailOnDark,
+  info: styles.filledMuted,
   warning: styles.filledMuted,
   danger: styles.filledMuted,
   secondary: styles.detailOnPaper,

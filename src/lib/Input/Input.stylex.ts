@@ -132,4 +132,35 @@ export const styles = stylex.create({
   message: {
     marginTop: space.xs,
   },
+  // ── Size overrides ──────────────────────────────────────────────────────────
+  sizeSm: {
+    fontSize: '0.8125rem',
+    paddingBlock: space.xs,
+    paddingInline: space.sm,
+    minHeight: '32px',
+  },
+  sizeMd: {
+    fontSize: '0.9375rem',
+    paddingBlock: space.sm,
+    paddingInline: space.md,
+    minHeight: '40px',
+  },
+  sizeLg: {
+    fontSize: '1.0625rem',
+    paddingBlock: space.md,
+    paddingInline: space.lg,
+    minHeight: '48px',
+  },
+  affixSizeSm: {
+    fontSize: '0.8125rem',
+    minHeight: '32px',
+  },
+  affixSizeMd: {
+    fontSize: '0.9375rem',
+    minHeight: '40px',
+  },
+  affixSizeLg: {
+    fontSize: '1.0625rem',
+    minHeight: '48px',
+  },
 })

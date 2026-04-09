@@ -5,52 +5,90 @@ export const docPreviewStyles = stylex.create({
   wrap: {
     marginTop: space.xl,
     marginBottom: space['2xl'],
-    borderRadius: radii.md,
-    overflow: 'visible',
+    borderRadius: radii.lg,
+    overflow: 'hidden',
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.border,
     backgroundColor: colors.bg,
     boxShadow: elevation.card,
   },
-  toolbar: {
+
+  /* ── Tab bar ── */
+  tabBar: {
     display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    gap: space.md,
-    flexWrap: 'wrap',
-    paddingBlock: space.sm,
-    paddingInline: space.md,
-    backgroundColor: colors.bgElevated,
+    alignItems: 'stretch',
+    gap: 0,
     borderBottomWidth: 1,
     borderBottomStyle: 'solid',
     borderBottomColor: colors.border,
+    backgroundColor: colors.bgSubtle,
+    paddingInline: space.md,
+    paddingTop: '6px',
   },
-  toolbarLeft: {
-    display: 'flex',
+
+  tab: {
+    display: 'inline-flex',
     alignItems: 'center',
-    gap: space.sm,
-    minWidth: 0,
-  },
-  title: {
-    fontFamily: fonts.sans,
-    fontSize: '0.6875rem',
-    fontWeight: 700,
-    letterSpacing: '0.1em',
-    textTransform: 'uppercase' as const,
-    color: colors.fgSubtle,
-  },
-  toolbarActions: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: space.xs,
-    flexShrink: 0,
-  },
-  toolBtn: {
+    gap: '6px',
     fontFamily: fonts.sans,
     fontSize: '0.75rem',
+    fontWeight: 500,
+    color: colors.fgSubtle,
+    paddingBlock: '8px',
+    paddingInline: space.md,
+    borderRadius: '0',
+    borderBottomWidth: '2px',
+    borderBottomStyle: 'solid',
+    borderBottomColor: 'transparent',
+    cursor: 'pointer',
+    backgroundColor: 'transparent',
+    borderTopWidth: 0,
+    borderLeftWidth: 0,
+    borderRightWidth: 0,
+    transitionProperty: 'color, border-color',
+    transitionDuration: '0.12s',
+    ':hover': {
+      color: colors.fgMuted,
+    },
+  },
+
+  tabActive: {
+    color: colors.fg,
     fontWeight: 600,
-    paddingBlock: '6px',
+    borderBottomColor: colors.accent,
+    ':hover': {
+      color: colors.fg,
+    },
+  },
+
+  tabDot: {
+    width: '7px',
+    height: '7px',
+    borderRadius: radii.full,
+    backgroundColor: 'currentColor',
+    opacity: 0.5,
+  },
+
+  tabSpacer: {
+    flex: 1,
+  },
+
+  tabActions: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '4px',
+    paddingBottom: '6px',
+  },
+
+  copyBtn: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '5px',
+    fontFamily: fonts.sans,
+    fontSize: '0.75rem',
+    fontWeight: 500,
+    paddingBlock: '5px',
     paddingInline: space.sm,
     borderRadius: radii.sm,
     borderWidth: 1,
@@ -61,33 +99,36 @@ export const docPreviewStyles = stylex.create({
     cursor: 'pointer',
     transitionProperty: 'background-color, border-color, color',
     transitionDuration: '0.12s',
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: '6px',
     ':hover': {
       backgroundColor: colors.bgSubtle,
       color: colors.fg,
       borderColor: colors.borderStrong,
     },
   },
-  toolBtnIcon: {
-    paddingInline: '8px',
-    minWidth: '2rem',
-  },
-  toolBtnCopied: {
+
+  copyBtnCopied: {
     color: colors.success,
     borderColor: colors.success,
+    backgroundColor: colors.successMuted,
   },
+
+  /* ── Preview panel ── */
   previewBody: {
-    padding: space.lg,
-    backgroundColor: colors.bgSubtle,
-    minHeight: '4.5rem',
+    padding: space.xl,
+    minHeight: '5rem',
     boxSizing: 'border-box',
+    backgroundColor: colors.bg,
+    backgroundImage:
+      'radial-gradient(circle, rgba(0,0,0,0.06) 1px, transparent 1px)',
+    backgroundSize: '20px 20px',
   },
+
+  /* ── Code panel ── */
   codeBody: {
     backgroundColor: colors.bgSubtle,
+    borderTopWidth: 0,
   },
+
   pre: {
     margin: 0,
     padding: space.lg,
@@ -95,10 +136,11 @@ export const docPreviewStyles = stylex.create({
     maxHeight: 'min(70vh, 520px)',
     overflowY: 'auto' as const,
   },
+
   code: {
     fontFamily: fonts.mono,
     fontSize: '0.8125rem',
-    lineHeight: 1.65,
+    lineHeight: 1.7,
     color: colors.fg,
     whiteSpace: 'pre' as const,
     display: 'block',

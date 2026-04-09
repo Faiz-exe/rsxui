@@ -1,22 +1,6 @@
 import * as stylex from '@stylexjs/stylex'
 import { colors, elevation, fonts, radii, space } from '../theme/tokens.stylex'
 
-const panelIn = stylex.keyframes({
-  from: {
-    opacity: 0,
-    transform: 'translateY(-6px) scale(0.98)',
-  },
-  to: {
-    opacity: 1,
-    transform: 'translateY(0) scale(1)',
-  },
-})
-
-const panelInReduced = stylex.keyframes({
-  from: { opacity: 0 },
-  to: { opacity: 1 },
-})
-
 const spin = stylex.keyframes({
   to: { transform: 'rotate(360deg)' },
 })
@@ -235,25 +219,6 @@ export const styles = stylex.create({
     top: '100%',
     marginTop: space.xs,
     zIndex: 100,
-    borderRadius: radii.lg,
-    borderWidth: 1,
-    borderStyle: 'solid',
-    borderColor: colors.border,
-    backgroundColor: colors.bgElevated,
-    boxShadow: elevation.cardHover,
-    overflow: 'hidden',
-    transformOrigin: 'top center',
-    '@media (prefers-reduced-motion: no-preference)': {
-      animationName: panelIn,
-      animationDuration: '0.22s',
-      animationFillMode: 'both' as const,
-      animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
-    },
-    '@media (prefers-reduced-motion: reduce)': {
-      animationName: panelInReduced,
-      animationDuration: '0.12s',
-      animationFillMode: 'both' as const,
-    },
   },
   list: {
     listStyle: 'none',

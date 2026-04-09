@@ -50,6 +50,7 @@ export {
 export { Label, type LabelProps } from './Label/Label'
 export { Stack, type StackProps } from './Stack/Stack'
 export { Text, type TextProps } from './Text/Text'
+export { Spinner, type SpinnerProps } from './Spinner/Spinner'
 
 export {
   ThemeProvider,

@@ -38,6 +38,7 @@ import { LabelDoc } from './docs/pages/components/LabelDoc'
 import { StackDoc } from './docs/pages/components/StackDoc'
 import { TextDoc } from './docs/pages/components/TextDoc'
 import { ThemeToggleDoc } from './docs/pages/components/ThemeToggleDoc'
+import { SpinnerDoc } from './docs/pages/components/SpinnerDoc'
 import IntroPage from './pages/IntroPage'
 import Demo from './pages/Demo'
 
@@ -94,6 +95,7 @@ export default function App() {
           <Route path="/docs/components/stack" element={<StackDoc />} />
           <Route path="/docs/components/text" element={<TextDoc />} />
           <Route path="/docs/components/theme-toggle" element={<ThemeToggleDoc />} />
+          <Route path="/docs/components/spinner" element={<SpinnerDoc />} />
         </Route>
         <Route path="/installation" element={<Navigate to="/docs/installation" replace />} />
         <Route path="/theme" element={<Navigate to="/docs/theme" replace />} />

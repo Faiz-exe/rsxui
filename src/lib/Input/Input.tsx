@@ -16,6 +16,8 @@ export type InputProps = Omit<
   ComponentPropsWithoutRef<'input'>,
   'size' | 'className' | 'style' | 'prefix'
 > & {
+  /** Visual size of the input field. Defaults to `'md'`. */
+  size?: 'sm' | 'md' | 'lg'
   label?: string
   /** Helper text below the input when there is no error. Same as `helperText`; if both are set, `helperText` wins. */
   hint?: string
@@ -52,8 +54,21 @@ export type InputProps = Omit<
   style?: ComponentPropsWithoutRef<'div'>['style']
 }
 
+const sizeClass = {
+  sm: styles.sizeSm,
+  md: styles.sizeMd,
+  lg: styles.sizeLg,
+} as const
+
+const affixSizeClass = {
+  sm: styles.affixSizeSm,
+  md: styles.affixSizeMd,
+  lg: styles.affixSizeLg,
+} as const
+
 function InputInner(
   {
+    size = 'md',
     label,
     hint,
     helperText,
@@ -93,11 +108,13 @@ function InputInner(
 
   const sxInput = stylex.props(
     hasAffix ? styles.inputAffixed : styles.input,
+    !hasAffix && sizeClass[size],
     !hasAffix && errorState && styles.inputError,
   )
 
   const sxAffixOuter = stylex.props(
     styles.affixOuter,
+    affixSizeClass[size],
     errorState && styles.affixOuterError,
     disabled && styles.affixOuterDisabled,
   )

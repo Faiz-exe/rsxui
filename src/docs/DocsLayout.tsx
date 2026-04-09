@@ -17,12 +17,28 @@ function NavItem({
       to={to}
       end={end}
       className={({ isActive }) =>
-        stylex.props(styles.navLink, isActive && styles.navLinkActive).className ??
-        ''
+        stylex.props(styles.navLink, isActive && styles.navLinkActive).className ?? ''
       }
     >
       {children}
     </NavLink>
+  )
+}
+
+function IconGitHub() {
+  return (
+    <svg width={16} height={16} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+    </svg>
+  )
+}
+
+function IconSearch() {
+  return (
+    <svg width={14} height={14} viewBox="0 0 24 24" fill="none" aria-hidden>
+      <circle cx="11" cy="11" r="8" stroke="currentColor" strokeWidth={2} />
+      <path d="M21 21l-4.35-4.35" stroke="currentColor" strokeWidth={2} strokeLinecap="round" />
+    </svg>
   )
 }
 
@@ -31,29 +47,51 @@ export function DocsLayout() {
     <div {...stylex.props(styles.shell)}>
       <header {...stylex.props(styles.header)}>
         <div {...stylex.props(styles.brandRow)}>
-          <Link to="/" {...stylex.props(styles.logoMark)} aria-label="RSX UI home">
-            R
+          <Link to="/" aria-label="RSX UI home" {...stylex.props(styles.brandRow)}>
+            <div {...stylex.props(styles.logoMark)} aria-hidden>
+              R
+            </div>
+            <div {...stylex.props(styles.brandBlock)}>
+              <span {...stylex.props(styles.brand)}>RSX UI</span>
+              <span {...stylex.props(styles.brandSub)}>Documentation</span>
+            </div>
           </Link>
-          <div {...stylex.props(styles.brandBlock)}>
-            <Link to="/" {...stylex.props(styles.brand)}>
-              RSX UI
-            </Link>
-            <span {...stylex.props(styles.brandSub)}>Documentation</span>
-          </div>
         </div>
+
         <div {...stylex.props(styles.headerActions)}>
           <Link to="/" {...stylex.props(styles.headerLink)}>
-            Intro
+            Home
           </Link>
           <Link to="/demo" {...stylex.props(styles.headerLink)}>
             Playground
           </Link>
+          <div {...stylex.props(styles.headerDivider)} aria-hidden />
+          <a
+            href="https://github.com/Faiz-exe/rsxui"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="GitHub"
+            {...stylex.props(styles.iconBtn)}
+          >
+            <IconGitHub />
+          </a>
+          <button
+            type="button"
+            aria-label="Search docs"
+            {...stylex.props(styles.iconBtn)}
+          >
+            <IconSearch />
+          </button>
           <ThemeToggle />
         </div>
       </header>
 
       <div {...stylex.props(styles.body)}>
         <aside {...stylex.props(styles.sidebar)}>
+          <div {...stylex.props(styles.sidebarVersion)}>
+            <span>v1.0</span>
+          </div>
+
           <div {...stylex.props(styles.navLabel, styles.navLabelFirst)}>
             Getting started
           </div>
@@ -68,7 +106,7 @@ export function DocsLayout() {
 
           <div {...stylex.props(styles.navLabel)}>Inputs</div>
           <NavItem to="/docs/components/input-text">InputText</NavItem>
-          <NavItem to="/docs/components/input-text-with-icon">Input text with icon</NavItem>
+          <NavItem to="/docs/components/input-text-with-icon">Input with icon</NavItem>
           <NavItem to="/docs/components/input-number">InputNumber</NavItem>
 
           <div {...stylex.props(styles.navLabel)}>Components</div>
@@ -86,9 +124,12 @@ export function DocsLayout() {
           <NavItem to="/docs/components/dialog">Dialog</NavItem>
           <NavItem to="/docs/components/accordion">Accordion</NavItem>
           <NavItem to="/docs/components/tabs">Tabs</NavItem>
+          <NavItem to="/docs/components/spinner">Spinner</NavItem>
+
+          <div {...stylex.props(styles.navLabel)}>Display</div>
           <NavItem to="/docs/components/label">Label</NavItem>
-          <NavItem to="/docs/components/card">Card</NavItem>
           <NavItem to="/docs/components/badge">Badge</NavItem>
+          <NavItem to="/docs/components/card">Card</NavItem>
           <NavItem to="/docs/components/stack">Stack</NavItem>
           <NavItem to="/docs/components/text">Text</NavItem>
           <NavItem to="/docs/components/theme-toggle">ThemeToggle</NavItem>

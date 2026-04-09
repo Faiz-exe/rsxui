@@ -16,6 +16,7 @@ import {
   type Ref,
 } from 'react'
 import { Label } from '../Label/Label'
+import { panelStyles } from '../panel/panel.stylex'
 import { Text } from '../Text/Text'
 import { mergeSx } from '../utils/mergeSx'
 import { styles } from './Select.stylex'
@@ -510,7 +511,14 @@ function SelectInner(
           </button>
 
           {open ? (
-            <div {...stylex.props(styles.dropdown)}>
+            <div
+              {...stylex.props(
+                panelStyles.base,
+                panelStyles.dropdown,
+                panelStyles.dropdownMotion,
+                styles.dropdown,
+              )}
+            >
               {filter ? (
                 <div {...stylex.props(styles.filterWrap)}>
                   <input

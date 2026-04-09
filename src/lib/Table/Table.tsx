@@ -2,8 +2,10 @@ import * as stylex from '@stylexjs/stylex'
 import {
   forwardRef,
   memo,
+  useId,
   useMemo,
   useState,
+  type KeyboardEvent,
   type ReactNode,
   type Ref,
 } from 'react'
@@ -128,6 +130,9 @@ function TableInner<Row>(
   }: TableProps<Row>,
   ref: Ref<HTMLDivElement>,
 ) {
+  const tableUid = useId()
+  const radioGroupName = `rsx-table-sel-${tableUid}`
+
   const sortControlled = sortField !== undefined || onSortChange !== undefined
   const pageControlled = onPageChange !== undefined
 
@@ -200,6 +205,14 @@ function TableInner<Row>(
       order: sameField ? nextSort(activeSort.order, removableSort) : 1,
     } as TableSortState
     setSortState(next)
+  }
+
+  const onHeaderKeyDown = (e: KeyboardEvent<HTMLTableCellElement>, col: TableColumn<Row>) => {
+    if (!col.sortable) return
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault()
+      onHeaderClick(col)
+    }
   }
 
   const tdSize = size === 'sm' ? styles.tdSm : size === 'lg' ? styles.tdLg : styles.tdMd
@@ -305,6 +318,8 @@ function TableInner<Row>(
                   <th
                     key={`${col.field}-${ci}`}
                     onClick={() => onHeaderClick(col)}
+                    onKeyDown={(e) => onHeaderKeyDown(e, col)}
+                    tabIndex={col.sortable ? 0 : undefined}
                     {...mergeSx(
                       stylex.props(
                         styles.th,
@@ -320,7 +335,9 @@ function TableInner<Row>(
                         ? 'ascending'
                         : active === -1
                           ? 'descending'
-                          : undefined
+                          : col.sortable
+                            ? 'none'
+                            : undefined
                     }
                   >
                     <span>{col.header}</span>
@@ -339,6 +356,9 @@ function TableInner<Row>(
               <tr>
                 <td
                   colSpan={colSpan}
+                  role="status"
+                  aria-live="polite"
+                  aria-busy="true"
                   {...stylex.props(styles.td, tdSize, styles.muted, styles.rowLastCell)}
                 >
                   {loadingTemplate != null ? loadingTemplate({ colSpan }) : loadingLabel}
@@ -393,7 +413,7 @@ function TableInner<Row>(
                         ) : (
                           <input
                             type="radio"
-                            name="table-selection"
+                            name={radioGroupName}
                             checked={selectedKeySet.has(rowKey(row, dataKey, rowIndex))}
                             onChange={() => toggleRowSelection(row, rowIndex)}
                             onClick={(e) => e.stopPropagation()}

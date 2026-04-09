@@ -19,6 +19,18 @@ export const styles = stylex.create({
     whiteSpace: 'nowrap',
     maxWidth: '100%',
   },
+  // ── Size overrides ───────────────────────────────────────────────────────────
+  sizeSm: {
+    fontSize: '0.6875rem',
+    paddingInline: '0.375rem',
+    paddingBlock: '0.125rem',
+  },
+  sizeLg: {
+    fontSize: '0.875rem',
+    paddingInline: space.md,
+    paddingBlock: space.sm,
+  },
+  // ── Variant colors ───────────────────────────────────────────────────────────
   neutral: {
     color: colors.fgMuted,
     backgroundColor: colors.neutralMuted,
@@ -37,6 +49,16 @@ export const styles = stylex.create({
   success: {
     color: colors.success,
     backgroundColor: colors.successMuted,
+    borderColor: 'transparent',
+  },
+  warning: {
+    color: colors.warning,
+    backgroundColor: colors.warningMuted,
+    borderColor: 'transparent',
+  },
+  info: {
+    color: colors.info,
+    backgroundColor: colors.infoMuted,
     borderColor: 'transparent',
   },
   outline: {

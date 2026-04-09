@@ -6,20 +6,6 @@ const overlayEnter = stylex.keyframes({
   to: { opacity: 1 },
 })
 
-const panelEnter = stylex.keyframes({
-  from: {
-    opacity: 0,
-    transform: 'scale(0.96) translateY(8px)',
-  },
-  to: {
-    opacity: 1,
-    transform: 'scale(1) translateY(0)',
-  },
-})
-
-const dialogShadow =
-  '0 4px 6px rgba(15, 15, 22, 0.06), 0 24px 48px rgba(15, 15, 22, 0.16), 0 0 0 1px rgba(15, 15, 22, 0.05)'
-
 export const styles = stylex.create({
   overlay: {
     position: 'fixed',
@@ -42,7 +28,7 @@ export const styles = stylex.create({
     top: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: 'rgba(15, 15, 18, 0.5)',
+    backgroundColor: colors.overlay,
     cursor: 'default',
   },
   panel: {
@@ -52,20 +38,7 @@ export const styles = stylex.create({
     flexDirection: 'column',
     maxHeight: 'min(90vh, 900px)',
     width: '100%',
-    overflow: 'hidden',
-    borderRadius: radii.lg,
-    borderWidth: 1,
-    borderStyle: 'solid',
-    borderColor: colors.border,
-    backgroundColor: colors.bgElevated,
-    boxShadow: dialogShadow,
-    boxSizing: 'border-box',
-    color: colors.fg,
     outlineStyle: 'none',
-    animationName: panelEnter,
-    animationDuration: '0.22s',
-    animationTimingFunction: 'cubic-bezier(0.2, 0.8, 0.2, 1)',
-    animationFillMode: 'both',
   },
   sizeSm: {
     maxWidth: 400,
@@ -133,6 +106,15 @@ export const styles = stylex.create({
       outlineStyle: 'none',
       boxShadow: `0 0 0 2px ${colors.focusRing}`,
     },
+  },
+  description: {
+    paddingInline: space.lg,
+    paddingTop: space.sm,
+    paddingBottom: 0,
+    fontSize: '0.875rem',
+    lineHeight: 1.55,
+    color: colors.fgMuted,
+    margin: 0,
   },
   body: {
     flex: 1,

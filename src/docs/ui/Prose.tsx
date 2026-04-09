@@ -7,8 +7,22 @@ export function DocArticle({ children }: { children: ReactNode }) {
   return <article {...stylex.props(prose.article)}>{children}</article>
 }
 
-export function DocH1({ children }: { children: ReactNode }) {
-  return <h1 {...stylex.props(prose.h1)}>{children}</h1>
+export function DocH1({
+  children,
+  description,
+}: {
+  children: ReactNode
+  /** Optional subtitle shown below the heading with a divider */
+  description?: ReactNode
+}) {
+  return (
+    <>
+      <h1 {...stylex.props(prose.h1)}>{children}</h1>
+      {description != null ? (
+        <p {...stylex.props(prose.h1Desc)}>{description}</p>
+      ) : null}
+    </>
+  )
 }
 
 export function DocH2({
@@ -81,5 +95,62 @@ export function DocExternalLink({
     <a href={href} target="_blank" rel="noreferrer" {...stylex.props(prose.link)}>
       {children}
     </a>
+  )
+}
+
+type CalloutVariant = 'note' | 'tip' | 'warning' | 'danger'
+
+const CALLOUT_ICONS: Record<CalloutVariant, string> = {
+  note: 'ℹ',
+  tip: '✦',
+  warning: '⚠',
+  danger: '✕',
+}
+
+const CALLOUT_TITLES: Record<CalloutVariant, string> = {
+  note: 'Note',
+  tip: 'Tip',
+  warning: 'Warning',
+  danger: 'Danger',
+}
+
+const CALLOUT_VARIANT_STYLE = {
+  note: prose.calloutNote,
+  tip: prose.calloutTip,
+  warning: prose.calloutWarning,
+  danger: prose.calloutDanger,
+}
+
+/**
+ * Highlighted callout box for notes, tips, warnings, and dangers.
+ *
+ * ```tsx
+ * <DocCallout variant="tip">Use forwardRef to expose the DOM node.</DocCallout>
+ * ```
+ */
+export function DocCallout({
+  variant = 'note',
+  title,
+  children,
+}: {
+  variant?: CalloutVariant
+  /** Override the default title for the variant */
+  title?: string
+  children: ReactNode
+}) {
+  const displayTitle = title ?? CALLOUT_TITLES[variant]
+  return (
+    <div
+      role="note"
+      {...stylex.props(prose.callout, CALLOUT_VARIANT_STYLE[variant])}
+    >
+      <span {...stylex.props(prose.calloutIcon)} aria-hidden>
+        {CALLOUT_ICONS[variant]}
+      </span>
+      <div {...stylex.props(prose.calloutBody)}>
+        <span {...stylex.props(prose.calloutTitle)}>{displayTitle}</span>
+        {children}
+      </div>
+    </div>
   )
 }

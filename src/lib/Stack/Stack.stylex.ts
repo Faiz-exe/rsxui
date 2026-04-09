@@ -14,9 +14,23 @@ export const styles = stylex.create({
     flexDirection: 'column',
     alignItems: 'stretch',
   },
+  wrap: { flexWrap: 'wrap' },
   gapXs: { gap: space.xs },
   gapSm: { gap: space.sm },
   gapMd: { gap: space.md },
   gapLg: { gap: space.lg },
   gapXl: { gap: space.xl },
+  // align (alignItems)
+  alignStart: { alignItems: 'flex-start' },
+  alignCenter: { alignItems: 'center' },
+  alignEnd: { alignItems: 'flex-end' },
+  alignStretch: { alignItems: 'stretch' },
+  alignBaseline: { alignItems: 'baseline' },
+  // justify (justifyContent)
+  justifyStart: { justifyContent: 'flex-start' },
+  justifyCenter: { justifyContent: 'center' },
+  justifyEnd: { justifyContent: 'flex-end' },
+  justifyBetween: { justifyContent: 'space-between' },
+  justifyAround: { justifyContent: 'space-around' },
+  justifyEvenly: { justifyContent: 'space-evenly' },
 })

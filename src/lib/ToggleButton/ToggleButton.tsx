@@ -8,6 +8,7 @@ import {
   useMemo,
   useState,
   type ComponentPropsWithoutRef,
+  type HTMLAttributes,
   type ReactNode,
   type Ref,
 } from 'react'
@@ -40,7 +41,7 @@ export type ToggleButtonGroupProps = {
   /** Accessible label for the group */
   'aria-label'?: string
   'aria-labelledby'?: string
-}
+} & Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'className' | 'style' | 'defaultValue'>
 
 function normalizeMulti(
   prop: string[] | undefined,
@@ -51,20 +52,24 @@ function normalizeMulti(
   return []
 }
 
-export function ToggleButtonGroup({
-  children,
-  type = 'single',
-  value: valueProp,
-  defaultValue = null,
-  onValueChange,
-  values: valuesProp,
-  defaultValues,
-  onValuesChange,
-  className,
-  style,
-  'aria-label': ariaLabel,
-  'aria-labelledby': ariaLabelledby,
-}: ToggleButtonGroupProps) {
+function ToggleButtonGroupInner(
+  {
+    children,
+    type = 'single',
+    value: valueProp,
+    defaultValue = null,
+    onValueChange,
+    values: valuesProp,
+    defaultValues,
+    onValuesChange,
+    className,
+    style,
+    'aria-label': ariaLabel,
+    'aria-labelledby': ariaLabelledby,
+    ...rest
+  }: ToggleButtonGroupProps,
+  ref: Ref<HTMLDivElement>,
+) {
   const singleControlled = valueProp !== undefined
   const multiControlled = valuesProp !== undefined
 
@@ -119,9 +124,11 @@ export function ToggleButtonGroup({
   return (
     <GroupContext.Provider value={ctx}>
       <div
+        ref={ref}
         role="group"
         aria-label={ariaLabel}
         aria-labelledby={ariaLabelledby}
+        {...rest}
         {...mergeSx(stylex.props(styles.group), className, style)}
       >
         {children}
@@ -129,6 +136,8 @@ export function ToggleButtonGroup({
     </GroupContext.Provider>
   )
 }
+
+export const ToggleButtonGroup = memo(forwardRef(ToggleButtonGroupInner))
 
 export type ToggleButtonProps = Omit<
   ComponentPropsWithoutRef<'button'>,

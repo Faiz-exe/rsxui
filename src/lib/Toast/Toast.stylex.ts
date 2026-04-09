@@ -1,12 +1,8 @@
 import * as stylex from '@stylexjs/stylex'
-import { colors, fonts, radii, space } from '../theme/tokens.stylex'
+import { colors, elevation, fonts, radii, space } from '../theme/tokens.stylex'
 
-/**
- * Material Design elevation 6 — matches Snackbar / Paper floating above UI.
- * @see https://mui.com/material-ui/react-snackbar/
- */
-const elevation6 =
-  '0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12)'
+/** Elevated shadow for toast panels */
+const toastShadow = elevation.cardHover
 
 /** MUI Grow transition: scale + opacity (default Snackbar transition) */
 const growEnter = stylex.keyframes({
@@ -88,7 +84,7 @@ export const styles = stylex.create({
     minHeight: 48,
     boxSizing: 'border-box',
     borderRadius: radii.sm,
-    boxShadow: elevation6,
+    boxShadow: toastShadow,
     overflow: 'hidden',
   },
   row: {
@@ -163,14 +159,8 @@ export const styles = stylex.create({
       color: colors.fg,
     },
   },
-  /** Default Snackbar: dark grey surface, light text (MUI default on light theme) */
-  neutralDark: {
-    backgroundColor: '#323232',
-    color: '#ffffff',
-    boxShadow: elevation6,
-  },
   detailOnDark: {
-    color: 'rgba(255, 255, 255, 0.7)',
+    color: 'rgba(255, 255, 255, 0.75)',
   },
   /** Light “Paper” snackbar — subtle elevation on page */
   paper: {
@@ -179,50 +169,50 @@ export const styles = stylex.create({
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: colors.border,
-    boxShadow: elevation6,
+    boxShadow: toastShadow,
   },
   detailOnPaper: {
     color: colors.fgMuted,
   },
-  /** Filled Alert-style (Snackbar wrapping Alert pattern) */
+  /** Filled severity surfaces */
   filledSuccess: {
     backgroundColor: colors.success,
     color: colors.successFg,
-    boxShadow: elevation6,
+    boxShadow: toastShadow,
   },
   filledInfo: {
     backgroundColor: colors.info,
     color: colors.infoFg,
-    boxShadow: elevation6,
+    boxShadow: toastShadow,
   },
   filledWarning: {
     backgroundColor: colors.warning,
     color: colors.warningFg,
-    boxShadow: elevation6,
+    boxShadow: toastShadow,
   },
   filledDanger: {
     backgroundColor: colors.danger,
     color: colors.dangerFg,
-    boxShadow: elevation6,
+    boxShadow: toastShadow,
   },
   filledPrimary: {
     backgroundColor: colors.accent,
     color: colors.accentFg,
-    boxShadow: elevation6,
+    boxShadow: toastShadow,
   },
   filledHelp: {
     backgroundColor: colors.help,
     color: colors.helpFg,
-    boxShadow: elevation6,
+    boxShadow: toastShadow,
   },
   filledMuted: {
     color: 'rgba(255, 255, 255, 0.85)',
   },
-  /** Same as default dark snackbar */
+  /** High-contrast dark surface — uses fg/bg tokens for theme-adaptive dark look */
   contrast: {
-    backgroundColor: '#212121',
-    color: '#ffffff',
-    boxShadow: elevation6,
+    backgroundColor: colors.fg,
+    color: colors.bg,
+    boxShadow: toastShadow,
   },
   topLeft: {
     top: 24,

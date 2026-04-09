@@ -14,6 +14,7 @@ import {
   type Ref,
 } from 'react'
 import { mergeSx } from '../utils/mergeSx'
+import { panelStyles } from '../panel/panel.stylex'
 import { styles } from './Dialog.stylex'
 
 export type DialogSize = 'sm' | 'md' | 'lg' | 'full'
@@ -25,6 +26,11 @@ export type DialogProps = Omit<ComponentPropsWithoutRef<'div'>, 'role' | 'childr
   onOpenChange?: (open: boolean) => void
   /** Optional heading; sets `aria-labelledby` on the dialog panel. */
   title?: ReactNode
+  /**
+   * Optional description rendered below the title; sets `aria-describedby`
+   * on the dialog panel so screen readers announce it when the dialog opens.
+   */
+  description?: ReactNode
   /** Main content between header and footer. */
   children?: ReactNode
   /** Footer actions (e.g. Cancel / Confirm). */
@@ -77,6 +83,7 @@ function DialogInner(
     open,
     onOpenChange,
     title,
+    description,
     children,
     footer,
     size = 'md',
@@ -91,6 +98,7 @@ function DialogInner(
   ref: Ref<HTMLDivElement>,
 ) {
   const titleId = useId()
+  const descId = useId()
   const panelRef = useRef<HTMLDivElement>(null)
   const prevActiveRef = useRef<HTMLElement | null>(null)
   const [mounted, setMounted] = useState(false)
@@ -180,7 +188,13 @@ function DialogInner(
 
   const bodySx = stylex.props(styles.body)
 
-  const panelSx = stylex.props(styles.panel, sizeClass[size])
+  const panelSx = stylex.props(
+    panelStyles.base,
+    panelStyles.modal,
+    panelStyles.modalMotion,
+    styles.panel,
+    sizeClass[size],
+  )
 
   const mergedPanel = mergeSx(panelSx, className, style)
 
@@ -198,6 +212,7 @@ function DialogInner(
         role="dialog"
         aria-modal
         aria-labelledby={title != null ? titleId : undefined}
+        aria-describedby={description != null ? descId : undefined}
         tabIndex={-1}
         {...mergedPanel}
         {...rest}
@@ -224,6 +239,11 @@ function DialogInner(
             ) : null}
           </div>
         )}
+        {description != null ? (
+          <p id={descId} {...stylex.props(styles.description)}>
+            {description}
+          </p>
+        ) : null}
         {children != null ? <div {...bodySx}>{children}</div> : null}
         {footer != null ? <div {...stylex.props(styles.footer)}>{footer}</div> : null}
       </div>

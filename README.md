@@ -1,110 +1,126 @@
-# RSX UI (React + StyleX Components)
+# RSX UI
 
-A React component library and docs site built with TypeScript, Vite, and StyleX.
+A modern React component library built with [StyleX](https://stylexjs.com). Zero-runtime CSS, fully typed, accessible by default, and themeable with design tokens.
 
-## Stack
+## Features
 
-- React 19
-- TypeScript
-- Vite
-- StyleX
-- React Router
+- **30+ components** — Buttons, Inputs, Select, Dialog, Table, Toast, Tabs, Accordion, and more
+- **StyleX powered** — Zero-runtime CSS with compile-time extraction
+- **TypeScript first** — Full type safety with exported prop types
+- **Accessible** — ARIA patterns, keyboard navigation, and focus management built in
+- **Themeable** — Design tokens for colors, spacing, radii, fonts, and elevation
+- **Dark mode** — Built-in light/dark themes with system preference detection
 
-## Getting Started
+## Installation
 
 ```bash
-npm install
-npm run dev
+npm install rsx-ui @stylexjs/stylex react react-dom
 ```
 
-Open:
+> **Note:** Your project needs a StyleX compiler plugin configured (e.g. `@stylexjs/unplugin` for Vite/Webpack, or `@stylexjs/babel-plugin` for Babel).
 
-- `http://localhost:5173/` - intro
-- `http://localhost:5173/demo` - playground
-- `http://localhost:5173/docs` - full documentation
-
-## Scripts
-
-- `npm run dev` - start dev server
-- `npm run build` - type-check + production build
-- `npm run preview` - preview production build
-- `npm run lint` - run ESLint
-
-## Library Entry
-
-Use exports from:
-
-- `src/lib/index.ts`
-
-Example:
+## Quick Start
 
 ```tsx
-import { Button, ThemeProvider } from './src/lib'
+import { ThemeProvider, Button } from 'rsx-ui'
+import 'rsx-ui/styles.css'
 
-export function App() {
+function App() {
   return (
     <ThemeProvider>
-      <Button>Click me</Button>
+      <Button label="Get started" />
     </ThemeProvider>
   )
 }
 ```
 
-## Included Components
+## Components
 
-- Button, SplitButton
-- Input, InputNumber
-- Checkbox, Switch, Radio/RadioGroup
-- Select, MultiSelect, Autocomplete
-- ToggleButton, ToggleButtonGroup
-- Table
-- Toast
-- Dialog
-- Accordion
-- Tabs
-- Label, Card, Badge, Stack, Text
-- ThemeToggle
+### Inputs
+`Input` · `InputNumber` · `Checkbox` · `Switch` · `Radio` / `RadioGroup` · `Select` · `MultiSelect` · `Autocomplete`
+
+### Actions
+`Button` · `SplitButton` · `ToggleButton` / `ToggleButtonGroup`
+
+### Data
+`Table` (sortable, paginated, selectable)
+
+### Feedback
+`Toast` · `Dialog` · `Spinner`
+
+### Layout
+`Stack` · `Card` · `Accordion` · `Tabs` / `TabList` / `Tab` / `TabPanel`
+
+### Display
+`Text` · `Label` · `Badge`
+
+### Theme
+`ThemeProvider` · `ThemeToggle` · `useTheme`
 
 ## Theming
 
-Theme APIs are exported from `src/lib`:
+Wrap your app with `ThemeProvider` to enable theming and dark mode:
 
-- `ThemeProvider`
-- `useTheme`
-- token groups: `colors`, `space`, `radii`, `fonts`, `elevation`
-- built-in dark layers: `darkColorTheme`, `darkElevationTheme`
+```tsx
+import { ThemeProvider } from 'rsx-ui'
 
-`src/main.tsx` already wraps the app with `ThemeProvider`.
+<ThemeProvider defaultColorScheme="system">
+  {/* your app */}
+</ThemeProvider>
+```
 
-## Utilities
+### Design tokens
 
-Token-based utility styles are exported as:
-
-- `utilities`
-- `u` (alias)
-
-Defined in:
-
-- `src/lib/utilities/utilities.stylex.ts`
-
-Use with `stylex.props(...)`:
+Override any token using `stylex.createTheme()`:
 
 ```tsx
 import * as stylex from '@stylexjs/stylex'
-import { u } from './src/lib'
-
-<div {...stylex.props(u.flex, u.gapMd, u.pLg, u.roundedMd, u.border)} />
+import { colors, space, radii, fonts, elevation } from 'rsx-ui'
 ```
 
-Utilities docs:
+Built-in dark mode themes are also exported:
 
-- `/docs/utilities`
-- `/docs/utilities/display`
-- `/docs/utilities/flex-layout`
-- `/docs/utilities/spacing`
-- `/docs/utilities/sizing`
-- `/docs/utilities/typography`
-- `/docs/utilities/border-shadow`
-- `/docs/utilities/position`
-- `/docs/utilities/overflow`
-- `/docs/utilities/background`
+```tsx
+import { darkColorTheme, darkElevationTheme } from 'rsx-ui'
+```
+
+## Utilities
+
+Token-aligned StyleX utility styles for layout, spacing, and typography:
+
+```tsx
+import * as stylex from '@stylexjs/stylex'
+import { u } from 'rsx-ui'
+
+<div {...stylex.props(u.flex, u.gapMd, u.pLg, u.roundedMd)} />
+```
+
+## Requirements
+
+| Dependency | Version |
+|---|---|
+| React | >= 18.0.0 |
+| React DOM | >= 18.0.0 |
+| StyleX | >= 0.10.0 |
+
+Your bundler must have a [StyleX compiler plugin](https://stylexjs.com/docs/learn/installation/) configured.
+
+## Development
+
+```bash
+# Install dependencies
+npm install
+
+# Start the docs site dev server
+npm run dev
+
+# Build the library for npm
+npm run build:lib
+
+# Build the docs site
+npm run build
+```
+
+## License
+
+MIT

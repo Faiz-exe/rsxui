@@ -14,6 +14,7 @@ import {
   type Ref,
 } from 'react'
 import { Label } from '../Label/Label'
+import { panelStyles } from '../panel/panel.stylex'
 import { Text } from '../Text/Text'
 import { mergeSx } from '../utils/mergeSx'
 import { styles } from './Autocomplete.stylex'
@@ -301,7 +302,14 @@ function AutocompleteInner(
           </span>
 
           {open ? (
-            <div {...stylex.props(styles.dropdown)}>
+            <div
+              {...stylex.props(
+                panelStyles.base,
+                panelStyles.dropdown,
+                panelStyles.dropdownMotion,
+                styles.dropdown,
+              )}
+            >
               {visibleOptions.length === 0 ? (
                 <div {...stylex.props(styles.empty)} role="status">
                   No results found

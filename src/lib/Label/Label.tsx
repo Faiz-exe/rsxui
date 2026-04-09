@@ -1,5 +1,5 @@
 import * as stylex from '@stylexjs/stylex'
-import { memo, type ComponentPropsWithoutRef } from 'react'
+import { forwardRef, memo, type ComponentPropsWithoutRef, type Ref } from 'react'
 import { mergeSx } from '../utils/mergeSx'
 import { styles } from './Label.stylex'
 
@@ -7,16 +7,13 @@ export type LabelProps = ComponentPropsWithoutRef<'label'> & {
   requiredIndicator?: boolean
 }
 
-function LabelInner({
-  children,
-  requiredIndicator,
-  className,
-  style,
-  ...rest
-}: LabelProps) {
+function LabelInner(
+  { children, requiredIndicator, className, style, ...rest }: LabelProps,
+  ref: Ref<HTMLLabelElement>,
+) {
   const sx = stylex.props(styles.root)
   return (
-    <label {...rest} {...mergeSx(sx, className, style)}>
+    <label ref={ref} {...rest} {...mergeSx(sx, className, style)}>
       {children}
       {requiredIndicator ? (
         <span {...stylex.props(styles.required)} aria-hidden>
@@ -27,4 +24,4 @@ function LabelInner({
   )
 }
 
-export const Label = memo(LabelInner)
+export const Label = memo(forwardRef(LabelInner))

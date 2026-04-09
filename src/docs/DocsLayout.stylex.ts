@@ -9,11 +9,6 @@ const fadeIn = stylex.keyframes({
   to: { opacity: 1 },
 })
 
-const slideIn = stylex.keyframes({
-  from: { transform: 'translateX(-100%)' },
-  to: { transform: 'translateX(0)' },
-})
-
 export const styles = stylex.create({
   shell: {
     minHeight: '100vh',

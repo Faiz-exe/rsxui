@@ -66,6 +66,18 @@ const affixSizeClass = {
   lg: styles.affixSizeLg,
 } as const
 
+const affixPadStartClass = {
+  sm: styles.inputAffixedPadStartSm,
+  md: styles.inputAffixedPadStartMd,
+  lg: styles.inputAffixedPadStartLg,
+} as const
+
+const affixPadEndClass = {
+  sm: styles.inputAffixedPadEndSm,
+  md: styles.inputAffixedPadEndMd,
+  lg: styles.inputAffixedPadEndLg,
+} as const
+
 function InputInner(
   {
     size = 'md',
@@ -108,6 +120,8 @@ function InputInner(
 
   const sxInput = stylex.props(
     hasAffix ? styles.inputAffixed : styles.input,
+    hasAffix && prefix == null && affixPadStartClass[size],
+    hasAffix && suffix == null && affixPadEndClass[size],
     !hasAffix && sizeClass[size],
     !hasAffix && errorState && styles.inputError,
   )

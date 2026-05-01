@@ -94,8 +94,9 @@ export function InputTextWithIconDoc() {
       <DocLead>
         The same <InlineCode>Input</InlineCode> component with <InlineCode>prefix</InlineCode> and/or{' '}
         <InlineCode>suffix</InlineCode> for icons, units, or short labels. The outer shell gets one
-        border and focus ring; the inner field is borderless. Labels, helper text, errors, and{' '}
-        <InlineCode>disabled</InlineCode> work the same as on{' '}
+        border and focus ring; the inner field is borderless. Open ends still get horizontal padding that
+        matches the field size (e.g. suffix-only keeps left inset like a plain input). Labels, helper text,
+        errors, and <InlineCode>disabled</InlineCode> work the same as on{' '}
         <DocLink to="/docs/components/input-text">InputText</DocLink>.
       </DocLead>
 

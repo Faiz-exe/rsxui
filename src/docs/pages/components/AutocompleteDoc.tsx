@@ -25,7 +25,7 @@ const acProps = [
   {
     name: 'options',
     type: 'SelectOption[]',
-    description: 'Suggestions; filtered by value, searchText, or string label.',
+    description: 'Available suggestions. Each entry is matched against its `value`, `searchText`, or string `label`.',
   },
   {
     name: 'value',
@@ -47,7 +47,7 @@ const acProps = [
     name: 'placeholder',
     type: 'string',
     default: "'Type to search…'",
-    description: 'Input placeholder.',
+    description: 'Placeholder text displayed in the input when no value is selected.',
   },
   {
     name: 'name',
@@ -62,12 +62,12 @@ const acProps = [
   {
     name: 'hint',
     type: 'string',
-    description: 'Helper text when valid.',
+    description: 'Helper text displayed below the field when the input is valid.',
   },
   {
     name: 'error',
     type: 'string',
-    description: 'Validation message.',
+    description: 'Validation error message; takes precedence over `hint` when both are set.',
   },
   {
     name: 'disabled',
@@ -99,8 +99,9 @@ export function AutocompleteDoc() {
     <DocArticle>
       <DocH1>Autocomplete</DocH1>
       <DocLead>
-        Combobox: type in the field to filter options, use arrows and Enter to choose,
-        same option model as <InlineCode>Select</InlineCode>.
+        Combobox with type-ahead filtering. Type to narrow the suggestion list, then navigate with
+        arrow keys and confirm with <InlineCode>Enter</InlineCode>. Shares the same option model
+        as <InlineCode>Select</InlineCode>.
       </DocLead>
 
       <DocH2 id="import" first>
@@ -110,10 +111,10 @@ export function AutocompleteDoc() {
 
       <DocH2 id="usage">Usage</DocH2>
       <DocP>
-        Focus opens the list; blur outside closes it. The input shows the selected
-        option label (or value when the label is not a string).{' '}
-        <InlineCode>aria-activedescendant</InlineCode> tracks the highlighted row while
-        focus stays on the input.
+        Focusing the input opens the suggestion list; clicking outside or pressing{' '}
+        <InlineCode>Escape</InlineCode> closes it. The visible input text reflects the
+        selected option's label. <InlineCode>aria-activedescendant</InlineCode> tracks the
+        highlighted row while keyboard focus remains on the input.
       </DocP>
 
       <DocH2 id="basic">Basic</DocH2>

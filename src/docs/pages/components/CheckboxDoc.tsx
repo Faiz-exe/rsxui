@@ -79,10 +79,10 @@ export function CheckboxDoc() {
 
       <DocH2 id="usage">Usage</DocH2>
       <DocP>
-        Controlled: pass <InlineCode>checked</InlineCode> and <InlineCode>onChange</InlineCode>.
-        Uncontrolled: use <InlineCode>defaultChecked</InlineCode>. Use{' '}
-        <InlineCode>disabled</InlineCode> to prevent interaction and show muted styling (checked and
-        unchecked).
+        For controlled usage pass <InlineCode>checked</InlineCode> and{' '}
+        <InlineCode>onChange</InlineCode>; for uncontrolled usage set{' '}
+        <InlineCode>defaultChecked</InlineCode>. Apply <InlineCode>disabled</InlineCode> to prevent
+        interaction and render muted styling for both checked and unchecked states.
       </DocP>
 
       <DocH2 id="basic">Basic</DocH2>

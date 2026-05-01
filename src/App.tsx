@@ -17,6 +17,7 @@ import { UtilitiesOverflowDoc } from './docs/utilities/UtilitiesOverflowDoc'
 import { UtilitiesBackgroundDoc } from './docs/utilities/UtilitiesBackgroundDoc'
 import { BadgeDoc } from './docs/pages/components/BadgeDoc'
 import { ButtonDoc } from './docs/pages/components/ButtonDoc'
+import { CalendarDoc } from './docs/pages/components/CalendarDoc'
 import { CardDoc } from './docs/pages/components/CardDoc'
 import { CheckboxDoc } from './docs/pages/components/CheckboxDoc'
 import { InputTextDoc } from './docs/pages/components/InputTextDoc'
@@ -97,6 +98,7 @@ export default function App() {
           <Route path="/docs/components/tabs" element={<TabsDoc />} />
           <Route path="/docs/components/label" element={<LabelDoc />} />
           <Route path="/docs/components/card" element={<CardDoc />} />
+          <Route path="/docs/components/calendar" element={<CalendarDoc />} />
           <Route path="/docs/components/badge" element={<BadgeDoc />} />
           <Route path="/docs/components/avatar" element={<AvatarDoc />} />
           <Route path="/docs/components/tooltip" element={<TooltipDoc />} />

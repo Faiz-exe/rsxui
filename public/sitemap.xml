@@ -30,6 +30,7 @@
   <url><loc>https://rsxui.netlify.app/docs/components/badge</loc><priority>0.6</priority></url>
   <url><loc>https://rsxui.netlify.app/docs/components/avatar</loc><priority>0.6</priority></url>
   <url><loc>https://rsxui.netlify.app/docs/components/card</loc><priority>0.7</priority></url>
+  <url><loc>https://rsxui.netlify.app/docs/components/calendar</loc><priority>0.7</priority></url>
   <url><loc>https://rsxui.netlify.app/docs/components/divider</loc><priority>0.6</priority></url>
   <url><loc>https://rsxui.netlify.app/docs/components/skeleton</loc><priority>0.6</priority></url>
   <url><loc>https://rsxui.netlify.app/docs/components/stack</loc><priority>0.6</priority></url>

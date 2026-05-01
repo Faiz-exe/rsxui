@@ -18,7 +18,7 @@ const groupProps = [
     name: 'type',
     type: "'single' | 'multiple'",
     default: "'single'",
-    description: 'Single selection or many toggles on at once.',
+    description: 'Selection mode. `single` allows one active button at a time; `multiple` allows independent toggles.',
   },
   {
     name: 'value',
@@ -83,7 +83,7 @@ const btnProps = [
   {
     name: 'onPressedChange',
     type: '(pressed: boolean) => void',
-    description: 'Standalone mode only.',
+    description: 'Called when the pressed state changes. Only used in standalone mode (outside a group).',
   },
   {
     name: 'severity',
@@ -95,7 +95,7 @@ const btnProps = [
     name: 'size',
     type: "'sm' | 'md' | 'lg'",
     default: "'md'",
-    description: 'Height and padding.',
+    description: 'Controls button height and internal padding.',
   },
   {
     name: 'rounded',

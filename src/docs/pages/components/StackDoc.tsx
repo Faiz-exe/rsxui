@@ -50,8 +50,8 @@ export function StackDoc() {
     <DocArticle>
       <DocH1>Stack</DocH1>
       <DocLead>
-        Thin flex wrapper for consistent vertical or horizontal spacing without
-        writing raw flex CSS each time.
+        Flexible container for consistent vertical or horizontal spacing. Abstracts common
+        flex layout patterns so you can focus on content rather than boilerplate CSS.
       </DocLead>
 
       <DocH2 id="import" first>

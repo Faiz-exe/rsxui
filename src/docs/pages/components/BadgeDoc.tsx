@@ -40,8 +40,8 @@ export function BadgeDoc() {
     <DocArticle>
       <DocH1>Badge</DocH1>
       <DocLead>
-        Compact status or metadata chip. Uses pill radius and token-based
-        backgrounds.
+        Compact inline label for status indicators and metadata. Renders with pill-shaped
+        borders and semantic, token-based background colors.
       </DocLead>
 
       <DocH2 id="import" first>

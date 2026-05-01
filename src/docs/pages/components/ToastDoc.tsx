@@ -51,7 +51,7 @@ const messageFields = [
     type: 'ToastSeverity',
     default: "'info'",
     description:
-      'Like Snackbar + Alert: info = dark neutral bar (#323); secondary = light Paper; success/warning/danger/primary/help = filled semantic colors; contrast = darker neutral.',
+      'Visual style of the notification. `info` renders a dark neutral surface; `secondary` renders a light elevated surface; `success`, `warning`, `danger`, `primary`, `help`, and `contrast` render filled semantic colors.',
   },
   {
     name: 'summary',

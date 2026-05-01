@@ -178,7 +178,7 @@ function IconX() {
 }
 
 export default function IntroPage() {
-  useDocMeta('RSX UI', '36+ accessible, typed React components with zero-runtime CSS powered by StyleX.')
+  useDocMeta('RSX UI', '37+ accessible, typed React components with zero-runtime CSS powered by StyleX.')
   const [switchOn, setSwitchOn] = useState(true)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 

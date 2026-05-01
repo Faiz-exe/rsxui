@@ -213,6 +213,7 @@ export function DocsLayout() {
           <NavItem to="/docs/components/badge">Badge</NavItem>
           <NavItem to="/docs/components/avatar">Avatar</NavItem>
           <NavItem to="/docs/components/card">Card</NavItem>
+          <NavItem to="/docs/components/calendar">Calendar</NavItem>
           <NavItem to="/docs/components/divider">Divider</NavItem>
           <NavItem to="/docs/components/skeleton">Skeleton</NavItem>
           <NavItem to="/docs/components/stack">Stack</NavItem>

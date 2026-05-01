@@ -24,7 +24,7 @@ const multiProps = [
   {
     name: 'options',
     type: 'SelectOption[]',
-    description: 'Choices in the listbox; same shape as Select.',
+    description: 'Available choices rendered in the listbox. Uses the same option shape as `Select`.',
   },
   {
     name: 'value',
@@ -45,7 +45,7 @@ const multiProps = [
     name: 'maxChips',
     type: 'number',
     default: '3',
-    description: 'Chips shown in the trigger; extra items summarized as +N more.',
+    description: 'Maximum number of chips displayed in the trigger before collapsing extra selections into a "+N more" summary.',
   },
   {
     name: 'name',
@@ -56,7 +56,7 @@ const multiProps = [
     name: 'placeholder',
     type: 'string',
     default: "'Choose one or more…'",
-    description: 'Empty state in the trigger.',
+    description: 'Text displayed in the trigger when no options are selected.',
   },
   {
     name: 'label',

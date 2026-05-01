@@ -43,6 +43,7 @@ export const SEARCH_INDEX: SearchEntry[] = [
   { to: '/docs/components/badge', title: 'Badge', desc: 'Semantic pill badges in multiple sizes and colors.', category: 'Display', keywords: ['badge', 'pill', 'tag', 'status'] },
   { to: '/docs/components/avatar', title: 'Avatar', desc: 'User images, initials, sizes, severities, and AvatarGroup.', category: 'Display', keywords: ['avatar', 'user', 'image', 'initials', 'group'] },
   { to: '/docs/components/card', title: 'Card', desc: 'Elevated surfaces with padding and interactive variants.', category: 'Display', keywords: ['card', 'surface', 'container', 'elevated'] },
+  { to: '/docs/components/calendar', title: 'Calendar', desc: 'DatePicker (input + popup) and inline calendar with month/year picker; with flexible date formatting.', category: 'Display', keywords: ['calendar', 'date', 'datepicker', 'picker', 'month', 'year', 'month picker', 'year picker'] },
   { to: '/docs/components/divider', title: 'Divider', desc: 'Horizontal or vertical separator with optional label.', category: 'Display', keywords: ['divider', 'separator', 'line', 'hr'] },
   { to: '/docs/components/skeleton', title: 'Skeleton', desc: 'Shimmer placeholders for text, circles, and rectangles.', category: 'Display', keywords: ['skeleton', 'placeholder', 'loading', 'shimmer'] },
   { to: '/docs/components/stack', title: 'Stack', desc: 'Flex row or column with gap, align, and justify props.', category: 'Display', keywords: ['stack', 'layout', 'flex', 'row', 'column'] },

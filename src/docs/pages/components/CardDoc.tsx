@@ -50,8 +50,8 @@ export function CardDoc() {
     <DocArticle>
       <DocH1>Card</DocH1>
       <DocLead>
-        Bordered surface with elevation tokens—use for grouped content, settings
-        panels, or preview areas.
+        Elevated surface with token-based shadows and configurable padding. Use it to
+        group related content, settings panels, or interactive preview areas.
       </DocLead>
 
       <DocH2 id="import" first>

@@ -129,6 +129,25 @@ export const styles = stylex.create({
       cursor: 'not-allowed',
     },
   },
+  /** When affixed, only the affix spans add inline padding; pad the input edge when that span is absent. */
+  inputAffixedPadStartSm: {
+    paddingInlineStart: space.sm,
+  },
+  inputAffixedPadStartMd: {
+    paddingInlineStart: space.md,
+  },
+  inputAffixedPadStartLg: {
+    paddingInlineStart: space.lg,
+  },
+  inputAffixedPadEndSm: {
+    paddingInlineEnd: space.sm,
+  },
+  inputAffixedPadEndMd: {
+    paddingInlineEnd: space.md,
+  },
+  inputAffixedPadEndLg: {
+    paddingInlineEnd: space.lg,
+  },
   message: {
     marginTop: space.xs,
   },

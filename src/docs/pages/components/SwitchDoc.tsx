@@ -73,11 +73,10 @@ export function SwitchDoc() {
     <DocArticle>
       <DocH1>Switch</DocH1>
       <DocLead>
-        Switch is used to select a boolean value (on / off). It wraps a native checkbox with{' '}
-        <InlineCode>role=&quot;switch&quot;</InlineCode>, optional label and description, and styles
-        aligned with the rest of the library. Example sections follow import, then each mode with a
-        preview and a read-only snippet. Use the toolbar to show the snippet and Copy to paste it
-        into your project.
+        Accessible toggle control for binary on/off state. Renders a native checkbox with{' '}
+        <InlineCode>role=&quot;switch&quot;</InlineCode>, an optional visible label and supporting
+        description, and styling consistent with the design system. Ref is forwarded to the
+        underlying <InlineCode>&lt;input type=&quot;checkbox&quot; /&gt;</InlineCode>.
       </DocLead>
 
       <DocH2 id="import" first>

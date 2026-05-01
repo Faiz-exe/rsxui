@@ -17,7 +17,7 @@ const BASE_URL = 'https://rsxui.netlify.app'
 const SITE = 'RSX UI'
 
 const ROUTES = [
-  { path: '/', title: 'RSX UI', desc: '36+ accessible, typed React components with zero-runtime CSS powered by StyleX.' },
+  { path: '/', title: 'RSX UI', desc: '37+ accessible, typed React components with zero-runtime CSS powered by StyleX.' },
   { path: '/docs', title: 'Overview', desc: 'Component index, quick-start links, and library summary for RSX UI.' },
   { path: '/docs/getting-started', title: 'Getting Started', desc: 'Install RSX UI, configure Vite with StyleX, and render your first component.' },
   { path: '/docs/theme', title: 'Theme & Tokens', desc: 'ThemeProvider setup, useTheme hook, createTheme overrides, and design token reference.' },
@@ -53,6 +53,7 @@ const ROUTES = [
   { path: '/docs/components/badge', title: 'Badge', desc: 'Semantic pill badges in multiple sizes and colors.' },
   { path: '/docs/components/avatar', title: 'Avatar', desc: 'User images, initials, sizes, severities, and AvatarGroup.' },
   { path: '/docs/components/card', title: 'Card', desc: 'Elevated surfaces with padding and interactive variants.' },
+  { path: '/docs/components/calendar', title: 'Calendar', desc: 'DatePicker (input + popup) and inline month grid; keyboard navigation and formats.' },
   { path: '/docs/components/divider', title: 'Divider', desc: 'Horizontal or vertical separator with optional label.' },
   { path: '/docs/components/skeleton', title: 'Skeleton', desc: 'Shimmer placeholders for text, circles, and rectangles.' },
   { path: '/docs/components/stack', title: 'Stack', desc: 'Flex row or column with gap, align, and justify props.' },

@@ -105,10 +105,11 @@ export function ThemeDoc() {
     <DocArticle>
       <DocH1>Theme &amp; tokens</DocH1>
       <DocLead>
-        <InlineCode>ThemeProvider</InlineCode> applies semantic CSS variables and
-        dark-mode overrides; <InlineCode>useTheme()</InlineCode> exposes the active
-        preference. Export token groups to author custom{' '}
-        <InlineCode>createTheme</InlineCode> layers.
+        <InlineCode>ThemeProvider</InlineCode> applies semantic CSS variables and automatic
+        dark-mode overrides to its subtree. Use <InlineCode>useTheme()</InlineCode> in any
+        descendant to read or update the active color scheme. Export the provided token groups
+        to build <InlineCode>createTheme</InlineCode> layers that integrate seamlessly with
+        component styles.
       </DocLead>
 
       <DocH2 id="import" first>

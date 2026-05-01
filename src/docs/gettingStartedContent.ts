@@ -6,7 +6,7 @@ export const peerDependencyRows: readonly PropRow[] = [
     name: 'react',
     type: 'npm package',
     default: '—',
-    description: 'Same major as your app (this repo uses React 19).',
+    description: 'Install the same major version as your application.',
   },
   {
     name: 'react-dom',

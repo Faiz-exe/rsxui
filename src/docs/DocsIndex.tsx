@@ -63,7 +63,7 @@ const sections: {
       {
         to: '/docs/components/switch',
         title: 'Switch',
-        desc: 'Toggle with track and thumb; semantically a checkbox with role=switch.',
+        desc: 'Accessible toggle for binary on/off state, semantically a checkbox with role=switch.',
       },
       {
         to: '/docs/components/radio',
@@ -93,7 +93,7 @@ const sections: {
       {
         to: '/docs/components/split-button',
         title: 'SplitButton',
-        desc: 'Primary action plus dropdown menu; same severity and size API as Button.',
+        desc: 'Primary action with an attached dropdown menu; shares the severity and size API of Button.',
       },
       {
         to: '/docs/components/table',
@@ -103,7 +103,7 @@ const sections: {
       {
         to: '/docs/components/toast',
         title: 'Toast',
-        desc: 'Snackbar: anchor positions, filled severities, and ref API.',
+        desc: 'Fixed-position notification stack with anchor positions, filled severity variants, and an imperative ref API.',
       },
       {
         to: '/docs/components/dialog',
@@ -147,6 +147,7 @@ const sections: {
     items: [
       { to: '/docs/components/label', title: 'Label', desc: 'Form labels with optional required marker.' },
       { to: '/docs/components/card', title: 'Card', desc: 'Elevated surfaces with padding and interactive variants.' },
+      { to: '/docs/components/calendar', title: 'Calendar', desc: 'Full-featured DatePicker with popup calendar, month/year navigation, and flexible date formatting.' },
       { to: '/docs/components/badge', title: 'Badge', desc: 'Semantic pill badges in multiple sizes and colors.' },
       { to: '/docs/components/avatar', title: 'Avatar', desc: 'User images, initials, sizes, severities, and AvatarGroup.' },
       { to: '/docs/components/divider', title: 'Divider', desc: 'Horizontal or vertical separator with optional label.' },
@@ -159,7 +160,7 @@ const sections: {
 ]
 
 const STATS = [
-  { value: '36+', label: 'Components' },
+  { value: '37+', label: 'Components' },
   { value: '100%', label: 'TypeScript' },
   { value: 'StyleX', label: 'Zero-runtime CSS' },
   { value: 'A11y', label: 'ARIA compliant' },

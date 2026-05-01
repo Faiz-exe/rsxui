@@ -1,6 +1,6 @@
 {
   "name": "react-stylex-ui",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "RSX UI — A modern React component library built with StyleX. Zero-runtime CSS, fully typed, accessible by default, and themeable with design tokens.",
   "type": "module",
   "main": "./dist/index.js",
@@ -28,7 +28,10 @@
     "build:lib": "vite build --config vite.lib.config.ts && tsc --project tsconfig.lib.json",
     "lint": "eslint .",
     "preview": "vite preview",
-    "prepublishOnly": "npm run build:lib"
+    "prepublishOnly": "npm run build:lib",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "release": "npm run build:lib && changeset publish"
   },
   "peerDependencies": {
     "@stylexjs/stylex": ">=0.10.0",
@@ -40,14 +43,14 @@
       "optional": false
     }
   },
-  "dependencies": {},
   "devDependencies": {
+    "@changesets/cli": "^2.31.0",
+    "@eslint/js": "^9.39.4",
     "@fontsource/dm-sans": "^5.2.8",
     "@fontsource/jetbrains-mono": "^5.2.8",
     "@fontsource/literata": "^5.2.8",
     "@stylexjs/stylex": "^0.18.2",
     "@stylexjs/unplugin": "^0.18.2",
-    "@eslint/js": "^9.39.4",
     "@types/node": "^24.12.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
@@ -80,7 +83,7 @@
     "type": "git",
     "url": "https://github.com/Faiz-exe/rsxui"
   },
-  "homepage": "https://github.com/Faiz-exe/rsxui#readme",
+  "homepage": "https://rsxui.netlify.app",
   "bugs": {
     "url": "https://github.com/Faiz-exe/rsxui/issues"
   }

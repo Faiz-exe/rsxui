@@ -67,9 +67,9 @@ export function TextDoc() {
     <DocArticle>
       <DocH1>Text</DocH1>
       <DocLead>
-        Polymorphic typography: pick an element with <InlineCode>as</InlineCode>,
-        then tune visuals with <InlineCode>variant</InlineCode> and{' '}
-        <InlineCode>tone</InlineCode>.
+        Polymorphic typography primitive. Select the rendered element with{' '}
+        <InlineCode>as</InlineCode>, then adjust visual style with{' '}
+        <InlineCode>variant</InlineCode> and <InlineCode>tone</InlineCode>.
       </DocLead>
 
       <DocH2 id="import" first>

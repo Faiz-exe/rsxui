@@ -5,9 +5,81 @@ A modern React component library built with [StyleX](https://stylexjs.com). Zero
 [![npm](https://img.shields.io/npm/v/react-stylex-ui)](https://www.npmjs.com/package/react-stylex-ui)
 [![license](https://img.shields.io/npm/l/react-stylex-ui)](./LICENSE)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**Live documentation:** [https://rsxui.netlify.app](https://rsxui.netlify.app)
+
 ## Features
 
-- **36+ components** — Buttons, Inputs, Select, Dialog, Table, Toast, Tabs, Accordion, and more
+- **37+ components** — Buttons, Inputs, Select, Dialog, Table, Toast, Tabs, Accordion, Calendar, and more
 - **StyleX powered** — Zero-runtime CSS with compile-time extraction
 - **TypeScript first** — Full type safety with exported prop types
 - **Accessible** — ARIA patterns, keyboard navigation, and focus management built in
@@ -90,7 +162,7 @@ export default function App() {
 `Stack` · `Card` · `Accordion` · `Tabs` / `TabList` / `Tab` / `TabPanel` · `Divider`
 
 ### Display
-`Text` · `Label` · `Badge` · `Avatar` / `AvatarGroup` · `Tooltip` · `Skeleton`
+`Text` · `Label` · `Badge` · `Avatar` / `AvatarGroup` · `Tooltip` · `Skeleton` · `Calendar` · `DatePicker`
 
 ### Theme
 `ThemeProvider` · `ThemeToggle` · `useTheme`

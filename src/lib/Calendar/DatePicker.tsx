@@ -40,6 +40,7 @@ export type DatePickerProps = Omit<
   ComponentPropsWithoutRef<'div'>,
   'defaultValue' | 'onChange'
 > & {
+  name?: string
   value?: Date | null
   defaultValue?: Date | null
   onValueChange?: (date: Date | null) => void
@@ -117,6 +118,7 @@ export const DatePicker = memo(
       yearPickerOnly = false,
       disabled = false,
       invalid = false,
+      name,
       id: idProp,
       label,
       helperText,
@@ -309,6 +311,12 @@ export const DatePicker = memo(
         setOpen(false)
         return
       }
+      if (e.key === 'Enter' && open) {
+        e.preventDefault()
+        commitFromInput()
+        setOpen(false)
+        return
+      }
       if ((e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') && !open) {
         e.preventDefault()
         setOpen(true)
@@ -395,7 +403,8 @@ export const DatePicker = memo(
             placeholder ?? effectiveFormat.toLowerCase()
           }
           value={inputStr}
-          readOnly={false}
+          name={name}
+          readOnly={readOnlyInput || monthPickerOnly || yearPickerOnly}
           aria-readonly={readOnlyInput ? true : undefined}
           role="combobox"
           aria-expanded={open}
@@ -414,17 +423,21 @@ export const DatePicker = memo(
               : () => commitFromInput()
           }
           onFocus={(e) => {
-            ensureCaretVisible(e.currentTarget)
+            if (readOnlyInput || monthPickerOnly || yearPickerOnly) {
+              ensureCaretVisible(e.currentTarget)
+            }
           }}
           onClick={(e) => {
             if (disabled) return
             setOpen(true)
-            // Keep a visible caret on first click in both editable and readonly modes.
-            ensureCaretVisible(e.currentTarget)
+            if (readOnlyInput || monthPickerOnly || yearPickerOnly) {
+              ensureCaretVisible(e.currentTarget)
+            }
           }}
           onMouseUp={(e) => {
-            // Mouse up is often the last event that can override selection/caret.
-            ensureCaretVisible(e.currentTarget)
+            if (readOnlyInput || monthPickerOnly || yearPickerOnly) {
+              ensureCaretVisible(e.currentTarget)
+            }
           }}
         />
         {open ? (

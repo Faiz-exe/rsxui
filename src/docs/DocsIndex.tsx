@@ -149,6 +149,7 @@ const sections: {
       { to: '/docs/components/card', title: 'Card', desc: 'Elevated surfaces with padding and interactive variants.' },
       { to: '/docs/components/calendar', title: 'Calendar', desc: 'Full-featured DatePicker with popup calendar, month/year navigation, and flexible date formatting.' },
       { to: '/docs/components/badge', title: 'Badge', desc: 'Semantic pill badges in multiple sizes and colors.' },
+      { to: '/docs/components/breadcrumb', title: 'Breadcrumb', desc: 'Accessible navigation trail for hierarchical page paths.' },
       { to: '/docs/components/avatar', title: 'Avatar', desc: 'User images, initials, sizes, severities, and AvatarGroup.' },
       { to: '/docs/components/divider', title: 'Divider', desc: 'Horizontal or vertical separator with optional label.' },
       { to: '/docs/components/skeleton', title: 'Skeleton', desc: 'Shimmer placeholders for text, circles, and rectangles.' },
@@ -160,7 +161,7 @@ const sections: {
 ]
 
 const STATS = [
-  { value: '37+', label: 'Components' },
+  { value: '38+', label: 'Components' },
   { value: '100%', label: 'TypeScript' },
   { value: 'StyleX', label: 'Zero-runtime CSS' },
   { value: 'A11y', label: 'ARIA compliant' },

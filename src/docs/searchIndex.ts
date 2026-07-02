@@ -41,6 +41,7 @@ export const SEARCH_INDEX: SearchEntry[] = [
   // Display
   { to: '/docs/components/label', title: 'Label', desc: 'Form labels with optional required marker.', category: 'Display', keywords: ['label', 'form', 'required'] },
   { to: '/docs/components/badge', title: 'Badge', desc: 'Semantic pill badges in multiple sizes and colors.', category: 'Display', keywords: ['badge', 'pill', 'tag', 'status'] },
+  { to: '/docs/components/breadcrumb', title: 'Breadcrumb', desc: 'Accessible navigation trail for hierarchical page paths.', category: 'Display', keywords: ['breadcrumb', 'navigation', 'trail', 'path', 'nav'] },
   { to: '/docs/components/avatar', title: 'Avatar', desc: 'User images, initials, sizes, severities, and AvatarGroup.', category: 'Display', keywords: ['avatar', 'user', 'image', 'initials', 'group'] },
   { to: '/docs/components/card', title: 'Card', desc: 'Elevated surfaces with padding and interactive variants.', category: 'Display', keywords: ['card', 'surface', 'container', 'elevated'] },
   { to: '/docs/components/calendar', title: 'Calendar', desc: 'DatePicker (input + popup) and inline calendar with month/year picker; with flexible date formatting.', category: 'Display', keywords: ['calendar', 'date', 'datepicker', 'picker', 'month', 'year', 'month picker', 'year picker'] },

@@ -16,6 +16,7 @@ import { UtilitiesPositionDoc } from './docs/utilities/UtilitiesPositionDoc'
 import { UtilitiesOverflowDoc } from './docs/utilities/UtilitiesOverflowDoc'
 import { UtilitiesBackgroundDoc } from './docs/utilities/UtilitiesBackgroundDoc'
 import { BadgeDoc } from './docs/pages/components/BadgeDoc'
+import { BreadcrumbDoc } from './docs/pages/components/BreadcrumbDoc'
 import { ButtonDoc } from './docs/pages/components/ButtonDoc'
 import { CalendarDoc } from './docs/pages/components/CalendarDoc'
 import { CardDoc } from './docs/pages/components/CardDoc'
@@ -100,6 +101,7 @@ export default function App() {
           <Route path="/docs/components/card" element={<CardDoc />} />
           <Route path="/docs/components/calendar" element={<CalendarDoc />} />
           <Route path="/docs/components/badge" element={<BadgeDoc />} />
+          <Route path="/docs/components/breadcrumb" element={<BreadcrumbDoc />} />
           <Route path="/docs/components/avatar" element={<AvatarDoc />} />
           <Route path="/docs/components/tooltip" element={<TooltipDoc />} />
           <Route path="/docs/components/stack" element={<StackDoc />} />

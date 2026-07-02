@@ -1,5 +1,11 @@
 export { Alert, type AlertProps } from './Alert/Alert'
 export {
+  Breadcrumb,
+  BreadcrumbItem,
+  type BreadcrumbItemProps,
+  type BreadcrumbProps,
+} from './Breadcrumb/Breadcrumb'
+export {
   Avatar,
   AvatarGroup,
   type AvatarProps,

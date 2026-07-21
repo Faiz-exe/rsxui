@@ -19,6 +19,9 @@ export const styles = stylex.create({
     borderWidth: 1,
     cursor: 'pointer',
     textDecoration: 'none',
+    /** Required for ripple spans to be clipped inside the button. */
+    position: 'relative',
+    overflow: 'hidden',
     /** Faster taps on touch; avoids double-tap-to-zoom wait. */
     touchAction: 'manipulation',
     userSelect: 'none',
@@ -81,7 +84,6 @@ export const styles = stylex.create({
   },
   loading: {
     cursor: 'wait',
-    position: 'relative',
   },
   iconOnly: {
     paddingInline: space.md,

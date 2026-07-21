@@ -2,12 +2,14 @@ import * as stylex from '@stylexjs/stylex'
 import {
   forwardRef,
   memo,
+  useCallback,
   type ComponentPropsWithoutRef,
   type ReactNode,
   type Ref,
 } from 'react'
 import { mergeSx } from '../utils/mergeSx'
 import { styles } from './Button.stylex'
+import { useRipple } from './useRipple'
 
 export type ButtonSeverity =
   | 'primary'
@@ -110,10 +112,36 @@ function ButtonInner(
     disabled,
     children,
     type = 'button',
+    onPointerDown,
     ...rest
   }: ButtonProps,
   ref: Ref<HTMLButtonElement>,
 ) {
+  // Solid buttons get a white ripple; transparent-bg variants (outlined/text/link)
+  // get a currentColor ripple so it's always visible against any background.
+  const isSolidBackground = !outlined && !textProp && !link
+  const { ref: rippleRef, onPointerDown: ripplePointerDown } =
+    useRipple<HTMLButtonElement>(isSolidBackground)
+
+  // Merge forwarded ref with internal ripple ref via a callback ref.
+  const mergedRef = useCallback(
+    (node: HTMLButtonElement | null) => {
+      ;(rippleRef as React.MutableRefObject<HTMLButtonElement | null>).current = node
+      if (typeof ref === 'function') ref(node)
+      else if (ref != null) (ref as React.MutableRefObject<HTMLButtonElement | null>).current = node
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [ref],
+  )
+
+  const handlePointerDown = useCallback(
+    (e: React.PointerEvent<HTMLButtonElement>) => {
+      ripplePointerDown(e)
+      onPointerDown?.(e)
+    },
+    [ripplePointerDown, onPointerDown],
+  )
+
   const sev = resolveSeverity(severity, variant)
 
   let appearanceStyle
@@ -171,10 +199,11 @@ function ButtonInner(
 
   return (
     <button
-      ref={ref}
+      ref={mergedRef}
       type={type}
       disabled={isDisabled}
       aria-busy={loading || undefined}
+      onPointerDown={handlePointerDown}
       {...rest}
       {...mergeSx(sx, className, style)}
     >

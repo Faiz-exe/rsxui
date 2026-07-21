@@ -17,6 +17,7 @@ export {
   type ButtonProps,
   type ButtonSeverity,
 } from './Button/Button'
+export { useRipple } from './Button/useRipple'
 export {
   SplitButton,
   type SplitButtonMenuItem,

@@ -96,19 +96,7 @@ export const styles = stylex.create({
   iconOnlyLg: {
     paddingInline: space.lg,
   },
-  spinner: {
-    display: 'inline-block',
-    width: '1em',
-    height: '1em',
-    border: '2px solid currentColor',
-    borderRightColor: 'transparent',
-    borderRadius: '50%',
-    animationName: spin,
-    animationDuration: '0.6s',
-    animationIterationCount: 'infinite',
-    animationTimingFunction: 'linear',
-    flexShrink: 0,
-  },
+
   fullWidth: {
     width: '100%',
   },

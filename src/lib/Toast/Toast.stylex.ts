@@ -4,7 +4,7 @@ import { colors, elevation, fonts, radii, space } from '../theme/tokens.stylex'
 /** Elevated shadow for toast panels */
 const toastShadow = elevation.cardHover
 
-/** MUI Grow transition: scale + opacity (default Snackbar transition) */
+/** Grow transition: scale + opacity (default transition) */
 const growEnter = stylex.keyframes({
   from: {
     opacity: 0,
@@ -16,7 +16,7 @@ const growEnter = stylex.keyframes({
   },
 })
 
-/** Slide + fade for bottom-anchored snackbars (common MUI pattern) */
+/** Slide + fade for bottom-anchored snackbars (common pattern) */
 const slideUpEnter = stylex.keyframes({
   from: {
     opacity: 0,
@@ -52,7 +52,7 @@ export const styles = stylex.create({
     boxSizing: 'border-box',
     fontFamily: fonts.sans,
   },
-  /** Default: MUI Grow */
+  /** Default: Grow */
   itemWrapGrow: {
     pointerEvents: 'auto',
     animationName: growEnter,
@@ -108,7 +108,7 @@ export const styles = stylex.create({
     gap: 4,
     paddingRight: 4,
   },
-  /** Primary line — MUI body2 / Snackbar message */
+  /** Primary line — body2 / Snackbar message */
   summary: {
     fontWeight: 400,
     fontSize: '0.875rem',
@@ -121,7 +121,7 @@ export const styles = stylex.create({
     lineHeight: 1.5,
     fontWeight: 400,
   },
-  /** Icon button — MUI Snackbar close */
+  /** Icon button — Snackbar close */
   close: {
     flexShrink: 0,
     display: 'inline-flex',

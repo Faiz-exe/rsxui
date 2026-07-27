@@ -8,6 +8,7 @@ import {
   type Ref,
 } from 'react'
 import { mergeSx } from '../utils/mergeSx'
+import { Spinner } from '../Spinner/Spinner'
 import { styles } from './Button.stylex'
 import { useRipple } from './useRipple'
 
@@ -188,7 +189,7 @@ function ButtonInner(
   let rightSlot: ReactNode = null
 
   if (loading) {
-    leftSlot = <span {...stylex.props(styles.spinner)} aria-hidden />
+    leftSlot = <Spinner size={size === 'lg' ? 'md' : 'sm'} style={{ color: 'currentColor' }} label={null} />
   } else if (icon && iconPos === 'left') {
     leftSlot = icon
   }

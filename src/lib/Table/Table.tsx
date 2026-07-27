@@ -10,8 +10,10 @@ import {
   type Ref,
 } from 'react'
 import { Checkbox } from '../Checkbox/Checkbox'
+import { Pagination } from '../Pagination/Pagination'
+import { Spinner } from '../Spinner/Spinner'
 import { mergeSx } from '../utils/mergeSx'
-import { styles } from './Table.stylex'
+import { styles, tablePagerStyles } from './Table.stylex'
 
 export type TableColumn<Row> = {
   field: string
@@ -56,6 +58,23 @@ export type TableProps<Row> = {
   first?: number
   rowsPerPageOptions?: readonly number[]
   onPageChange?: (state: { first: number; rows: number; page: number }) => void
+  // Paginator options
+  /** Number of pages shown on each side of the current page. Default 1. */
+  siblingCount?: number
+  /** Number of pages always shown at the beginning and end. Default 1. */
+  boundaryCount?: number
+  /** Show first-page jump button (‹‹). */
+  showFirstButton?: boolean
+  /** Show last-page jump button (››). */
+  showLastButton?: boolean
+  /** 'text' (no border, default) | 'outlined' (bordered). */
+  paginatorVariant?: 'text' | 'outlined'
+  /** 'circular' (pill, default) | 'rounded' (square-ish). */
+  paginatorShape?: 'circular' | 'rounded'
+  /** Accent colour applied to the active page pill. */
+  paginatorColor?: 'primary' | 'secondary' | 'standard'
+  /** Disable the entire paginator. */
+  paginatorDisabled?: boolean
   selectionMode?: TableSelectionMode
   selection?: Row | Row[] | null
   defaultSelection?: Row | Row[] | null
@@ -94,10 +113,12 @@ function rowKey<Row>(row: Row, dataKey: keyof Row | string | undefined, fallback
   return `row-${fallback}`
 }
 
+
 function TableInner<Row>(
   {
     value,
     columns,
+
     dataKey,
     size = 'md',
     stripedRows = false,
@@ -120,6 +141,14 @@ function TableInner<Row>(
     first = 0,
     rowsPerPageOptions = [5, 10, 25, 50],
     onPageChange,
+    siblingCount = 1,
+    boundaryCount = 1,
+    showFirstButton = false,
+    showLastButton = false,
+    paginatorVariant = 'text',
+    paginatorShape = 'circular',
+    paginatorColor = 'primary',
+    paginatorDisabled = false,
     selectionMode,
     selection,
     defaultSelection = null,
@@ -361,7 +390,14 @@ function TableInner<Row>(
                   aria-busy="true"
                   {...stylex.props(styles.td, tdSize, styles.muted, styles.rowLastCell)}
                 >
-                  {loadingTemplate != null ? loadingTemplate({ colSpan }) : loadingLabel}
+                  {loadingTemplate != null ? (
+                    loadingTemplate({ colSpan })
+                  ) : (
+                    <div {...stylex.props(styles.loadingContent)}>
+                      <Spinner size="sm" tone="muted" />
+                      {loadingLabel}
+                    </div>
+                  )}
                 </td>
               </tr>
             ) : visible.length === 0 ? (
@@ -456,60 +492,45 @@ function TableInner<Row>(
       {footer != null ? <div {...stylex.props(styles.headerFooter)}>{footer}</div> : null}
 
       {paginator ? (
-        <div {...stylex.props(styles.paginator)}>
-          <span>
-            {total === 0 ? 0 : pageFirst + 1} to {pageLast} of {total}
-          </span>
-          <div {...stylex.props(styles.pagerBtns)}>
+        <div
+          {...stylex.props(
+            tablePagerStyles.footer,
+            paginatorDisabled && tablePagerStyles.footerDisabled,
+          )}
+        >
+          {/* Left: rows-per-page select + "X–Y of Z" record range */}
+          <div {...stylex.props(tablePagerStyles.info)}>
             <select
               value={pageRows}
               onChange={(e) => changePage(0, Number(e.target.value))}
-              {...stylex.props(styles.pagerSelect)}
+              {...stylex.props(tablePagerStyles.select)}
               aria-label="Rows per page"
+              disabled={paginatorDisabled}
             >
               {rowsPerPageOptions.map((n) => (
-                <option key={n} value={n}>
-                  {n} / page
-                </option>
+                <option key={n} value={n}>{n} / page</option>
               ))}
             </select>
-            <button
-              type="button"
-              disabled={currentPage <= 0}
-              onClick={() => changePage(0, pageRows)}
-              {...stylex.props(styles.pagerBtn)}
-              aria-label="First page"
-            >
-              First
-            </button>
-            <button
-              type="button"
-              disabled={currentPage <= 0}
-              onClick={() => changePage(pageFirst - pageRows, pageRows)}
-              {...stylex.props(styles.pagerBtn)}
-              aria-label="Previous page"
-            >
-              Prev
-            </button>
-            <button
-              type="button"
-              disabled={currentPage >= totalPages - 1}
-              onClick={() => changePage(pageFirst + pageRows, pageRows)}
-              {...stylex.props(styles.pagerBtn)}
-              aria-label="Next page"
-            >
-              Next
-            </button>
-            <button
-              type="button"
-              disabled={currentPage >= totalPages - 1}
-              onClick={() => changePage((totalPages - 1) * pageRows, pageRows)}
-              {...stylex.props(styles.pagerBtn)}
-              aria-label="Last page"
-            >
-              Last
-            </button>
+            <span {...stylex.props(tablePagerStyles.count)}>
+              {total === 0 ? '0' : `${pageFirst + 1}–${pageLast}`} of {total}
+            </span>
           </div>
+
+          {/* Right: Pagination component — page numbers + prev/next */}
+          <Pagination
+            count={totalPages}
+            page={currentPage + 1}
+            onChange={(p) => changePage((p - 1) * pageRows, pageRows)}
+            siblingCount={siblingCount}
+            boundaryCount={boundaryCount}
+            showFirstButton={showFirstButton}
+            showLastButton={showLastButton}
+            variant={paginatorVariant}
+            shape={paginatorShape}
+            color={paginatorColor}
+            size={size}
+            disabled={paginatorDisabled}
+          />
         </div>
       ) : null}
     </div>
@@ -519,3 +540,5 @@ function TableInner<Row>(
 export const Table = memo(forwardRef(TableInner)) as <Row>(
   props: TableProps<Row> & { ref?: Ref<HTMLDivElement> },
 ) => React.ReactElement
+
+

@@ -31,6 +31,7 @@ import { AutocompleteDoc } from './docs/pages/components/AutocompleteDoc'
 import { ToggleButtonDoc } from './docs/pages/components/ToggleButtonDoc'
 import { SplitButtonDoc } from './docs/pages/components/SplitButtonDoc'
 import { TableDoc } from './docs/pages/components/TableDoc'
+import { PaginationDoc } from './docs/pages/components/PaginationDoc'
 import { ToastDoc } from './docs/pages/components/ToastDoc'
 import { DialogDoc } from './docs/pages/components/DialogDoc'
 import { AccordionDoc } from './docs/pages/components/AccordionDoc'
@@ -47,6 +48,7 @@ import { StackDoc } from './docs/pages/components/StackDoc'
 import { TextDoc } from './docs/pages/components/TextDoc'
 import { ThemeToggleDoc } from './docs/pages/components/ThemeToggleDoc'
 import { SpinnerDoc } from './docs/pages/components/SpinnerDoc'
+import { SliderDoc } from './docs/pages/components/SliderDoc'
 import IntroPage from './pages/IntroPage'
 import Demo from './pages/Demo'
 
@@ -93,6 +95,7 @@ export default function App() {
           <Route path="/docs/components/toggle-button" element={<ToggleButtonDoc />} />
           <Route path="/docs/components/split-button" element={<SplitButtonDoc />} />
           <Route path="/docs/components/table" element={<TableDoc />} />
+          <Route path="/docs/components/pagination" element={<PaginationDoc />} />
           <Route path="/docs/components/toast" element={<ToastDoc />} />
           <Route path="/docs/components/dialog" element={<DialogDoc />} />
           <Route path="/docs/components/accordion" element={<AccordionDoc />} />
@@ -112,6 +115,7 @@ export default function App() {
           <Route path="/docs/components/divider" element={<DividerDoc />} />
           <Route path="/docs/components/progress" element={<ProgressDoc />} />
           <Route path="/docs/components/skeleton" element={<SkeletonDoc />} />
+          <Route path="/docs/components/slider" element={<SliderDoc />} />
         </Route>
         <Route path="/installation" element={<Navigate to="/docs/installation" replace />} />
         <Route path="/theme" element={<Navigate to="/docs/theme" replace />} />

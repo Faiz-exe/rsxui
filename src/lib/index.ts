@@ -74,8 +74,17 @@ export {
   type TableSelectionMode,
   type TableSortState,
 } from './Table/Table'
+export {
+  Pagination,
+  type PaginationColor,
+  type PaginationProps,
+  type PaginationShape,
+  type PaginationSize,
+  type PaginationVariant,
+} from './Pagination/Pagination'
 export { Label, type LabelProps } from './Label/Label'
 export { Progress, type ProgressProps } from './Progress/Progress'
+export { Slider, type SliderProps } from './Slider/Slider'
 export { Stack, type StackProps } from './Stack/Stack'
 export { Text, type TextProps } from './Text/Text'
 export { Skeleton, type SkeletonProps } from './Skeleton/Skeleton'

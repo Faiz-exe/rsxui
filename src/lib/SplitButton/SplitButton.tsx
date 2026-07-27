@@ -16,6 +16,7 @@ import {
   type ButtonSeverity,
 } from '../Button/Button'
 import { styles as buttonStyles } from '../Button/Button.stylex'
+import { Spinner } from '../Spinner/Spinner'
 import { mergeSx } from '../utils/mergeSx'
 import { styles as splitStyles } from './SplitButton.stylex'
 
@@ -349,7 +350,7 @@ function SplitButtonInner(
         {...mergeSx(primarySx, primaryButtonClassName)}
       >
         {loading ? (
-          <span {...stylex.props(buttonStyles.spinner)} aria-hidden />
+          <Spinner size="sm" style={{ color: 'currentColor' }} label={null} />
         ) : null}
         {hasText ? body : null}
       </button>

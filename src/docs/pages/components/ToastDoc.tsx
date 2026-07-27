@@ -68,7 +68,7 @@ const messageFields = [
     type: 'number',
     default: '3000',
     description:
-      'Auto-dismiss delay in ms (like MUI autoHideDuration). Ignored when sticky is true.',
+      'Auto-dismiss delay in ms. Ignored when sticky is true.',
   },
   {
     name: 'sticky',
@@ -100,7 +100,7 @@ export function ToastDoc() {
       <DocH1>Toast</DocH1>
       <DocLead>
         Snackbar-style brief notifications inspired by{' '}
-        <a href="https://mui.com/material-ui/react-snackbar/">Material UI Snackbar</a>: elevated
+        Standard Snackbar: elevated
         Paper surface, default dark neutral bar for <InlineCode>info</InlineCode>, optional filled
         severities, Grow or Slide entrance, and imperative <InlineCode>show</InlineCode> /{' '}
         <InlineCode>clear</InlineCode> on a ref.

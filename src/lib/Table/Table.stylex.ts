@@ -1,5 +1,8 @@
 import * as stylex from '@stylexjs/stylex'
 import { colors, fonts, radii, space } from '../theme/tokens.stylex'
+import { tablePagerStyles } from '../Pagination/Pagination.stylex'
+
+export { tablePagerStyles }
 
 export const styles = stylex.create({
   wrap: {
@@ -110,6 +113,12 @@ export const styles = stylex.create({
   empty: {
     color: colors.fgMuted,
   },
+  loadingContent: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: space.sm,
+  },
   muted: {
     color: colors.fgMuted,
   },
@@ -117,50 +126,6 @@ export const styles = stylex.create({
     fontFamily: fonts.sans,
     color: colors.fgMuted,
     fontSize: '0.875rem',
-  },
-  paginator: {
-    display: 'flex',
-    flexWrap: 'wrap' as const,
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    gap: space.sm,
-    fontFamily: fonts.sans,
-    color: colors.fgMuted,
-    fontSize: '0.8125rem',
-  },
-  pagerBtns: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: '6px',
-  },
-  pagerBtn: {
-    borderWidth: 1,
-    borderStyle: 'solid',
-    borderColor: colors.border,
-    borderRadius: radii.sm,
-    backgroundColor: colors.bg,
-    color: colors.fg,
-    paddingInline: space.sm,
-    paddingBlock: '6px',
-    cursor: 'pointer',
-    fontFamily: fonts.sans,
-    fontSize: '0.8125rem',
-    ':disabled': {
-      opacity: 0.5,
-      cursor: 'not-allowed',
-    },
-  },
-  pagerSelect: {
-    borderWidth: 1,
-    borderStyle: 'solid',
-    borderColor: colors.border,
-    borderRadius: radii.sm,
-    backgroundColor: colors.bg,
-    color: colors.fg,
-    paddingInline: space.sm,
-    paddingBlock: '6px',
-    fontFamily: fonts.sans,
-    fontSize: '0.8125rem',
   },
   checkbox: {
     width: '1rem',

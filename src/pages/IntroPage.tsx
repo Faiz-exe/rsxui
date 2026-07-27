@@ -10,6 +10,7 @@ import {
   Text,
   ThemeToggle,
 } from '../lib'
+import logoUrl from '../assets/R.svg'
 import { styles, ctaStyles } from './IntroPage.stylex'
 import { useDocMeta } from '../docs/useDocMeta'
 
@@ -190,6 +191,7 @@ export default function IntroPage() {
       <header {...stylex.props(styles.nav)}>
         <div {...stylex.props(styles.navLeft)}>
           <Link to="/" {...stylex.props(styles.logo)}>
+            <img src={logoUrl} {...stylex.props(styles.logoImg)} alt="RSX UI Logo" />
             RSX<span {...stylex.props(styles.logoMuted)}>UI</span>
           </Link>
           <nav {...stylex.props(styles.navLinks)}>

@@ -2,6 +2,7 @@ import * as stylex from '@stylexjs/stylex'
 import { useCallback, useEffect, useState } from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import { ThemeToggle } from '../lib'
+import logoUrl from '../assets/R.svg'
 import { styles } from './DocsLayout.stylex'
 import { SearchDialog } from './ui/SearchDialog'
 
@@ -109,9 +110,7 @@ export function DocsLayout() {
             {drawerOpen ? <IconClose /> : <IconMenu />}
           </button>
           <Link to="/" aria-label="RSX UI home" {...stylex.props(styles.brandRow)}>
-            <div {...stylex.props(styles.logoMark)} aria-hidden>
-              R
-            </div>
+            <img src={logoUrl} alt="RSX UI Logo" {...stylex.props(styles.logoMark)} />
             <div {...stylex.props(styles.brandBlock)}>
               <span {...stylex.props(styles.brand)}>RSX UI</span>
               <span {...stylex.props(styles.brandSub)}>Documentation</span>
@@ -192,6 +191,7 @@ export function DocsLayout() {
           <NavItem to="/docs/components/button">Button</NavItem>
           <NavItem to="/docs/components/checkbox">Checkbox</NavItem>
           <NavItem to="/docs/components/switch">Switch</NavItem>
+          <NavItem to="/docs/components/slider">Slider</NavItem>
           <NavItem to="/docs/components/radio">Radio</NavItem>
           <NavItem to="/docs/components/select">Select</NavItem>
           <NavItem to="/docs/components/multi-select">MultiSelect</NavItem>
@@ -199,6 +199,7 @@ export function DocsLayout() {
           <NavItem to="/docs/components/toggle-button">ToggleButton</NavItem>
           <NavItem to="/docs/components/split-button">SplitButton</NavItem>
           <NavItem to="/docs/components/table">Table</NavItem>
+          <NavItem to="/docs/components/pagination">Pagination</NavItem>
           <NavItem to="/docs/components/toast">Toast</NavItem>
           <NavItem to="/docs/components/dialog">Dialog</NavItem>
           <NavItem to="/docs/components/accordion">Accordion</NavItem>

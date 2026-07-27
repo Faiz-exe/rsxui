@@ -84,6 +84,11 @@ export const styles = stylex.create({
     alignItems: 'center',
     gap: '0.375rem',
   },
+  logoImg: {
+    width: '70px',
+    height: '35px',
+    flexShrink: 0,
+  },
   logoMuted: {
     fontWeight: 500,
     color: colors.fgMuted,

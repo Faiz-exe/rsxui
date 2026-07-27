@@ -101,6 +101,11 @@ const sections: {
         desc: 'Sortable columns, pagination, loading, and empty states.',
       },
       {
+        to: '/docs/components/pagination',
+        title: 'Pagination',
+        desc: 'Standalone pagination control with rich configuration options.',
+      },
+      {
         to: '/docs/components/toast',
         title: 'Toast',
         desc: 'Fixed-position notification stack with anchor positions, filled severity variants, and an imperative ref API.',

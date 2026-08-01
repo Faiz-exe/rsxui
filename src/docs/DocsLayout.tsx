@@ -167,16 +167,14 @@ export function DocsLayout() {
       <div {...stylex.props(styles.body)}>
         <aside {...stylex.props(styles.sidebar, drawerOpen && styles.sidebarOpen)}>
           <div {...stylex.props(styles.sidebarVersion)}>
-            <span>v1.0</span>
+            <span>v1.1.0</span>
           </div>
 
           <div {...stylex.props(styles.navLabel, styles.navLabelFirst)}>
             Getting started
           </div>
           <NavItem to="/docs/getting-started">Quick start</NavItem>
-          <NavItem to="/docs" end>
-            Overview
-          </NavItem>
+
 
           <div {...stylex.props(styles.navLabel)}>Theming</div>
           <NavItem to="/docs/theme">Theme &amp; tokens</NavItem>
@@ -187,8 +185,7 @@ export function DocsLayout() {
           <NavItem to="/docs/components/input-text-with-icon">Input with icon</NavItem>
           <NavItem to="/docs/components/input-number">InputNumber</NavItem>
 
-          <div {...stylex.props(styles.navLabel)}>Components</div>
-          <NavItem to="/docs/components/button">Button</NavItem>
+          <div {...stylex.props(styles.navLabel)}>Forms</div>
           <NavItem to="/docs/components/checkbox">Checkbox</NavItem>
           <NavItem to="/docs/components/switch">Switch</NavItem>
           <NavItem to="/docs/components/slider">Slider</NavItem>
@@ -196,18 +193,28 @@ export function DocsLayout() {
           <NavItem to="/docs/components/select">Select</NavItem>
           <NavItem to="/docs/components/multi-select">MultiSelect</NavItem>
           <NavItem to="/docs/components/autocomplete">Autocomplete</NavItem>
+
+          <div {...stylex.props(styles.navLabel)}>Actions</div>
+          <NavItem to="/docs/components/button">Button</NavItem>
           <NavItem to="/docs/components/toggle-button">ToggleButton</NavItem>
           <NavItem to="/docs/components/split-button">SplitButton</NavItem>
+
+          <div {...stylex.props(styles.navLabel)}>Data</div>
           <NavItem to="/docs/components/table">Table</NavItem>
           <NavItem to="/docs/components/pagination">Pagination</NavItem>
+
+          <div {...stylex.props(styles.navLabel)}>Feedback</div>
           <NavItem to="/docs/components/toast">Toast</NavItem>
           <NavItem to="/docs/components/dialog">Dialog</NavItem>
-          <NavItem to="/docs/components/accordion">Accordion</NavItem>
-          <NavItem to="/docs/components/tabs">Tabs</NavItem>
           <NavItem to="/docs/components/spinner">Spinner</NavItem>
           <NavItem to="/docs/components/alert">Alert</NavItem>
           <NavItem to="/docs/components/progress">Progress</NavItem>
           <NavItem to="/docs/components/tooltip">Tooltip</NavItem>
+
+          <div {...stylex.props(styles.navLabel)}>Navigation</div>
+          <NavItem to="/docs/components/accordion">Accordion</NavItem>
+          <NavItem to="/docs/components/tabs">Tabs</NavItem>
+          <NavItem to="/docs/components/breadcrumb">Breadcrumb</NavItem>
 
           <div {...stylex.props(styles.navLabel)}>Display</div>
           <NavItem to="/docs/components/label">Label</NavItem>

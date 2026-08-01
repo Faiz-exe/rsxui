@@ -18,32 +18,40 @@ export const SEARCH_INDEX: SearchEntry[] = [
   { to: '/docs/components/input-text-with-icon', title: 'Input with icon', desc: 'Prefix/suffix slots for icons, units, and action buttons.', category: 'Inputs', keywords: ['input', 'icon', 'prefix', 'suffix'] },
   { to: '/docs/components/input-number', title: 'InputNumber', desc: 'Numeric field with min, max, and step controls.', category: 'Inputs', keywords: ['input', 'number', 'numeric', 'step'] },
 
-  // Components
-  { to: '/docs/components/button', title: 'Button', desc: 'Severities, sizes, outlined, text, and loading variants.', category: 'Components', keywords: ['button', 'click', 'action', 'submit'] },
-  { to: '/docs/components/checkbox', title: 'Checkbox', desc: 'Labeled checkbox with description, invalid, and indeterminate states.', category: 'Components', keywords: ['checkbox', 'check', 'indeterminate', 'form'] },
-  { to: '/docs/components/switch', title: 'Switch', desc: 'Toggle with track and thumb; semantically a checkbox with role=switch.', category: 'Components', keywords: ['switch', 'toggle', 'on', 'off'] },
-  { to: '/docs/components/slider', title: 'Slider', desc: 'Slider component for picking a value or range of values.', category: 'Components', keywords: ['slider', 'range', 'input', 'thumb'] },
-  { to: '/docs/components/radio', title: 'Radio', desc: 'RadioGroup and Radio options with a shared accessible name.', category: 'Components', keywords: ['radio', 'group', 'option', 'select'] },
-  { to: '/docs/components/select', title: 'Select', desc: 'Custom listbox with keyboard support, animations, and form API.', category: 'Components', keywords: ['select', 'dropdown', 'listbox', 'option'] },
-  { to: '/docs/components/multi-select', title: 'MultiSelect', desc: 'Multi-value listbox with chips, filter, and form-friendly hidden inputs.', category: 'Components', keywords: ['multiselect', 'multi', 'chips', 'tags'] },
-  { to: '/docs/components/autocomplete', title: 'Autocomplete', desc: 'Combobox with type-ahead filtering and keyboard selection.', category: 'Components', keywords: ['autocomplete', 'combobox', 'search', 'filter', 'typeahead'] },
-  { to: '/docs/components/toggle-button', title: 'ToggleButton', desc: 'Pressed-state buttons and single or multi-select groups.', category: 'Components', keywords: ['toggle', 'button', 'pressed', 'group'] },
-  { to: '/docs/components/split-button', title: 'SplitButton', desc: 'A button with a primary action and a dropdown for secondary actions.', category: 'Components', keywords: ['split button', 'action', 'menu', 'dropdown'] },
-  { to: '/docs/components/table', title: 'Table', desc: 'Sortable columns, pagination, loading, and empty states.', category: 'Components', keywords: ['table', 'data', 'sort', 'pagination', 'grid'] },
-  { to: '/docs/components/pagination', title: 'Pagination', desc: 'Standalone pagination control with rich configuration options.', category: 'Components', keywords: ['pagination', 'page', 'navigation', 'list'] },
-  { to: '/docs/components/toast', title: 'Toast', desc: 'Snackbar: anchor positions, filled severities, and ref API.', category: 'Components', keywords: ['toast', 'snackbar', 'notification', 'message'] },
-  { to: '/docs/components/dialog', title: 'Dialog', desc: 'Modal dialog with backdrop, focus trap, sizes, and footer actions.', category: 'Components', keywords: ['dialog', 'modal', 'popup', 'overlay'] },
-  { to: '/docs/components/accordion', title: 'Accordion', desc: 'Expandable sections; single or multiple open, ARIA wired.', category: 'Components', keywords: ['accordion', 'collapse', 'expand', 'section'] },
-  { to: '/docs/components/tabs', title: 'Tabs', desc: 'Tablist, tabs, and panels with keyboard navigation.', category: 'Components', keywords: ['tabs', 'tab', 'panel', 'tablist'] },
-  { to: '/docs/components/spinner', title: 'Spinner', desc: 'Loading indicator with size and semantic tone variants.', category: 'Components', keywords: ['spinner', 'loading', 'progress', 'indicator'] },
-  { to: '/docs/components/alert', title: 'Alert', desc: 'Static banners for info, success, warning, and danger messages.', category: 'Components', keywords: ['alert', 'banner', 'warning', 'error', 'info'] },
-  { to: '/docs/components/progress', title: 'Progress', desc: 'Determinate and indeterminate progress bars with severity colors.', category: 'Components', keywords: ['progress', 'bar', 'loading', 'percent'] },
-  { to: '/docs/components/tooltip', title: 'Tooltip', desc: 'Hover and focus hints with four positions and configurable delay.', category: 'Components', keywords: ['tooltip', 'hover', 'hint', 'popover'] },
+  // Forms
+  { to: '/docs/components/checkbox', title: 'Checkbox', desc: 'Labeled checkbox with description, invalid, and indeterminate states.', category: 'Forms', keywords: ['checkbox', 'check', 'indeterminate', 'form'] },
+  { to: '/docs/components/switch', title: 'Switch', desc: 'Toggle with track and thumb; semantically a checkbox with role=switch.', category: 'Forms', keywords: ['switch', 'toggle', 'on', 'off'] },
+  { to: '/docs/components/slider', title: 'Slider', desc: 'Range slider for picking a single value or range with min, max, and step.', category: 'Forms', keywords: ['slider', 'range', 'input', 'thumb'] },
+  { to: '/docs/components/radio', title: 'Radio', desc: 'RadioGroup and Radio options with a shared accessible name.', category: 'Forms', keywords: ['radio', 'group', 'option', 'select'] },
+  { to: '/docs/components/select', title: 'Select', desc: 'Custom listbox with keyboard support, animations, and form API.', category: 'Forms', keywords: ['select', 'dropdown', 'listbox', 'option'] },
+  { to: '/docs/components/multi-select', title: 'MultiSelect', desc: 'Multi-value listbox with chips, filter, and form-friendly hidden inputs.', category: 'Forms', keywords: ['multiselect', 'multi', 'chips', 'tags'] },
+  { to: '/docs/components/autocomplete', title: 'Autocomplete', desc: 'Combobox with type-ahead filtering and keyboard selection.', category: 'Forms', keywords: ['autocomplete', 'combobox', 'search', 'filter', 'typeahead'] },
+
+  // Actions
+  { to: '/docs/components/button', title: 'Button', desc: 'Severities, sizes, outlined, text, loading, and icon variants.', category: 'Actions', keywords: ['button', 'click', 'action', 'submit'] },
+  { to: '/docs/components/toggle-button', title: 'ToggleButton', desc: 'Pressed-state buttons and single or multi-select groups.', category: 'Actions', keywords: ['toggle', 'button', 'pressed', 'group'] },
+  { to: '/docs/components/split-button', title: 'SplitButton', desc: 'Primary action with an attached dropdown menu.', category: 'Actions', keywords: ['split button', 'action', 'menu', 'dropdown'] },
+
+  // Data
+  { to: '/docs/components/table', title: 'Table', desc: 'Sortable columns, pagination, loading, and empty states.', category: 'Data', keywords: ['table', 'data', 'sort', 'pagination', 'grid'] },
+  { to: '/docs/components/pagination', title: 'Pagination', desc: 'Standalone pagination control with rich configuration options.', category: 'Data', keywords: ['pagination', 'page', 'navigation', 'list'] },
+
+  // Feedback
+  { to: '/docs/components/toast', title: 'Toast', desc: 'Snackbar: anchor positions, filled severities, and ref API.', category: 'Feedback', keywords: ['toast', 'snackbar', 'notification', 'message'] },
+  { to: '/docs/components/dialog', title: 'Dialog', desc: 'Modal dialog with backdrop, focus trap, sizes, and footer actions.', category: 'Feedback', keywords: ['dialog', 'modal', 'popup', 'overlay'] },
+  { to: '/docs/components/spinner', title: 'Spinner', desc: 'Loading indicator with size and semantic tone variants.', category: 'Feedback', keywords: ['spinner', 'loading', 'progress', 'indicator'] },
+  { to: '/docs/components/alert', title: 'Alert', desc: 'Static banners for info, success, warning, and danger messages.', category: 'Feedback', keywords: ['alert', 'banner', 'warning', 'error', 'info'] },
+  { to: '/docs/components/progress', title: 'Progress', desc: 'Determinate and indeterminate progress bars with severity colors.', category: 'Feedback', keywords: ['progress', 'bar', 'loading', 'percent'] },
+  { to: '/docs/components/tooltip', title: 'Tooltip', desc: 'Hover and focus hints with four positions and configurable delay.', category: 'Feedback', keywords: ['tooltip', 'hover', 'hint', 'popover'] },
+
+  // Navigation
+  { to: '/docs/components/accordion', title: 'Accordion', desc: 'Expandable sections; single or multiple open, ARIA wired.', category: 'Navigation', keywords: ['accordion', 'collapse', 'expand', 'section'] },
+  { to: '/docs/components/tabs', title: 'Tabs', desc: 'Tablist, tabs, and panels with keyboard navigation.', category: 'Navigation', keywords: ['tabs', 'tab', 'panel', 'tablist'] },
+  { to: '/docs/components/breadcrumb', title: 'Breadcrumb', desc: 'Accessible navigation trail for hierarchical page paths.', category: 'Navigation', keywords: ['breadcrumb', 'navigation', 'trail', 'path', 'nav'] },
 
   // Display
   { to: '/docs/components/label', title: 'Label', desc: 'Form labels with optional required marker.', category: 'Display', keywords: ['label', 'form', 'required'] },
   { to: '/docs/components/badge', title: 'Badge', desc: 'Semantic pill badges in multiple sizes and colors.', category: 'Display', keywords: ['badge', 'pill', 'tag', 'status'] },
-  { to: '/docs/components/breadcrumb', title: 'Breadcrumb', desc: 'Accessible navigation trail for hierarchical page paths.', category: 'Display', keywords: ['breadcrumb', 'navigation', 'trail', 'path', 'nav'] },
   { to: '/docs/components/avatar', title: 'Avatar', desc: 'User images, initials, sizes, severities, and AvatarGroup.', category: 'Display', keywords: ['avatar', 'user', 'image', 'initials', 'group'] },
   { to: '/docs/components/card', title: 'Card', desc: 'Elevated surfaces with padding and interactive variants.', category: 'Display', keywords: ['card', 'surface', 'container', 'elevated'] },
   { to: '/docs/components/calendar', title: 'Calendar', desc: 'DatePicker (input + popup) and inline calendar with month/year picker; with flexible date formatting.', category: 'Display', keywords: ['calendar', 'date', 'datepicker', 'picker', 'month', 'year', 'month picker', 'year picker'] },

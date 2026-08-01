@@ -72,7 +72,7 @@ export function useRipple<T extends HTMLElement = HTMLButtonElement>(
 
       const rect = el.getBoundingClientRect()
 
-      // PrimeReact sizing: use the larger of width/height so the ripple
+      // Sizing: use the larger of width/height so the ripple
       // always covers the whole button when expanded to scale(2.5).
       const diameter = Math.max(rect.width, rect.height)
       const radius = diameter / 2
@@ -86,7 +86,7 @@ export function useRipple<T extends HTMLElement = HTMLButtonElement>(
         `height:${diameter}px`,
         `left:${e.clientX - rect.left - radius}px`,
         `top:${e.clientY - rect.top - radius}px`,
-        // Solid buttons: white @ 50 % alpha — identical to PrimeReact rgba(255,255,255,0.5)
+        // Solid buttons: white @ 50 % alpha — rgba(255,255,255,0.5)
         // Outlined / text: accent color @ 20 % — looks correct on transparent bg
         `background:${solidBackground ? 'rgba(255,255,255,0.5)' : 'currentColor'}`,
         solidBackground ? '' : 'opacity:0.2',

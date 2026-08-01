@@ -72,7 +72,7 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(function Slider(
 
   const trackRef = useRef<HTMLDivElement>(null)
   const activeThumbRef = useRef<'start' | 'end' | null>(null)
-  
+
   // State to force re-render for dragging/hover so value labels update
   const [draggingThumb, setDraggingThumb] = useState<'start' | 'end' | null>(null)
   const [hoveredThumb, setHoveredThumb] = useState<'start' | 'end' | null>(null)
@@ -117,7 +117,7 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(function Slider(
         }
 
         let nextRange: [number, number]
-        
+
         if (disableSwap) {
           if (activeThumbRef.current === 'start') {
             nextValue = clamp(nextValue, min, end)
@@ -182,8 +182,8 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(function Slider(
       e.key === 'ArrowRight' || e.key === 'ArrowUp'
         ? 1
         : e.key === 'ArrowLeft' || e.key === 'ArrowDown'
-        ? -1
-        : 0
+          ? -1
+          : 0
     if (dir === 0) return
 
     e.preventDefault()
@@ -196,7 +196,7 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(function Slider(
       let nextValue = getValidValue(current + dir * stepAmount)
 
       let nextRange: [number, number]
-      
+
       if (disableSwap) {
         if (thumb === 'start') {
           nextValue = clamp(nextValue, min, end)
@@ -229,10 +229,9 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(function Slider(
   const renderThumb = (val: number, type: 'start' | 'end', index: number) => {
     const percent = valueToPercent(val, min, max)
     const isVertical = orientation === 'vertical'
-    const positionProp = isVertical ? 'bottom' : 'left'
-    
-    const showLabel = 
-      valueLabelDisplay === 'on' || 
+
+    const showLabel =
+      valueLabelDisplay === 'on' ||
       (valueLabelDisplay === 'auto' && (draggingThumb === type || hoveredThumb === type))
 
     return (
@@ -280,7 +279,6 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(function Slider(
       marksArray = marks
     }
 
-    const positionProp = orientation === 'vertical' ? 'bottom' : 'left'
 
     return marksArray.map((mark, index) => {
       const percent = valueToPercent(mark.value, min, max)
@@ -353,10 +351,9 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(function Slider(
                 min,
                 max,
               )}%`,
-              [isVertical ? 'height' : 'width']: `${
-                valueToPercent((value as [number, number])[1], min, max) -
+              [isVertical ? 'height' : 'width']: `${valueToPercent((value as [number, number])[1], min, max) -
                 valueToPercent((value as [number, number])[0], min, max)
-              }%`,
+                }%`,
             }}
           />
         ) : (

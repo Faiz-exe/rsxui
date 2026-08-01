@@ -32,13 +32,13 @@ const paginationProps = [
 ]
 
 export function PaginationDoc() {
-  useDocMeta({ title: 'Pagination', description: 'Standalone pagination component with rich configuration options.' })
+  useDocMeta('Pagination', 'Standalone pagination component with rich configuration options.')
 
   const [page, setPage] = useState(1)
 
   return (
     <DocArticle>
-      <DocImport names={['Pagination']} />
+      <DocImport names="Pagination" />
       <DocH1>Pagination</DocH1>
       <DocLead>
         A standalone pagination component for easy page navigation. 

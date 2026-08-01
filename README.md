@@ -147,22 +147,25 @@ export default function App() {
 ## Components
 
 ### Inputs
-`Input` · `InputNumber` · `Checkbox` · `Switch` · `Radio` / `RadioGroup` · `Select` · `MultiSelect` · `Autocomplete`
+`InputText` · `InputNumber` · `Input with icon`
+
+### Forms
+`Checkbox` · `Switch` · `Slider` · `Radio` / `RadioGroup` · `Select` · `MultiSelect` · `Autocomplete`
 
 ### Actions
 `Button` · `SplitButton` · `ToggleButton` / `ToggleButtonGroup`
 
 ### Data
-`Table` (sortable, paginated, selectable)
+`Table` (sortable, paginated) · `Pagination`
 
 ### Feedback
-`Toast` · `Dialog` · `Spinner` · `Alert` · `Progress`
+`Toast` · `Dialog` · `Spinner` · `Alert` · `Progress` · `Tooltip`
 
-### Layout
-`Stack` · `Card` · `Accordion` · `Tabs` / `TabList` / `Tab` / `TabPanel` · `Divider`
+### Navigation
+`Accordion` · `Tabs` / `TabList` / `Tab` / `TabPanel` · `Breadcrumb`
 
 ### Display
-`Text` · `Label` · `Badge` · `Avatar` / `AvatarGroup` · `Tooltip` · `Skeleton` · `Calendar` · `DatePicker`
+`Text` · `Label` · `Badge` · `Avatar` / `AvatarGroup` · `Card` · `Calendar` / `DatePicker` · `Divider` · `Skeleton` · `Stack`
 
 ### Theme
 `ThemeProvider` · `ThemeToggle` · `useTheme`
@@ -196,8 +199,8 @@ import { u } from 'react-stylex-ui'
 
 | Dependency | Version |
 |---|---|
-| React | >= 18.0.0 |
-| React DOM | >= 18.0.0 |
+| React | >= 19.0.0 |
+| React DOM | >= 19.0.0 |
 | @stylexjs/stylex | >= 0.10.0 |
 | @stylexjs/unplugin | >= 0.10.0 (dev) |
 

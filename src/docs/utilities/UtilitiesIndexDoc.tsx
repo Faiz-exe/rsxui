@@ -105,15 +105,9 @@ import { u, Text } from 'react-stylex-ui'
         </div>
       </DocPreview>
 
-      <DocH2 id="source">Source</DocH2>
-      <DocP>
-        Definitions live in <InlineCode>src/lib/utilities/utilities.stylex.ts</InlineCode>.
-      </DocP>
 
-      <DocH2 id="a11y">Accessibility</DocH2>
-      <DocP>
-        Utilities are visual only. Use semantic HTML and components for roles, labels, and focus.
-      </DocP>
+
+
     </DocArticle>
   )
 }
